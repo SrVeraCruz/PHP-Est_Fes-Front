@@ -1,6 +1,8 @@
 let wrapper = document.querySelector('.wrapper');
 let body = document.querySelector('.body');
 let main = document.querySelector('.main');
+let about = document.querySelector('.about');
+let mainBox = document.querySelector('.mainBox');
 let estLogo = document.querySelector('.estLogo');
 let navBar = document.querySelector('.nav-bar');
 let slideOut = document.querySelector('.slideOut');
@@ -20,10 +22,17 @@ let scrollHeader = document.querySelectorAll('.scrollHeader');
 let ancar = document.querySelector('.ancar');
 let width = imgBox[0].clientWidth;
 let widthSlide2 = imgBox2[0].clientWidth;
+let heightSectionServices = mainBox.clientHeight;
 let index = 0;
 let counter = 1;
 let counterSlide2 = 1;
 let interval = 3500;
+
+/* To resize section about margin */
+window.onload =()=> {
+  heightSectionServices = mainBox.clientHeight;
+  about.style.marginTop = heightSectionServices-48+"px";
+}
 
 /* To open the nav_hover */
 for(i=0; i < linkListHover.length; i++){
@@ -105,6 +114,9 @@ slideOut.onclick =()=> {
 window.onresize =()=> {
   width = imgBox[0].clientWidth;
   widthSlide2 = imgBox2[0].clientWidth;
+  heightSectionServices = mainBox.clientHeight;
+
+  about.style.marginTop = heightSectionServices-48+"px";
 
   /* Scroll-header */
   if(width < 991){
