@@ -481,7 +481,7 @@ html {
 }
 .news>.boxContainer>.box:nth-child(1)>.content .boxNews__image:hover>img{
   transform: scale(1.17);
-  filter: blur(3px);
+  filter: blur(.3rem);
   filter: brightness(0.6);
 }
 .news>.boxContainer>.box:nth-child(1)>.content .boxNews__info>span{
@@ -577,6 +577,64 @@ html {
   opacity: 100%;
 }
 /* News end */
+
+/* Section video EST start */
+.aboutVideo{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  background-color: gray;
+  overflow: hidden;
+}
+.aboutVideo>img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: blur(.1rem);
+  filter: brightness(.9);
+  transition: .3s ease-in-out;
+}
+.aboutVideo:hover>img{
+  transform: scale(1.05);
+  filter: brightness(.6);
+}
+.aboutVideo>.boxContainer{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.aboutVideo>.boxContainer>.box{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+  width: 50%;
+  margin: auto;
+  text-align: center;
+  color: #fff;
+}
+.aboutVideo>.boxContainer>.box>a{
+  transition: .3s ease-in-out;
+}
+.aboutVideo>.boxContainer>.box>a:hover{
+  transform: scale(1.1);
+}
+.aboutVideo>.boxContainer>.box>h1{
+  font-size: 2.5rem;
+}
+.aboutVideo>.boxContainer>.box>p{
+  font-size: 1.3rem;
+  line-height: 2rem;
+  font-weight: 600;
+}
+/* Section video EST end */
 
 /* Media Query start */
 @media (max-width: 991px){
@@ -884,6 +942,12 @@ html {
     margin-right: unset;
   }
   /* News end */
+
+  /* Section video EST start */
+  .aboutVideo>.boxContainer>.box{
+    width: 90%;
+  }
+  /* Section video EST end */
 }
 
 @media (max-width: 768px){
@@ -896,7 +960,6 @@ html {
   }
   body.active>.wrapper>.wrapper-box1{
     transform: translateX(-18rem);
-  /* pointer-events: none; */
   }
   .wrapper .slideOut.active{
     right: 18rem;
@@ -944,5 +1007,11 @@ html {
     max-width: unset;
   }
   /* News end */
+
+  /* Section video EST start */
+  .aboutVideo>.boxContainer>.box>p{
+    text-align: justify;
+  }
+  /* Section video EST start */
 }
 /* Media Query end */
