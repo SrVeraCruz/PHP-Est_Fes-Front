@@ -20,7 +20,8 @@ let slide2 = document.querySelector('.slide2');
 let imgBox2 = document.querySelectorAll('.imgBox2');
 let scrollHeader = document.querySelectorAll('.scrollHeader');
 let ancar = document.querySelector('.ancar');
-let width = imgBox[0].clientWidth;
+let widthWindow = window.innerWidth;
+let widthSlide1 = imgBox[0].clientWidth;
 let widthSlide2 = imgBox2[0].clientWidth;
 let heightSectionServices = mainBox.clientHeight;
 let index = 0;
@@ -112,27 +113,28 @@ slideOut.onclick =()=> {
 
 /* SlideImg start */
 window.onresize =()=> {
-  width = imgBox[0].clientWidth;
+  widthWindow = window.innerWidth;
+  widthSlide1 = imgBox[0].clientWidth;
   widthSlide2 = imgBox2[0].clientWidth;
   heightSectionServices = mainBox.clientHeight;
 
   about.style.marginTop = heightSectionServices-48+"px";
 
   /* Scroll-header */
-  if(width < 991){
+  if(widthWindow < 991){
     wrapper.style.position = "fixed";
     wrapper.style.top = "0";
     main.style.marginTop = "5rem";
-    for(i=0; i < scrollHeader.length; i++){
-      scrollHeader[i].style.padding = "0";
-      scrollHeader[i].style.paddingRight = "0";
-    }
+    // for(i=0; i < scrollHeader.length; i++){
+    //   scrollHeader[i].style.padding = "0";
+    //   scrollHeader[i].style.paddingRight = "0";
+    // }
   } else {
     wrapper.style.background = "url('./img/background.png')";
-    for(i=0; i < scrollHeader.length; i++){
-      scrollHeader[i].style.padding = ".6rem";
-      scrollHeader[i].style.paddingRight = ".2rem";
-    }
+    // for(i=0; i < scrollHeader.length; i++){
+    //   scrollHeader[i].style.padding = ".6rem";
+    //   scrollHeader[i].style.paddingRight = ".2rem";
+    // }
   }
 }
 setInterval(()=> {
@@ -140,7 +142,7 @@ setInterval(()=> {
 }, interval);
 
 slide =()=> {
-  slideImg.style.transform = "translate("+(-width*counter)+"px)";
+  slideImg.style.transform = "translate("+(-widthSlide1*counter)+"px)";
   counter++;
 
   slide2.style.transform = "translate("+(-widthSlide2*counterSlide2)+"px)";
@@ -160,7 +162,7 @@ slide =()=> {
 
 /* Scroll-header start */
 window.onscroll =()=> {
-  if(width > 991){
+  if(widthWindow > 991){
     if(window.scrollY > 150){
       wrapper.style.position = "fixed";
       wrapper.style.top = "-9.5rem";
@@ -168,19 +170,19 @@ window.onscroll =()=> {
       wrapper.style.background = "#fff";
       wrapper.style.transition = "unset";
       estLogo.style.opacity = 1;
-      for(i=0; i < scrollHeader.length; i++){
-        scrollHeader[i].style.padding = ".7rem";
-      }
+      // for(i=0; i < scrollHeader.length; i++){
+      //   scrollHeader[i].style.padding = ".7rem";
+      // }
     } else {
       wrapper.style.position = "static";
       wrapper.style.top = "0";
       main.style.marginTop = "0";
       wrapper.style.background = "url('./img/background.png')";
       estLogo.style.opacity = 0;
-      for(i=0; i < scrollHeader.length; i++){
-        scrollHeader[i].style.padding = ".6rem";
-        scrollHeader[i].style.paddingRight = ".2rem";
-      }
+      // for(i=0; i < scrollHeader.length; i++){
+      //   scrollHeader[i].style.padding = ".6rem";
+      //   scrollHeader[i].style.paddingRight = ".2rem";
+      // }
     }
   }
 
