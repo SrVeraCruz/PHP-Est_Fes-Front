@@ -1,4 +1,5 @@
 /* General */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700;900&display=swap');
 :root{
   --blue: #0e96d8;
   --darkBlue: #192f59;
@@ -10,7 +11,7 @@
   padding: 0;
   margin: 0;
   box-sizing: border-box;
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Poppins', sans-serif;
   text-decoration: none;
   list-style: none;
 }
@@ -242,7 +243,7 @@ html {
   right: 2rem;
   bottom: 2rem;
   z-index: 999;
-  padding: 1rem 1.1rem;
+  padding: 1rem 1.3rem;
   background-color: #cdcdcd;
   border-radius: 50%;
   opacity: 0;
@@ -433,7 +434,8 @@ html {
 }
 .titre>h1{
   color: var(--darkBlue);
-  font-weight: 900;
+  font-size: 1.4rem;
+  font-weight: 700;
 }
 .titre>.bar{
   flex: 1;
@@ -635,6 +637,200 @@ html {
   font-weight: 600;
 }
 /* Section video EST end */
+
+/* Section News Events start */
+.newsEvents{
+  padding: 4rem 6%;
+}
+.newsEvents>.boxContainer{
+  display: flex;
+  gap: 5rem;
+}
+.newsEvents>.boxContainer>.box:nth-child(1){
+  width: 70%;
+}
+.newsEvents>.boxContainer>.box:nth-child(1)>.content{
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  margin: 2.5rem 0 3rem 0;
+  padding: 0 0 2rem 0;
+  border-bottom: .1rem solid rgba(0, 0, 0, 0.1);
+}
+.newsEvents>.boxContainer>.box:nth-child(1)>.content>.contentBox{
+  display: flex;
+  gap: 1.5rem;
+}
+.newsEvents>.boxContainer>.box:nth-child(1)>.content>.contentBox>.box:nth-child(1){
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: .5rem;
+  border-bottom: .2rem solid var(--blue);
+}
+.newsEvents>.boxContainer>.box:nth-child(1)>.content>.contentBox>.box:nth-child(1)>h1{
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--blue);
+}
+.newsEvents>.boxContainer>.box:nth-child(1)>.content>.contentBox>.box:nth-child(1)>h3{
+  text-transform: uppercase;
+  font-size: 1rem;
+  font-weight: 700;
+  color: var(--darkBlue);
+}
+.newsEvents>.boxContainer>.box:nth-child(1)>.content>.contentBox>.box:nth-child(2)>a{
+  display: block;
+  font-size: 1.1rem;
+  color: var(--darkBlue);
+  font-weight: bold;
+  margin-top: .5rem;
+  transition: .3s ease-in-out;
+}
+.newsEvents>.boxContainer>.box:nth-child(1)>.content>.contentBox>.box:nth-child(2)>a:hover{
+  opacity: 75%;
+}
+.newsEvents>.boxContainer>.box:nth-child(1)>.content>.contentBox>.box:nth-child(2)>.boxCoordene{
+  display: flex;
+  gap: 1.5rem;
+  margin-top: .7rem;
+  color: var(--blue);
+  font-size: .9rem;
+}
+.newsEvents>.boxContainer>.box:nth-child(1)>.content>.contentBox>.box:nth-child(2)>.boxCoordene>div{
+display: flex;
+align-items: center;
+gap: .5rem;
+}
+.newsEvents>.boxContainer>.box:nth-child(1)>a{
+  display: contents;
+  font-weight: bold;
+  color: var(--blue);
+  padding: 1rem;
+  transition: .3s ease-in-out;
+}
+.newsEvents>.boxContainer>.box:nth-child(1)>a>i{
+  margin-left: 1rem;
+  transition: .3s ease-in-out;
+}
+.newsEvents>.boxContainer>.box:nth-child(1)>a:hover{
+  opacity: 75%;
+}
+.newsEvents>.boxContainer>.box:nth-child(1)>a:hover>i{
+  margin-left: 1.5rem;
+  rotate: 360deg;
+}
+.newsEvents>.boxContainer>.box:nth-child(2){
+  max-width: 27rem;
+  min-width: 20rem;
+}
+.newsEvents>.boxContainer>.box:nth-child(2)>.inscrireEst{
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  overflow: hidden;
+}
+.newsEvents>.boxContainer>.box:nth-child(2)>.inscrireEst>img{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  filter: brightness(.7);
+  object-fit: cover;
+  transition: .3s ease-in-out;
+}
+.newsEvents>.boxContainer>.box:nth-child(2):hover>.inscrireEst>img{
+  scale: 1.06;
+  filter: brightness(.2);
+}
+.newsEvents>.boxContainer>.box:nth-child(2)>.inscrireEst>.inscrireEstBox{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 2.5rem;
+  width: 100%;
+  height: 100%;
+  padding: 3rem;
+  padding-top: 7rem;
+  background-image: linear-gradient(to bottom ,#1c3261b5, #1c3261);
+  z-index: 1;
+}
+.newsEvents>.boxContainer>.box:nth-child(2)>.inscrireEst>.inscrireEstBox>img{
+  width: 5rem;
+  height: auto;
+}
+.newsEvents>.boxContainer>.box:nth-child(2)>.inscrireEst>.inscrireEstBox>.text{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+  padding: 0 1rem;
+  text-align: center;
+}
+.newsEvents>.boxContainer>.box:nth-child(2)>.inscrireEst>.inscrireEstBox>.text>h3{
+  color: #fff;
+  font-size: 1.3rem;
+}
+.newsEvents>.boxContainer>.box:nth-child(2)>.inscrireEst>.inscrireEstBox>.text>p{
+  color: #96aad3;
+  font-size: 1rem;
+}
+.newsEvents>.boxContainer>.box:nth-child(2)>.inscrireEst>.inscrireEstBox>form{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+}
+.newsEvents>.boxContainer>.box:nth-child(2)>.inscrireEst>.inscrireEstBox>form>.boxInput{
+  position: relative;
+  width: 100%;
+}
+.newsEvents>.boxContainer>.box:nth-child(2)>.inscrireEst>.inscrireEstBox>form>.boxInput>.inputUser{
+  width: 100%;
+  padding: 1.1rem 1.5rem;
+  font-size: 1rem;
+  color: #96aad3;
+  background-color: #1a2742;
+  border: none;
+  outline: none;
+  border-bottom: .15rem solid transparent;
+  transition: .3s ease-in-out;
+}
+.newsEvents>.boxContainer>.box:nth-child(2)>.inscrireEst>.inscrireEstBox>form>.boxInput>.inputUser:focus{
+  border-bottom: .15rem solid var(--vert);
+}
+.newsEvents>.boxContainer>.box:nth-child(2)>.inscrireEst>.inscrireEstBox>form>.boxInput>.labelInput{
+  position: absolute;
+  top: .9rem;
+  left: 1.5rem;
+  color: #96aad3;
+  text-transform: capitalize;
+  background-color: #1a2742;
+  border: .1rem solid #1a2742;
+  padding: .1rem .6rem;
+  border-top-left-radius: .3rem;
+  border-top-right-radius: .3rem;
+  pointer-events: none;
+  transition: .3s ease-in-out;
+}
+.newsEvents>.boxContainer>.box:nth-child(2)>.inscrireEst>.inscrireEstBox>form>.btn{
+  width: 100%;
+  padding: 1rem;
+  font-size: 1rem;
+  color: #fff;
+  text-transform: capitalize;
+  font-weight: bold;
+  letter-spacing: .07rem;
+  background-color: var(--vert);
+  border: none;
+  transition: .3s ease-in-out;
+}
+.newsEvents>.boxContainer>.box:nth-child(2)>.inscrireEst>.inscrireEstBox>form>.btn:hover{
+  opacity: 80%;
+}
+/* Section News Events end */
 
 /* Media Query start */
 @media (max-width: 991px){
@@ -920,6 +1116,9 @@ html {
   /* A propos de nous end */
 
   /* News start */
+  .news{
+    padding-bottom: 3rem;
+  }
   .news>.boxContainer{
     display: block;
     overflow: hidden;
@@ -934,7 +1133,7 @@ html {
   }
   .news>.boxContainer>.box:nth-child(2){
     width: 80%;
-    min-width: 34rem;
+    /* min-width: 34rem; */
     margin: 2.5rem auto 0 auto;
     padding: 4rem 6rem;
   }
@@ -948,6 +1147,29 @@ html {
     width: 90%;
   }
   /* Section video EST end */
+
+  /* Section News Events start */
+  .newsEvents{
+    padding: 3rem 9%;
+  }
+  .newsEvents>.boxContainer{
+    flex-direction: column;
+    gap: 2rem;
+  }
+  .newsEvents>.boxContainer>.box:nth-child(1){
+    width: 100%;
+  }
+  .newsEvents>.boxContainer>.box:nth-child(1)>.content{
+    border: none;
+    margin: 2.5rem 0 1rem 0;
+    padding: 0 0 2rem 0;
+  }
+  .newsEvents>.boxContainer>.box:nth-child(2){
+    max-width: unset;
+    padding-top: 2rem;
+    border-top: .1rem solid rgba(0, 0, 0, 0.1);
+  }
+  /* Section News Events end */
 }
 
 @media (max-width: 768px){

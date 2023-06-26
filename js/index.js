@@ -20,6 +20,8 @@ let slide2 = document.querySelector('.slide2');
 let imgBox2 = document.querySelectorAll('.imgBox2');
 let scrollHeader = document.querySelectorAll('.scrollHeader');
 let ancar = document.querySelector('.ancar');
+let inputUser = document.querySelector('.inputUser');
+let labelInput = document.querySelector('.labelInput');
 let widthWindow = window.innerWidth;
 let widthSlide1 = imgBox[0].clientWidth;
 let widthSlide2 = imgBox2[0].clientWidth;
@@ -125,16 +127,8 @@ window.onresize =()=> {
     wrapper.style.position = "fixed";
     wrapper.style.top = "0";
     main.style.marginTop = "5rem";
-    // for(i=0; i < scrollHeader.length; i++){
-    //   scrollHeader[i].style.padding = "0";
-    //   scrollHeader[i].style.paddingRight = "0";
-    // }
   } else {
     wrapper.style.background = "url('./img/background.png')";
-    // for(i=0; i < scrollHeader.length; i++){
-    //   scrollHeader[i].style.padding = ".6rem";
-    //   scrollHeader[i].style.paddingRight = ".2rem";
-    // }
   }
 }
 setInterval(()=> {
@@ -170,19 +164,12 @@ window.onscroll =()=> {
       wrapper.style.background = "#fff";
       wrapper.style.transition = "unset";
       estLogo.style.opacity = 1;
-      // for(i=0; i < scrollHeader.length; i++){
-      //   scrollHeader[i].style.padding = ".7rem";
-      // }
     } else {
       wrapper.style.position = "static";
       wrapper.style.top = "0";
       main.style.marginTop = "0";
       wrapper.style.background = "url('./img/background.png')";
       estLogo.style.opacity = 0;
-      // for(i=0; i < scrollHeader.length; i++){
-      //   scrollHeader[i].style.padding = ".6rem";
-      //   scrollHeader[i].style.paddingRight = ".2rem";
-      // }
     }
   }
 
@@ -196,3 +183,27 @@ window.onscroll =()=> {
 }
 /* Scroll-header end */
 
+/* Input:focus ~ label start */
+inputUser.addEventListener("focusin", ()=> {
+  if(inputUser.value == ""){
+    labelInput.style.color = '#3db166';
+    labelInput.style.top = "-1.1rem";
+    labelInput.style.left = "0";
+    labelInput.style.fontSize = ".7rem";
+    labelInput.style.border = ".1rem solid #3db166";
+    labelInput.style.borderBottom = ".1rem solid #1a2742";
+    inputUser.style.borderBottom = ".1rem solid #3db166";
+  }
+})
+
+inputUser.addEventListener("focusout", ()=> {
+  if(inputUser.value == ""){
+    labelInput.style.color = '#96aad3';
+    labelInput.style.top = ".9rem";
+    labelInput.style.left = "1.5rem";
+    labelInput.style.fontSize = "1rem";
+    labelInput.style.border = ".1rem solid #1a2742";
+    inputUser.style.borderBottom = ".1rem solid #1a2742";
+  }
+})
+/* Input:focus ~ label end */
