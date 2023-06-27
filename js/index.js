@@ -20,8 +20,9 @@ let slide2 = document.querySelector('.slide2');
 let imgBox2 = document.querySelectorAll('.imgBox2');
 let scrollHeader = document.querySelectorAll('.scrollHeader');
 let ancar = document.querySelector('.ancar');
-let inputUser = document.querySelector('.inputUser');
-let labelInput = document.querySelector('.labelInput');
+let inputUsers = document.querySelectorAll('.inputUser');
+let labelInputs = document.querySelectorAll('.labelInput');
+let selectOptions = document.querySelectorAll('.boxInput>.inputUser>option');
 let widthWindow = window.innerWidth;
 let widthSlide1 = imgBox[0].clientWidth;
 let widthSlide2 = imgBox2[0].clientWidth;
@@ -184,26 +185,45 @@ window.onscroll =()=> {
 /* Scroll-header end */
 
 /* Input:focus ~ label start */
-inputUser.addEventListener("focusin", ()=> {
-  if(inputUser.value == ""){
-    labelInput.style.color = '#3db166';
-    labelInput.style.top = "-1.1rem";
-    labelInput.style.left = "0";
-    labelInput.style.fontSize = ".7rem";
-    labelInput.style.border = ".1rem solid #3db166";
-    labelInput.style.borderBottom = ".1rem solid #1a2742";
-    inputUser.style.borderBottom = ".1rem solid #3db166";
-  }
-})
+for(i=0; i < inputUsers.length; i++){
+  let inputUser = inputUsers[i];
+  let labelInput = labelInputs[i];
 
-inputUser.addEventListener("focusout", ()=> {
-  if(inputUser.value == ""){
-    labelInput.style.color = '#96aad3';
-    labelInput.style.top = ".9rem";
-    labelInput.style.left = "1.5rem";
-    labelInput.style.fontSize = "1rem";
-    labelInput.style.border = ".1rem solid #1a2742";
-    inputUser.style.borderBottom = ".1rem solid #1a2742";
-  }
-})
+  inputUser.addEventListener("focusin", ()=> {
+    if(inputUser.value == ""){
+      labelInput.style.color = '#3db166';
+      labelInput.style.top = "-.9rem";
+      labelInput.style.left = "0";
+      labelInput.style.fontSize = ".7rem";
+      labelInput.style.border = ".1rem solid #3db166";
+      labelInput.style.borderBottom = ".1rem solid transparent";
+      inputUser.style.borderBottom = ".1rem solid #3db166";
+    }
+  })
+  
+  inputUser.addEventListener("focusout", ()=> {
+    if(inputUser.value == ""){
+      labelInput.style.color = '#96aad3';
+      labelInput.style.top = "1.5rem";
+      labelInput.style.left = "1rem";
+      labelInput.style.fontSize = "1rem";
+      labelInput.style.border = ".1rem solid transparent";
+      inputUser.style.borderBottom = ".1rem solid transparent";
+    }
+  })
+}
 /* Input:focus ~ label end */
+
+
+
+/* option:hover ~ select start */
+
+// for(i=0; i < selectOptions.length; i++){
+//   let option = selectOptions[i];
+
+//   option.onclick =()=> {
+//     console.log(option);
+//   }
+// }
+
+/* option:hover ~ select end */

@@ -319,9 +319,11 @@ html {
   justify-content: center;
   background-color: #fff;
   padding: 2rem;
-  
   border-top-left-radius: .2rem;
   border-top-right-radius: .2rem;
+}
+.services>.boxContainer>.mainBox>.content:nth-child(3){
+  border-radius: unset;
 }
 .services>.boxContainer>.mainBox>.content>.box{
   flex: 1 1 15rem;
@@ -446,9 +448,11 @@ html {
 
 .news>.boxContainer{
   display: flex;
+  justify-content: space-between;
 }
 .news>.boxContainer>.box:nth-child(1){
   padding: 5rem 7rem;
+  flex: 1;
 }
 .news>.boxContainer>.box:nth-child(1)>a{
   color: var(--vert);
@@ -790,6 +794,7 @@ gap: .5rem;
 .newsEvents>.boxContainer>.box:nth-child(2)>.inscrireEst>.inscrireEstBox>form>.boxInput>.inputUser{
   width: 100%;
   padding: 1.1rem 1.5rem;
+  margin-top: .5rem;
   font-size: 1rem;
   color: #96aad3;
   background-color: #1a2742;
@@ -803,8 +808,8 @@ gap: .5rem;
 }
 .newsEvents>.boxContainer>.box:nth-child(2)>.inscrireEst>.inscrireEstBox>form>.boxInput>.labelInput{
   position: absolute;
-  top: .9rem;
-  left: 1.5rem;
+  top: 1.5rem;
+  left: 1rem;
   color: #96aad3;
   text-transform: capitalize;
   background-color: #1a2742;
@@ -815,7 +820,7 @@ gap: .5rem;
   pointer-events: none;
   transition: .3s ease-in-out;
 }
-.newsEvents>.boxContainer>.box:nth-child(2)>.inscrireEst>.inscrireEstBox>form>.btn{
+form>.btn{
   width: 100%;
   padding: 1rem;
   font-size: 1rem;
@@ -825,12 +830,103 @@ gap: .5rem;
   letter-spacing: .07rem;
   background-color: var(--vert);
   border: none;
+  cursor: pointer;
   transition: .3s ease-in-out;
 }
-.newsEvents>.boxContainer>.box:nth-child(2)>.inscrireEst>.inscrireEstBox>form>.btn:hover{
+form>.btn:hover{
   opacity: 80%;
 }
 /* Section News Events end */
+
+/* Section Chercher cours start */
+.searchCours>.boxContainer{
+  position: relative;
+  display: flex;
+  width: 100%;
+  overflow: hidden;
+}
+.searchCours>.boxContainer>img{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(.7);
+  transition: .3s ease-in-out;
+}
+.searchCours>.boxContainer:hover>img{
+  scale: 1.06;
+  filter: brightness(.2);
+}
+.searchCours>.boxContainer>.searchBox{
+  width: 100%;
+  height: 100%;
+  padding: 6rem 6rem 4rem 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: end;
+  background-image: linear-gradient(to bottom ,#1c3261b5, #1c3261);
+  z-index: 1;
+}
+.searchCours>.boxContainer>.searchBox>.searchContent{
+  width: 45%;
+  min-width: 25rem;
+}
+.searchCours>.boxContainer>.searchBox>.searchContent>h3{
+  font-size: 1.6rem;
+  color: #fff;
+  margin-bottom: 1.5rem;
+}
+.searchCours>.boxContainer>.searchBox>.searchContent>form>.globalInputBox{
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1rem;
+  margin-bottom: 1.3rem;
+}
+.searchCours>.boxContainer>.searchBox>.searchContent>form>.globalInputBox>.boxInput{
+  position: relative;
+}
+.searchCours>.boxContainer>.searchBox>.searchContent>form>.globalInputBox>.boxInput>.inputUser{
+  width: 100%;
+  padding: 1.1rem 1.5rem;
+  margin-top: .5rem;
+  font-size: 1rem;
+  color: #96aad3;
+  background-color: #3b4b6b;
+  border: none;
+  border-radius: .2rem;
+  outline: none;
+  border-bottom: .15rem solid transparent;
+  transition: .3s ease-in-out;
+}
+.searchCours>.boxContainer>.searchBox>.searchContent>form>.globalInputBox>.boxInput>.inputUser:focus{
+  border-bottom: .15rem solid var(--vert);
+}
+.searchCours>.boxContainer>.searchBox>.searchContent>form>.globalInputBox>.boxInput>select{
+  cursor: pointer;
+}
+.searchCours>.boxContainer>.searchBox>.searchContent>form>.globalInputBox>.boxInput>.inputUser>option{
+  background-color: #4b5c7c;
+}
+.searchCours>.boxContainer>.searchBox>.searchContent>form>.globalInputBox>.boxInput>.labelInput{
+  position: absolute;
+  top: 1.5rem;
+  left: 1rem;
+  color: #96aad3;
+  text-transform: capitalize;
+  background-color: #3b4b6b;
+  border: .1rem solid #3b4b6b;
+  padding: .1rem .6rem;
+  border-top-left-radius: .3rem;
+  border-top-right-radius: .3rem;
+  pointer-events: none;
+  transition: .3s ease-in-out;
+}
+.searchCours>.boxContainer>.searchBox>.searchContent>form>.btn{
+  border-radius: .2rem;
+}
+/* Section Chercher cours end */
+
 
 /* Media Query start */
 @media (max-width: 991px){
@@ -1170,6 +1266,13 @@ gap: .5rem;
     border-top: .1rem solid rgba(0, 0, 0, 0.1);
   }
   /* Section News Events end */
+
+  /* Section Chercher cours start */
+  .searchCours>.boxContainer>.searchBox{
+    padding: 5rem 10% 3rem 10%;
+    align-items: center;
+  }
+  /* Section Chercher cours end */
 }
 
 @media (max-width: 768px){
