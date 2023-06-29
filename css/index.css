@@ -168,7 +168,7 @@ html {
 .wrapper nav>ul>li>.nav_hover{
   position: absolute;
   top: 100%;
-  left: -2000%;
+  left: -2500%;
   width: 12rem;
   background-color: #fff;
   border: .05rem solid rgba(0, 0, 0, 0.195);
@@ -927,6 +927,76 @@ form>.btn:hover{
 }
 /* Section Chercher cours end */
 
+/* Footer start */
+footer{
+  width: 100%;
+  background-color: #181818;
+}
+footer>.boxContainer>.content:nth-child(1){
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 2rem;
+  padding: 4rem 7%;
+}
+footer>.boxContainer>.content:nth-child(1)>.box{
+  color: #999;
+}
+footer>.boxContainer>.content:nth-child(1)>.box>h3{
+  color: #eee;
+  padding-bottom: .8rem;
+  margin-bottom: 1.7rem;
+  border-bottom: .15rem solid var(--blue);
+}
+footer>.boxContainer>.content:nth-child(1)>.box>ul{
+  display: flex;
+  flex-direction: column;
+  gap: .8rem;
+}
+footer>.boxContainer>.content:nth-child(1)>.box>ul>li>a{
+  color: inherit;
+  text-transform: capitalize;
+  transition: .3s ease-in-out;
+}
+footer>.boxContainer>.content:nth-child(1)>.box>ul>li>a:hover,
+footer>.boxContainer>.content:nth-child(1)>.box:nth-child(1)>a:hover{
+  color: var(--blue);
+}
+footer>.boxContainer>.content:nth-child(1)>.box:nth-child(1){
+  display: flex;
+  flex-direction: column;
+  gap: .3rem;
+  border-bottom: .15rem solid var(--blue);
+}
+footer>.boxContainer>.content:nth-child(1)>.box:nth-child(1)>.boxImg{
+  width: 18rem;
+  height: 12rem;
+  overflow: hidden;
+  margin-bottom: -1rem;
+}
+footer>.boxContainer>.content:nth-child(1)>.box:nth-child(1)>.boxImg>img{
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+  transform: translateY(-3.5rem);
+  scale: 1.27;
+}
+footer>.boxContainer>.content:nth-child(1)>.box:nth-child(1)>a{
+  font-weight: 600;
+  color: #eee;
+  margin: 1rem 0;
+  transition: .3s ease-in-out;
+}
+footer>.boxContainer>.content:nth-child(2){
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: .5rem;
+  text-align: center;
+  color: #999;
+  background-color: #202020;
+  padding: 2.5rem;
+}
+/* Footer end */
 
 /* Media Query start */
 @media (max-width: 991px){
@@ -1273,6 +1343,12 @@ form>.btn:hover{
     align-items: center;
   }
   /* Section Chercher cours end */
+
+  /* Footer start */
+  footer>.boxContainer>.content:nth-child(1){
+    grid-template-columns: repeat(2, 1fr);
+  }
+  /* Footer end */
 }
 
 @media (max-width: 768px){
@@ -1338,5 +1414,11 @@ form>.btn:hover{
     text-align: justify;
   }
   /* Section video EST start */
+
+  /* Footer start */
+  footer>.boxContainer>.content:nth-child(1){
+    grid-template-columns: repeat(1, 1fr);
+  }
+  /* Footer end */
 }
 /* Media Query end */
