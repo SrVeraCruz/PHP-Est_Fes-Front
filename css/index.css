@@ -16,7 +16,7 @@
   list-style: none;
 }
 
-body{
+body, footer{
   background-color: #fff;
   transition: .3s ease-in-out;
 }
@@ -1049,7 +1049,7 @@ footer>.boxContainer>.content:nth-child(2){
   main.active{
     transform: translateX(-22rem);
   }
-  body.active>.wrapper>.wrapper-box1{
+  body.active>.wrapper>.wrapper-box1, body.active footer{
     transform: translateX(-22rem);
   }
   .wrapper{
@@ -1400,7 +1400,7 @@ footer>.boxContainer>.content:nth-child(2){
   main.active{
     transform: translateX(-18rem);
   }
-  body.active>.wrapper>.wrapper-box1{
+  body.active>.wrapper>.wrapper-box1, body.active footer{
     transform: translateX(-18rem);
   }
   .wrapper .slideOut.active{
