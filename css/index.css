@@ -1003,6 +1003,9 @@ footer>.boxContainer>.content:nth-child(2){
   background-color: #202020;
   padding: 2.5rem;
 }
+footer>.boxContainer>.content:nth-child(2) span{
+  font-weight: bold;
+}
 /* Footer end */
 
 /* Mot Directeur start */
