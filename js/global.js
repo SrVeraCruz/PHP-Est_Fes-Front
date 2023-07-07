@@ -103,6 +103,21 @@ window.onresize =()=> {
     main.style.marginTop = "5rem";
   } else {
     wrapper.style.background = "url('./img/background.png')";
+
+    if(window.scrollY > 150){
+      wrapper.style.position = "fixed";
+      wrapper.style.top = "-9.5rem";
+      main.style.marginTop = "16rem";
+      wrapper.style.background = "#fff";
+      wrapper.style.transition = "unset";
+      estLogo.style.opacity = 1;
+    } else {
+      wrapper.style.position = "static";
+      wrapper.style.top = "0";
+      main.style.marginTop = "0";
+      wrapper.style.background = "url('./img/background.png')";
+      estLogo.style.opacity = 0;
+    }
   }
 }
 /* SlideImg end */
