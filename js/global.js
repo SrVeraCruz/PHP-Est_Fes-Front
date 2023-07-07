@@ -10,10 +10,21 @@ let closeListHover2 = document.querySelectorAll('.closeListHover2');
 let list = document.querySelector('.list');
 let listHover = document.querySelectorAll('.nav_hover');
 let listHover2 = document.querySelectorAll('.nav_hover2');
+let allLink = document.querySelectorAll('a');
 let linkListHover = document.querySelectorAll('.linkListHover');
 let linkListHover2 = document.querySelectorAll('.linkListHover2');
 let ancar = document.querySelector('.ancar');
 let widthWindow = window.innerWidth;
+
+/* link transition ease */
+// for(i=0; i < allLink.length; i++){
+//   let link = allLink[i];
+
+//   link.onclick = (e) => {
+//     e.preventDefault()
+//   }
+// }
+
 
 /* To open the nav_hover */
 for(i=0; i < linkListHover.length; i++){
