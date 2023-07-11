@@ -1076,6 +1076,9 @@ footer>.boxContainer>.content:nth-child(2) span{
   flex-direction: column;
   gap: 2rem;
 }
+.section-mixins>.boxContainer h3{
+  width: 100%;
+}
 .section-mixins>.boxContainer #probleme{
   width: 100%;
 }
