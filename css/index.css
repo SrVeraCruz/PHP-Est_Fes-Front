@@ -2,12 +2,15 @@
 :root{
   --blue: #0e96d8;
   --darkBlue: #192f59;
+  --white: #fff;
   --gris: #f8f8f8;
   --vert: #3db166;
   --text-color: #6b6b6b;
   --dark-primary-gray: #333;
   --dark-secundary-gray: #666;
   --dark-secundary-soft-gray: #8b8b8b;
+  --bg-construction-color: #021a64;
+  --text-construction-color: #c2392c;
 }
 
 *{
@@ -1073,6 +1076,9 @@ footer>.boxContainer>.content:nth-child(2) span{
   flex-direction: column;
   gap: 2rem;
 }
+.section-mixins>.boxContainer #probleme{
+  width: 100%;
+}
 .section-mixins>.boxContainer>.box{
   display: flex;
   gap: 9%;
@@ -1159,6 +1165,44 @@ footer>.boxContainer>.content:nth-child(2) span{
   transform: translateX(1rem) rotate(720deg);
 }
 /* Filieres end */
+
+/* Construction start */
+.construction{
+  padding: 0;
+}
+.construction>.headline{
+  background-color: var(--bg-construction-color);
+  padding: 8rem 0;
+  margin-bottom: 3%;
+  border: none;
+}
+.construction>.headline>h1{
+  color: var(--white);
+  display: block;
+  text-align: center;
+  font-size: 3rem;
+}
+.construction>.boxContainer>.box{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+  padding: 0 1rem;
+  gap: 2rem;
+}
+.construction>.boxContainer>.box>h1{
+  font-size: 2.5rem;
+  color: var(--text-construction-color)
+}
+.construction>.boxContainer>.box>h2{
+  color: var(--text-color)
+}
+.construction>.boxContainer>.box>#probleme{
+  width: 45%;
+  min-width: 30rem;
+}
+/* Construction end */
 
 /* Media Query start */
 @media (max-width: 991px){
