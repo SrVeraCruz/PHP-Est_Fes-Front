@@ -1234,6 +1234,152 @@ footer>.boxContainer>.content:nth-child(2) span{
 }
 /* Contact end */
 
+/* Suivi start */
+#suivi{
+  background-color: #f9fafc;
+}
+#suivi>.boxContainer{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1rem;
+  color: var(--text-color);
+}
+#suivi>.boxContainer>h2{
+  font-size: 2rem;
+  color: var(--dark-primary-gray);
+  text-align: center;
+}
+#suivi>.boxContainer>p{
+  max-width: 50rem;
+  text-align: center;
+}
+#suivi>.boxContainer>.form-container{
+  width: 100%;
+  max-width: 40rem;
+  margin: 1rem auto;
+  background-color: #fff;
+  padding: 1.5rem;
+  box-shadow: rgba(100, 100, 111, 0.2) 0 0.7rem 2.9rem 0;
+  border-radius: 0.3rem;
+}
+#suivi>.boxContainer>.form-container>.steps{
+  position: relative;
+  display: flex;
+  justify-content: space-between;
+  max-width: 30rem;
+  min-width: 22rem;
+  margin: 0 auto;
+  margin-bottom: 2rem;
+}
+#suivi>.boxContainer>.form-container>.steps::after{
+  content: "";
+  width: 85%;
+  border-bottom: .1rem solid #cfcfcf;
+  position: absolute;
+  top: 1.1rem;
+  left: 2rem;
+}
+#suivi>.boxContainer>.form-container>.steps>.step{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  font-weight: 300;
+}
+#suivi>.boxContainer>.form-container>.steps>.step.active{
+  font-weight: bold;
+}
+#suivi>.boxContainer>.form-container>.steps>.step.active>i{
+  color: #7076f4;
+}
+#suivi>.boxContainer>.form-container>.steps>.step>i{
+  font-size: 1.4rem;
+  padding: .3rem 2rem;
+  background-color: #fff;
+  z-index: 1;
+}
+#suivi>.boxContainer>.form-container>form{
+  width: 75%;
+  min-width: 21rem;
+  margin: 0 auto;
+}
+#suivi>.boxContainer>.form-container>form>.form-box{
+  display: none;
+  width: 100%;
+  margin-bottom: 3rem;
+}
+#suivi>.boxContainer>.form-container>form>.form-box.active{
+  display: flex;
+  flex-direction: column;
+  gap: 1.3rem;
+}
+#suivi>.boxContainer>.form-container>form>.form-box>.box-inputs{
+  width: 100%;
+}
+#suivi>.boxContainer>.form-container>form>.form-box>.box-inputs>input{
+  width: 100%;
+  padding: 0.4rem;
+  border: none;
+  outline: none;
+  border-bottom: 0.1rem solid transparent;
+  border-radius: 0.3rem;
+  box-shadow: rgba(99, 99, 99, 0.2) 0 0.2rem 0.8rem 0;
+  transition: 0.3s ease-in-out;
+}
+#suivi>.boxContainer>.form-container>form>#commentSection>p,
+#suivi>.boxContainer>.form-container>form>.form-box>.box-inputs>label{
+  display: block;
+  margin-bottom: .4rem;
+  font-size: .9rem;
+  font-weight: 600;
+}
+#suivi>.boxContainer>.form-container>form>.box-buttons{
+  display: flex;
+  justify-content: end;
+  gap: .8rem;
+}
+#suivi>.boxContainer>.form-container>form>.box-buttons>.btn{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .5rem;
+  width: 6rem;
+  padding: .4rem 0;
+  border: none;
+  border-radius: .3rem;
+  background-color: #e6e6e6;
+  transition: .3s ease-in-out;
+  font-weight: 300;
+}
+#suivi>.boxContainer>.form-container>form>.box-buttons>.btn:hover{
+  background-color: #d0d0d0;
+}
+#suivi>.boxContainer>.form-container>form>.box-buttons>.btn>i{
+  font-size: .6rem;
+}
+#suivi>.boxContainer>.form-container>form>.box-buttons>#SubmitBtn{
+  display: none;
+}
+#suivi>.boxContainer>.form-container>form>#commentSection>h3{
+  text-align: center;
+}
+#suivi>.boxContainer>.form-container>form>#commentSection>#inputCommentaire{
+  padding: 0.6rem;
+  margin-top: -1.3rem;
+  border: none;
+  outline: none;
+  border-bottom: 0.1rem solid transparent;
+  border-radius: 0.3rem;
+  box-shadow: rgba(99, 99, 99, 0.2) 0 0.2rem 0.8rem 0;
+  height: 7.5rem;
+  min-height: 2.6rem;
+  max-height: 15rem;
+  resize: vertical;
+}
+
+/* Suivi end */
+
 /* Media Query start */
 @media (max-width: 991px){
   /* Wrapper start */
