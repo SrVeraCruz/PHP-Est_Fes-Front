@@ -1442,7 +1442,9 @@ footer>.boxContainer>.content:nth-child(2) span{
 /* Espace Etudiant end */
 
 /* Calendries semanails start */
-#cs>.box-container>.box, #conc_rec>.box-container>.box{
+#cs>.box-container>.box,
+#conc_rec>.box-container>.box,
+#fc_du>.box-container>.box{
   min-height: 12rem;
   display: flex;
   justify-content: center;
@@ -1474,6 +1476,15 @@ padding: 2rem 1rem;
   text-decoration: underline;
 }
 /* Conseil end */
+
+/* Formation Continue start */
+#fc_du>.box-container>.box>a,
+#conc_rec>.box-container>.box>a,
+#conc_rec_5>.box-container>.box>a
+{
+  font-size: 1.2rem;
+}
+/* Formation Continue end */
 
 /* Media Query start */
 @media (max-width: 991px){
