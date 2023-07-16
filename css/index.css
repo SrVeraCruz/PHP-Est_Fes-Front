@@ -1465,6 +1465,16 @@ padding: 2rem 1rem;
 }
 /* Cours Etudiant end */
 
+/* Conseil start */
+#cc_cp>.boxContainer>h1{
+  color: var(--blue);
+  text-align: center;
+  text-transform: uppercase;
+  padding: 1rem 0;
+  text-decoration: underline;
+}
+/* Conseil end */
+
 /* Media Query start */
 @media (max-width: 991px){
   /* Wrapper start */
