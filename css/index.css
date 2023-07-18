@@ -1486,6 +1486,34 @@ padding: 2rem 1rem;
 }
 /* Formation Continue end */
 
+/* Filiere DUT / LP start */
+.mix_filiere>.box-container>.box{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 1.5rem;
+  min-height: 13rem;
+}
+.mix_filiere>.box-container>.box>div{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.mix_filiere>.box-container>.box>div>i{
+  font-size: 2.3rem;
+  color: var(--darkBlue)
+}
+.mix_filiere>.box-container>.box>div>a{
+  font-size: 1.3rem;
+  color: var(--blue);
+  font-weight: bold;
+}
+.mix_filiere>.box-container>.box>p{
+  font-weight: bold;
+  color: var(--dark-secundary-soft-gray)
+}
+/* Filiere DUT / LP end */
+
 /* Media Query start */
 @media (max-width: 991px){
   /* Wrapper start */
