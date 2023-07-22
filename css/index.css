@@ -1515,6 +1515,45 @@ padding: 2rem 1rem;
 /* Filiere DUT / LP end */
 
 /* E-learning start */
+#wrapperElearn{
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f7f7f7;
+  padding: 1rem 2rem;
+  padding-left: 0;
+}
+#wrapperElearn>.logo{
+  height: 3.5rem;
+}
+#wrapperElearn>.logo>img{
+  height: 100%;
+  width: 20rem;
+}
+#wrapperElearn>.exit>a{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+#wrapperElearn>.exit>a>img{
+  height: 3rem;
+  transition: .2s ease-in-out;
+}
+#wrapperElearn>.exit>a>img:hover{
+  cursor: pointer;
+  opacity: 80%;
+}
+#mainElearn{
+  margin-top: 5.5rem;
+  transition: none;
+}
+#eLearn>h1>span{
+  text-decoration: underline;
+}
+
 .section.eLearning{
   padding: 0;
 }
@@ -1601,6 +1640,10 @@ padding: 2rem 1rem;
 #eLearRegister>.boxContainer>.form-container>form>.form-box>p{
   font-weight: bold;
   margin-bottom: .5rem;
+}
+
+#footerElearn>.boxContainer>.content:first-child{
+  padding: 0;
 }
 /* E-learning end */
 
@@ -1965,6 +2008,15 @@ padding: 2rem 1rem;
     display: none;
   }
   /* Contact start */
+
+  /* E-learning start */
+  #wrapperElearn{
+    position: static;
+  }
+  #mainElearn{
+    margin-top: 0;
+  }
+  /* E-learning end */
 }
 
 @media (max-width: 768px){
