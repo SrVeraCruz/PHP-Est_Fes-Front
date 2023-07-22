@@ -1239,26 +1239,26 @@ footer>.boxContainer>.content:nth-child(2) span{
 /* Contact end */
 
 /* Suivi start */
-#suivi, #esp_et{
+.connexion-style, #esp_et{
   background-color: #f9fafc;
 }
-#suivi>.boxContainer{
+.connexion-style>.boxContainer{
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 1rem;
   color: var(--text-color);
 }
-#suivi>.boxContainer>h2{
+.connexion-style>.boxContainer>h2{
   font-size: 2rem;
   color: var(--dark-primary-gray);
   text-align: center;
 }
-#suivi>.boxContainer>p{
+.connexion-style>.boxContainer>p{
   max-width: 50rem;
   text-align: center;
 }
-#suivi>.boxContainer>.form-container{
+.connexion-style>.boxContainer>.form-container{
   width: 100%;
   max-width: 40rem;
   margin: 1rem auto;
@@ -1267,7 +1267,7 @@ footer>.boxContainer>.content:nth-child(2) span{
   box-shadow: rgba(100, 100, 111, 0.2) 0 0.7rem 2.9rem 0;
   border-radius: 0.3rem;
 }
-#suivi>.boxContainer>.form-container>.steps{
+.connexion-style>.boxContainer>.form-container>.steps{
   position: relative;
   display: flex;
   justify-content: space-between;
@@ -1276,7 +1276,7 @@ footer>.boxContainer>.content:nth-child(2) span{
   margin: 0 auto;
   margin-bottom: 2rem;
 }
-#suivi>.boxContainer>.form-container>.steps::after{
+.connexion-style>.boxContainer>.form-container>.steps::after{
   content: "";
   width: 85%;
   border-bottom: .1rem solid #cfcfcf;
@@ -1284,44 +1284,44 @@ footer>.boxContainer>.content:nth-child(2) span{
   top: 1.1rem;
   left: 2rem;
 }
-#suivi>.boxContainer>.form-container>.steps>.step{
+.connexion-style>.boxContainer>.form-container>.steps>.step{
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   font-weight: 300;
 }
-#suivi>.boxContainer>.form-container>.steps>.step.active{
+.connexion-style>.boxContainer>.form-container>.steps>.step.active{
   font-weight: bold;
 }
-#suivi>.boxContainer>.form-container>.steps>.step.active>i{
+.connexion-style>.boxContainer>.form-container>.steps>.step.active>i{
   color: #7076f4;
 }
-#suivi>.boxContainer>.form-container>.steps>.step>i{
+.connexion-style>.boxContainer>.form-container>.steps>.step>i{
   font-size: 1.4rem;
   padding: .3rem 2rem;
   background-color: #fff;
   z-index: 1;
 }
-#suivi>.boxContainer>.form-container>form{
+.connexion-style>.boxContainer>.form-container>form{
   width: 75%;
   min-width: 21rem;
   margin: 0 auto;
 }
-#suivi>.boxContainer>.form-container>form>.form-box{
+.connexion-style>.boxContainer>.form-container>form>.form-box{
   display: none;
   width: 100%;
   margin-bottom: 3rem;
 }
-#suivi>.boxContainer>.form-container>form>.form-box.active{
+.connexion-style>.boxContainer>.form-container>form>.form-box.active{
   display: flex;
   flex-direction: column;
   gap: 1.3rem;
 }
-#suivi>.boxContainer>.form-container>form>.form-box>.box-inputs{
+.connexion-style>.boxContainer>.form-container>form>.form-box>.box-inputs{
   width: 100%;
 }
-#suivi>.boxContainer>.form-container>form>.form-box>.box-inputs>input{
+.connexion-style>.boxContainer>.form-container>form>.form-box>.box-inputs>input{
   width: 100%;
   padding: 0.4rem;
   border: none;
@@ -1331,19 +1331,19 @@ footer>.boxContainer>.content:nth-child(2) span{
   box-shadow: rgba(99, 99, 99, 0.2) 0 0.2rem 0.8rem 0;
   transition: 0.3s ease-in-out;
 }
-#suivi>.boxContainer>.form-container>form>#commentSection>p,
-#suivi>.boxContainer>.form-container>form>.form-box>.box-inputs>label{
+.connexion-style>.boxContainer>.form-container>form>#commentSection>p,
+.connexion-style>.boxContainer>.form-container>form>.form-box>.box-inputs>label{
   display: block;
   margin-bottom: .4rem;
   font-size: .9rem;
   font-weight: 600;
 }
-#suivi>.boxContainer>.form-container>form>.box-buttons{
+.connexion-style>.boxContainer>.form-container>form>.box-buttons{
   display: flex;
   justify-content: end;
   gap: .8rem;
 }
-#suivi>.boxContainer>.form-container>form>.box-buttons>.btn{
+.connexion-style>.boxContainer>.form-container>form>.box-buttons>.btn{
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1356,19 +1356,19 @@ footer>.boxContainer>.content:nth-child(2) span{
   transition: .3s ease-in-out;
   font-weight: 300;
 }
-#suivi>.boxContainer>.form-container>form>.box-buttons>.btn:hover{
+.connexion-style>.boxContainer>.form-container>form>.box-buttons>.btn:hover{
   background-color: #d0d0d0;
 }
-#suivi>.boxContainer>.form-container>form>.box-buttons>.btn>i{
+.connexion-style>.boxContainer>.form-container>form>.box-buttons>.btn>i{
   font-size: .6rem;
 }
-#suivi>.boxContainer>.form-container>form>.box-buttons>#SubmitBtn{
+.connexion-style>.boxContainer>.form-container>form>.box-buttons>#SubmitBtn{
   display: none;
 }
-#suivi>.boxContainer>.form-container>form>#commentSection>h3{
+.connexion-style>.boxContainer>.form-container>form>#commentSection>h3{
   text-align: center;
 }
-#suivi>.boxContainer>.form-container>form>#commentSection>#inputCommentaire{
+.connexion-style>.boxContainer>.form-container>form>#commentSection>#inputCommentaire{
   padding: 0.6rem;
   margin-top: -1.3rem;
   border: none;
@@ -1485,6 +1485,124 @@ padding: 2rem 1rem;
   font-size: 1.2rem;
 }
 /* Formation Continue end */
+
+/* Filiere DUT / LP start */
+.mix_filiere>.box-container>.box{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding-top: 1.5rem;
+  min-height: 13rem;
+}
+.mix_filiere>.box-container>.box>div{
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+.mix_filiere>.box-container>.box>div>i{
+  font-size: 2.3rem;
+  color: var(--darkBlue)
+}
+.mix_filiere>.box-container>.box>div>a{
+  font-size: 1.3rem;
+  color: var(--blue);
+  font-weight: bold;
+}
+.mix_filiere>.box-container>.box>p{
+  font-weight: bold;
+  color: var(--dark-secundary-soft-gray);
+}
+/* Filiere DUT / LP end */
+
+/* E-learning start */
+.section.eLearning{
+  padding: 0;
+}
+.eLearning{
+  background: url(../img/est_bg_elearning.jpg);
+  background-repeat: no-repeat;
+  background-size:cover ;
+  background-position: center center;
+}
+.eLearning>.headline{
+  background-color: var(--white);
+  padding: 2rem 9%;
+}
+.eLearning>.boxContainer{
+  padding: 2rem 9%;
+  padding-top: 0;
+}
+.eLearning>.boxContainer>h2{
+  color: var(--gris);
+  text-shadow: .2rem .4rem .4rem #000;
+  letter-spacing: .2rem;
+  font-weight: 600;
+  font-size: 2.2rem;
+}
+.eLearning>.boxContainer>p{
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-shadow: .2rem .4rem .4rem #bebebe
+}
+.eLearning>.boxContainer>.form-container{
+  max-width: 30rem;
+}
+.eLearning>.boxContainer>.form-container>.steps{
+  position: static;
+  justify-content: center;
+}
+.eLearning>.boxContainer>.form-container>form>.form-box{
+  display: block;
+  margin-bottom: 1rem;
+}
+.eLearning>.boxContainer>.form-container>form>.form-box>.box-inputs{
+  margin-bottom: 1rem;
+}
+.eLearning>.boxContainer>.form-container>form>.form-box>.box-inputs>input{
+  padding: .8rem;
+}
+.eLearning>.boxContainer>.form-container>form>.form-box>.forgotPass,
+.eLearning>.boxContainer>.form-container>form>.registerBtn{
+  display: block;
+  text-align: end;
+  font-size: .8rem;
+  color: var(--text-color);
+  text-decoration: underline;
+}
+.eLearning>.boxContainer>.form-container>form>.box-buttons{
+  width: 100%;
+  justify-content: center;
+  align-items: center;
+  margin: 1.3rem 0;
+}
+.eLearning>.boxContainer>.form-container>form>.box-buttons>#eLearnBtn{
+  width: 100%;
+  padding: .8rem;
+  font-size: 1rem;
+  font-weight: bold;
+  background-color: var(--blue);
+  color: var(--white)
+}
+.eLearning>.boxContainer>.form-container>form>.registerBtn{
+  text-align: center;
+  text-decoration: none;
+  font-size: .9rem;
+}
+.eLearning>.boxContainer>.form-container>form>.registerBtn>span{
+  font-weight: bold;
+}
+
+#eLearRegister>.boxContainer>.form-container>form>.form-box>.naissance{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .8rem;
+}
+#eLearRegister>.boxContainer>.form-container>form>.form-box>p{
+  font-weight: bold;
+  margin-bottom: .5rem;
+}
+/* E-learning end */
 
 /* Media Query start */
 @media (max-width: 991px){
