@@ -537,12 +537,12 @@
                 <h3>S'inscrire à NewsEST</h3>
                 <p>Recevez des mises à jour sur les actualités et les événements</p>
               </div>
-              <form>
+              <form action="./newsletterConfirm.php" method="POST">
                 <div class="boxInput">
                   <input type="email" name="inputEmail" id="inputEmail" class="inputUser" required autocomplete="off">
                   <label for="inputEmail" id="labelEmail" name="labelEmail" class="labelInput">email</label>
                 </div>
-                <input class="btn" type="submit" value="submit">
+                <input class="btn" type="submit" name="submit" value="submit">
               </form>
             </div>
           </div>

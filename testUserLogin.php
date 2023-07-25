@@ -14,7 +14,7 @@
     // print_r('<br>');
     // print_r('Password: ' . $password);
 
-    $sql = "SELECT * FROM users WHERE emailET = '$email' AND passwordEt = '$password'";
+    $sql = "SELECT * FROM users WHERE emailEt = '$email' AND passwordEt = '$password'";
 
     $result = $conection->query($sql);
 

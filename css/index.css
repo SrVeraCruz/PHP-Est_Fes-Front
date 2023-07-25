@@ -846,6 +846,19 @@ form>.btn{
 form>.btn:hover{
   opacity: 80%;
 }
+
+.newletter>.boxContainer>p{
+  color: var(--text-color);
+  font-weight: bold;
+}
+.newletter>.boxContainer>p>a{
+  color: var(--blue);
+  transition: .3s ease-in-out;
+}
+.newletter>.boxContainer>p>a:hover{
+  opacity: 80%;
+  text-decoration: underline;
+}
 /* Section News Events end */
 
 /* Section Chercher cours start */
