@@ -49,7 +49,7 @@
                 $sub_cat_query = "SELECT * FROM categories WHERE parent_category_id = '$category[id]' AND status != '2' AND navbar_status = '0'";
                 $sub_cat_result = mysqli_query($con, $sub_cat_query);
 
-                $item_query = "SELECT name FROM items WHERE category_id = '$category[id]' AND status != '1'";
+                $item_query = "SELECT name,slug FROM items WHERE category_id = '$category[id]' AND status != '1'";
                 $item_result = mysqli_query($con, $item_query);
 
                 if (mysqli_num_rows($item_result)) {
@@ -57,7 +57,7 @@
                 ?>
                     <li>
                       <div class="children1">
-                        <a href="#"><?= $item['name'] ?></a>
+                        <a href="item.php?title=<?= $item['slug'] ?>"><?= $item['name'] ?></a>
                       </div>
                     </li>
                   <?php
@@ -84,14 +84,7 @@
                             foreach ($sub_item_result as $sub_item_cat) {
                           ?>
                               <li>
-                                <?php
-                                if ($category['name'] == 'Filières') {
-                                ?>
-                                  <a href="filieres.php?title=<?= $sub_item_cat['slug'] ?>"><?= $sub_item_cat['name'] ?></a>
-                                <?php
-                                } else {
-                                }
-                                ?>
+                                <a href="item.php?title=<?= $sub_item_cat['slug'] ?>"><?= $sub_item_cat['name'] ?></a>
                               </li>
                           <?php
                             }

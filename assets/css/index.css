@@ -1099,15 +1099,20 @@ footer>.boxContainer>.content:nth-child(2) span{
   flex: 1;
   border-bottom: .25rem solid var(--blue)
 }
-/* .section-mixins>.boxContainer>.box>.box-content{
-  display: flex;
-  flex: 1;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 2rem;
-  padding-bottom: 2rem;
+.section-mixins>.boxContainer>.box>.titre-container{
   border-bottom: .15rem solid rgba(0, 0, 0, 0.1);
-} */
+}
+.section-mixins>.boxContainer>.box>.box-content{
+  flex: 1;
+  padding: 2rem 0;
+  border-bottom: .15rem solid rgba(0, 0, 0, 0.1);
+}
+.section-mixins>.boxContainer>.box>.box-content a{
+  color: var(--blue)
+}
+.section-mixins>.boxContainer>.box>.box-content a:hover{
+  text-decoration: underline;
+}
 /* .section-mixins>.boxContainer>.box>.box-content>div{
   flex: 1 1 10rem;
 }
@@ -1127,21 +1132,35 @@ footer>.boxContainer>.content:nth-child(2) span{
   display: flex;
   gap: .5rem;
   font-weight: bold;
-}
-.section-mixins>.boxContainer>.box>.box-info>p>span,
-.section-mixins>.boxContainer>.box>.box-info>p>a{
+} */
+
+.section-mixins>.boxContainer>.box>.box-info>a{
   font-weight: 500;
   color: var(--blue)
-} */
-.section-mixins>.boxContainer>.box>.box-info>p>a:hover{
-  text-decoration: underline;
+} 
+.section-mixins>.boxContainer .btn{
+  display: block;
+  color: var(--blue);
+  font-weight: bold;
+  margin-top: 2rem;
+  transition: .3s ease-in-out;
+}
+.section-mixins>.boxContainer .btn>i{
+  padding-left: .5rem;
+  transition: .3s ease-in-out;
+}
+.section-mixins>.boxContainer .btn:hover{
+  opacity: 75%;
+}
+.section-mixins>.boxContainer .btn:hover>i{
+  transform: translateX(1rem) rotate(720deg);
 }
 /* Départements end */
 
 /* Filieres start */
 .filiere>.boxContainer{
   color: var(--text-color);
-  text-align: justify;
+  /* text-align: justify; */
 }
 /* .filiere>.boxContainer span{
   font-weight: bold;
@@ -2320,6 +2339,10 @@ padding: 2rem 1rem;
   /* Section Services start */
   .services>.boxContainer>.mainBox>.content>.box{
     justify-content: unset;
+  }
+
+  .section-mixins>.boxContainer>.box>.box-content{
+    padding-top: 0;
   }
   /* Section Services end */
 
