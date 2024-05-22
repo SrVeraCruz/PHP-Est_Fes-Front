@@ -32,7 +32,7 @@
         </div>
 
         <div class="box">
-          <h3>Outres liens</h3>
+          <h3>Autres liens</h3>
           <ul>
             <li><a href="./404.php">nous facebook</a></li>
             <li><a href="./404.php">nous instagram</a></li>
