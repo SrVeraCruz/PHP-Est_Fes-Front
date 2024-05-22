@@ -26,7 +26,19 @@
           <i class="fa fa-angle-left closeListHover1"></i>
           <ul>
             <li><a href="index.php">accueil</a></li>
-            <li><a href="./motDirecteur.php">mot du directeur</a></li>
+            <?php
+            $motdir_query = "SELECT name,slug 
+            FROM items 
+            WHERE name = 'Mot du Directeur' 
+            AND status = '0' LIMIT 1";
+            $motdir_result = mysqli_query($con, $motdir_query);
+            if (mysqli_num_rows($motdir_result) > 0) {
+              $motdir = mysqli_fetch_assoc($motdir_result);
+            ?>
+              <li><a href="item.php?title=<?= $motdir['slug'] ?>"><?= $motdir['name'] ?></a></li>
+            <?php
+            }
+            ?>
           </ul>
         </div>
       </li>
@@ -49,7 +61,7 @@
                 $sub_cat_query = "SELECT * FROM categories WHERE parent_category_id = '$category[id]' AND status != '2' AND navbar_status = '0'";
                 $sub_cat_result = mysqli_query($con, $sub_cat_query);
 
-                $item_query = "SELECT name,slug FROM items WHERE category_id = '$category[id]' AND status != '1'";
+                $item_query = "SELECT name,slug FROM items WHERE category_id = '$category[id]' AND status = '0'";
                 $item_result = mysqli_query($con, $item_query);
 
                 if (mysqli_num_rows($item_result)) {
@@ -77,7 +89,7 @@
                         <i class="fa fa-angle-left closeListHover2"></i>
                         <ul>
                           <?php
-                          $sub_item_query = "SELECT name,slug FROM items WHERE category_id = '$sub_cat[id]' AND status != '1'";
+                          $sub_item_query = "SELECT name,slug FROM items WHERE category_id = '$sub_cat[id]' AND status = '0'";
                           $sub_item_result = mysqli_query($con, $sub_item_query);
 
                           if (mysqli_num_rows($sub_item_result)) {
