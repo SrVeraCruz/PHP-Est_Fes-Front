@@ -1007,9 +1007,15 @@ footer>.boxContainer>.content:nth-child(2){
   background-color: #202020;
   padding: 2.5rem;
 }
-footer>.boxContainer>.content:nth-child(2) span{
-  font-weight: bold;
-}
+footer>.boxContainer>.content:nth-child(2) {
+  span{
+    font-weight: bold;
+  }
+
+  #current_copy_year {
+    font-weight: normal;
+  }
+} 
 /* Footer end */
 
 /* Mot Directeur start */

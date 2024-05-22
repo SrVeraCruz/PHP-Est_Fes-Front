@@ -54,11 +54,17 @@
       </div>
       <div class="content">
         <p>Université Sidi Mohamed Ben Abdellah - Ecole Superieure de Technologie Fès</p>
-        <p>&copy; Copyright 2023 all rights reserved | <span>Vera Cruz Dúdú</span></p>
+        <p>&copy; Copyright <span id="current_copy_year">2024</span> all rights reserved | <span>Vera Cruz Dúdú</span></p>
       </div>
     </div>
   </footer>
   <!-- Footer end -->
+
+  <script>
+    const current_year = new Date().getFullYear()
+    document.getElementById("current_copy_year").innerText = current_year
+  </script>
+
   </body>
 
   </html>
