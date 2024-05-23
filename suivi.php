@@ -179,6 +179,7 @@ include('includes/header.php');
   </div>
 </section>
 <!-- Section Suivi end -->
+
 <?php
 include('includes/footer.php')
 ?>

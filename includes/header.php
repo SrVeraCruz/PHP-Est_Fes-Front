@@ -1,5 +1,5 @@
 <?php
-include('config/db.php');
+require 'config/db.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,7 +30,7 @@ include('config/db.php');
 </head>
 
 <body class="body">
-  <?php include('navbar.php') ?>
+  <?php require 'navbar.php' ?>
   <!-- Main start -->
   <main id="main" class="main">
     <!-- Section Accuil start -->

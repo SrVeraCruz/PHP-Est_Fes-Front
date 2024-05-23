@@ -1,5 +1,6 @@
 <?php
-include('includes/header.php');
+require 'includes/header.php';
+require 'includes/global-variables.php';
 ?>
 
 <section class="accuil" id="accuil">
@@ -32,34 +33,26 @@ include('includes/header.php');
   <div class="boxContainer">
     <div class="mainBox">
       <div class="content">
-        <div class="box">
-          <img src="./assets/img/est_espace_etudiat.jpeg" alt="est_etudiant">
-          <div class="contentBox">
-            <h3>EET</h3>
-            <a href="./espace_etud.php">espace etudiant <i class="fa-solid fa-location-arrow"></i></a>
-          </div>
-        </div>
-        <div class="box">
-          <img src="./assets/img/est_enseignants.png" alt="est_enseignants">
-          <div class="contentBox">
-            <h3>EE</h3>
-            <a href="./filieres/esp_ens.pdf">espace enseignants <i class="fa-solid fa-location-arrow"></i></a>
-          </div>
-        </div>
-        <div class="box">
-          <img src="./assets/img/est_conceil.webp" alt="est_conceil">
-          <div class="contentBox">
-            <h3>CC</h3>
-            <a href="./com_cons.php">comission et conseils <i class="fa-solid fa-location-arrow"></i></a>
-          </div>
-        </div>
-        <div class="box">
-          <img src="./assets/img/est_recrutement.jpg" alt="est_recrutement">
-          <div class="contentBox">
-            <h3>CR</h3>
-            <a href="./concours_recrut.php">concours et recrutements <i class="fa-solid fa-location-arrow"></i></a>
-          </div>
-        </div>
+        <?php
+        $fsection_cat_query = "SELECT ct.name,ct.title,ct.logo,ct.slug FROM categories ct 
+        LEFT JOIN categories pc ON ct.parent_category_id = pc.id 
+        WHERE pc.name = 'Premier Section' AND ct.status != '2'";
+        $fsection_cat_result = mysqli_query($con, $fsection_cat_query);
+
+        if (mysqli_num_rows($fsection_cat_result)) {
+          foreach ($fsection_cat_result as $fs_cat) {
+        ?>
+            <div class="box">
+              <img src="<?= $file_path . 'categories/' . $fs_cat['logo'] ?>" alt="<?= $fs_cat['title'] ?>">
+              <div class="contentBox">
+                <h3><?= $fs_cat['name'] ?></h3>
+                <a href="category.php?title=<?= $fs_cat['slug'] ?>"><?= $fs_cat['title'] ?> <i class="fa-solid fa-location-arrow"></i></a>
+              </div>
+            </div>
+        <?php
+          }
+        }
+        ?>
       </div>
 
       <div class="slide2">
@@ -87,27 +80,24 @@ include('includes/header.php');
       </div>
 
       <div class="content">
-        <div class="box">
-          <img src="./assets/img/est_formation.jpg" alt="est_formation">
-          <div class="contentBox">
-            <h3>FC</h3>
-            <a href="./fomation_cont_DU.php">formation continue DU <span></span> <i class="fa-solid fa-location-arrow"></i></a>
-          </div>
-        </div>
-        <div class="box">
-          <img src="./assets/img/est_note.png" alt="est_note">
-          <div class="contentBox">
-            <h3>CNR</h3>
-            <a href="#">consultation des notes et resultats <i class="fa-solid fa-location-arrow"></i></a>
-          </div>
-        </div>
-        <div class="box">
-          <img src="./assets/img/est_contact_us.png" alt="est_messagerie">
-          <div class="contentBox">
-            <h3>MES</h3>
-            <a href="#">messagerie <i class="fa-solid fa-location-arrow"></i></a>
-          </div>
-        </div>
+        <?php
+        $dsection_cat_query = "SELECT ct.name,ct.title,ct.logo,ct.slug FROM categories ct LEFT JOIN categories pc ON ct.parent_category_id = pc.id WHERE pc.name = 'Deuxieme Section' AND ct.status != '2'";
+        $dsection_cat_result = mysqli_query($con, $dsection_cat_query);
+
+        if (mysqli_num_rows($dsection_cat_result)) {
+          foreach ($dsection_cat_result as $ds_cat) {
+        ?>
+            <div class="box">
+              <img src="<?= $file_path . 'categories/' . $ds_cat['logo'] ?>" alt="<?= $ds_cat['title'] ?>">
+              <div class="contentBox">
+                <h3><?= $ds_cat['name'] ?></h3>
+                <a href="category.php?title=<?= $ds_cat['slug'] ?>"><?= $ds_cat['title'] ?> <i class="fa-solid fa-location-arrow"></i></a>
+              </div>
+            </div>
+        <?php
+          }
+        }
+        ?>
       </div>
     </div>
   </div>
@@ -399,7 +389,5 @@ include('includes/header.php');
 <!-- Section Chercher cours end -->
 
 <?php
-
 include('includes/footer.php')
-
 ?>
