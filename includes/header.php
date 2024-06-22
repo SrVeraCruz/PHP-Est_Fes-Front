@@ -27,6 +27,10 @@ require 'config/db.php';
   <!-- <script src="https://kit.fontawesome.com/4b7f7e3635.js" crossorigin="anonymous"></script> -->
   <!-- Fontawesome Link -->
 
+  <!-- Axios Link -->
+  <script src="./assets/js/axios.min.js"></script>
+  <!-- Axios Link -->
+
 </head>
 
 <body class="body">

@@ -1,6 +1,5 @@
 <?php
 require 'includes/header.php';
-require 'includes/global-variables.php';
 ?>
 
 <section class="accuil" id="accuil">
@@ -32,27 +31,8 @@ require 'includes/global-variables.php';
 
   <div class="boxContainer">
     <div class="mainBox">
-      <div class="content">
-        <?php
-        $fsection_cat_query = "SELECT ct.name,ct.title,ct.logo,ct.slug FROM categories ct 
-        LEFT JOIN categories pc ON ct.parent_category_id = pc.id 
-        WHERE pc.name = 'Premier Section' AND ct.status != '2'";
-        $fsection_cat_result = mysqli_query($con, $fsection_cat_query);
+      <div id="firstSection" class="content">
 
-        if (mysqli_num_rows($fsection_cat_result)) {
-          foreach ($fsection_cat_result as $fs_cat) {
-        ?>
-            <div class="box">
-              <img src="<?= $file_path . 'categories/' . $fs_cat['logo'] ?>" alt="<?= $fs_cat['title'] ?>">
-              <div class="contentBox">
-                <h3><?= $fs_cat['name'] ?></h3>
-                <a href="category.php?title=<?= $fs_cat['slug'] ?>"><?= $fs_cat['title'] ?> <i class="fa-solid fa-location-arrow"></i></a>
-              </div>
-            </div>
-        <?php
-          }
-        }
-        ?>
       </div>
 
       <div class="slide2">
@@ -79,25 +59,8 @@ require 'includes/global-variables.php';
         </div>
       </div>
 
-      <div class="content">
-        <?php
-        $dsection_cat_query = "SELECT ct.name,ct.title,ct.logo,ct.slug FROM categories ct LEFT JOIN categories pc ON ct.parent_category_id = pc.id WHERE pc.name = 'Deuxieme Section' AND ct.status != '2'";
-        $dsection_cat_result = mysqli_query($con, $dsection_cat_query);
+      <div id="secondSection" class="content">
 
-        if (mysqli_num_rows($dsection_cat_result)) {
-          foreach ($dsection_cat_result as $ds_cat) {
-        ?>
-            <div class="box">
-              <img src="<?= $file_path . 'categories/' . $ds_cat['logo'] ?>" alt="<?= $ds_cat['title'] ?>">
-              <div class="contentBox">
-                <h3><?= $ds_cat['name'] ?></h3>
-                <a href="category.php?title=<?= $ds_cat['slug'] ?>"><?= $ds_cat['title'] ?> <i class="fa-solid fa-location-arrow"></i></a>
-              </div>
-            </div>
-        <?php
-          }
-        }
-        ?>
       </div>
     </div>
   </div>
