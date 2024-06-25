@@ -95,53 +95,11 @@ require 'includes/header.php';
         <h1>Actualités et mise à jour</h1>
         <div class="bar"></div>
       </div>
-      <a href="#">Lire toutes les actualités</a>
-      <div class="content">
-        <div class="contentBox">
-          <div class="boxNews__image">
-            <img src="./assets/img/est_carte_bank.jpg" alt="carte_bank">
-            <a href="#"></a>
-          </div>
-          <div class="boxNews__info">
-            <span>19 octobre 2022</span>
-            <a href="#">Retrait de la carte bancaire MINHATY</a>
-          </div>
-        </div>
-        <div class="othersNews">
-          <div class="contentBox">
-            <div class="boxNews">
-              <div class="boxNews__image">
-                <img src="./assets/img/est_contact_us.png" alt="est_contact_us">
-                <a href="#"></a>
-              </div>
-              <div class="boxNews__info">
-                <span>19 octobre 2022</span>
-                <a href="#">Procédure de récupération du compte Google
-                  académique</a>
-              </div>
-            </div>
-            <div class="boxNews">
-              <div class="boxNews__image">
-                <img src="./assets/img/est_emplois.jpeg" alt="est_contact_us">
-                <a href="#"></a>
-              </div>
-              <div class="boxNews__info">
-                <span>19 octobre 2022</span>
-                <a href="#">Emplois du temps au titre de l'année univérsitaire 2022-2023</a>
-              </div>
-            </div>
-            <div class="boxNews">
-              <div class="boxNews__image">
-                <img src="./assets/img/est_programePM.jpg" alt="est_contact_us">
-                <a href="#"></a>
-              </div>
-              <div class="boxNews__info">
-                <span>19 octobre 2022</span>
-                <a href="#">Programme prévisionnel des marchés ESTF</a>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div id="seeAllNews">
+        <a href="#">Lire toutes les actualités</a>
+      </div>
+      <div id="boxNews" class="content">
+        
       </div>
     </div>
     <div class="box">

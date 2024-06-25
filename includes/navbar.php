@@ -2,7 +2,11 @@
 <header class="wrapper">
   <div class="wrapper-box1">
     <div>
-      <div><img src="./assets/img/est_logo.jpeg" alt="est_logo"></div>
+      <div>
+        <a href="index.php">
+          <img src="./assets/img/est_logo.jpeg" alt="est_logo">
+        </a>
+      </div>
     </div>
     <div class="nav-bar">
       <span class="bar"></span>
@@ -14,7 +18,10 @@
   <div class="slideOut"></div>
 
   <nav class="list">
-    <img src="./assets/img/est_logo_mobile.png" class="estLogo" alt="est_logo">
+    <img 
+      src="./assets/img/est_logo_mobile.png" 
+      class="estLogo" alt="est_logo"
+    />
     <i class="fa fa-times"></i>
     <ul>
       <li class="scrollHeader">

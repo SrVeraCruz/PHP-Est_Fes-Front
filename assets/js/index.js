@@ -6,6 +6,7 @@ const endpointLogin = `${baseUrl}api/users/login`;
 const endpointLogout = `${baseUrl}api/users/logout`;
 const endpointRegister = `${baseUrl}api/users/register`;
 const endpointUsers = `${baseUrl}api/users`;
+const endpointNews = `${baseUrl}api/news`;
 const endpointCategories = `${baseUrl}api/categories`;
 const endpointItems = `${baseUrl}api/items`;
 
@@ -37,6 +38,26 @@ const fetchOneUser = async (id) => {
   .catch(err => {
     console.error(err.message)
   })
+}
+
+const fetchAllNews = async () => {
+  return await axios.get(endpointNews)
+    .then(res => {
+      return res.data
+    })
+    .catch(err => {
+      console.error(err.message)
+    })
+}
+
+const fetchOneByNewsSlug = async (slug) => {
+  return await axios.get(`${endpointNews}?slug=${slug}`)
+    .then(res => {
+      return res.data
+    })
+    .catch(err => {
+      console.error(err.message)
+    })
 }
 
 const fetchAllCats = async () => {
@@ -89,6 +110,98 @@ const fetchOneByItemSlug = async (slug) => {
     })
 }
 
+const getNewsTime = (dateStr) => {
+  const dateObj = new Date(dateStr)
+  const monthNames = [
+    "JAVIER", "FEVRIER", "MARS", "AVRIL", 
+    "MAI", "JUIN", "JUILLET", "AOUT", 
+    "SEPTEMBRE", "OCTOBRE", "NOVEMBRE", "DECEMBRE"
+  ];
+
+  const day = dateObj.getDate();
+  const month = monthNames[dateObj.getMonth()];
+  const year = dateObj.getFullYear();
+
+  const formattedDate = `${day} ${month} ${year}`;
+  return formattedDate;
+}
+
+const getOtherNews = async (limit = null, withFeatured = true) => {
+  const othersNews = document.createElement('div')
+  const contentBox = document.createElement('div')
+  othersNews.classList.add('othersNews')
+  contentBox.classList.add('contentBox')
+
+  let i = 0
+
+  const res = await fetchAllNews()
+
+  if(!res) {
+    withFeatured 
+    ? othersNews.innerHTML = `
+        <div class="titre">
+          <h1>Actualités et mise à jour</h1>
+        </div>
+        <span>Voulez vous vennir plus tard...</span>
+      `
+    : othersNews.innerHTML = ``
+
+    return othersNews
+  }
+
+  
+  const ordenedNews = res.reverse()
+  
+  
+  if((!limit && limit !== 0) || limit >= ordenedNews.length) {
+    limit = ordenedNews.length
+  }
+
+  if(limit < 0) {
+    limit = 0
+  }
+  
+  if(!withFeatured) {
+    limit++
+    i = 1
+  }
+
+  if(limit >= ordenedNews.length && !withFeatured) {
+    limit = ordenedNews.length
+  }
+
+  for(i; i<limit; i++) {
+    contentBox.innerHTML += `
+      <div class="boxNews">
+        <div class="boxNews__image">
+          <img src="${ordenedNews[i].thumbnail}" alt="news">
+          <a href="news.php?title=${ordenedNews[i].slug}"></a>
+        </div>
+        <div class="boxNews__info">
+          <span>
+            ${getNewsTime(ordenedNews[i].created_at)}
+          </span>
+          <a href="news.php?title=${ordenedNews[i].slug}">
+            ${ordenedNews[i].title}
+          </a>
+        </div>
+      </div>
+    `
+  }
+
+  if(withFeatured) {
+    othersNews.innerHTML = `
+      <div class="titre">
+        <h1>Actualités et mise à jour</h1>
+      </div>
+    `
+  }
+  othersNews.appendChild(contentBox)
+
+  return othersNews
+}
+
+
 /* Index page */ 
 //////////////////////////////////////////////////////////
 if (pageName === '' || pageName === 'index.php') {
@@ -108,7 +221,7 @@ if (pageName === '' || pageName === 'index.php') {
 
   const firstSectionElement = document.getElementById('firstSection')
   const secondSectionElement = document.getElementById('secondSection')
-  
+
   /* SlideImg start */
   window.onresize = () => {
     widthWindow = window.innerWidth;
@@ -293,11 +406,56 @@ if (pageName === '' || pageName === 'index.php') {
     })
   }
 
+  const showNews = async (allNews) => {
+    const boxNews = document.getElementById('boxNews')
+    const seeAllNews = document.getElementById('seeAllNews')
+    const othersNews = document.createElement('div')
+    const contentBox = document.createElement('div')
+    othersNews.classList.add('othersNews')
+    contentBox.classList.add('contentBox')
+
+    if(!allNews) {
+      seeAllNews.innerHTML = `
+        <span>Voulez vous venir plus tard...</span>
+      `
+      return
+    }
+    
+    const ordenedNews = allNews.reverse()
+    
+    seeAllNews.innerHTML = `
+      <a href="news.php">Lire toutes les actualités</a>
+    `
+    
+    boxNews.innerHTML = `
+      <div class="contentBox">
+        <div class="boxNews__image">
+          <img src="${ordenedNews[0].thumbnail}" alt="Nouvelles en vedette">
+          <a href="news.php?title=${ordenedNews[0].slug}"></a>
+        </div>
+        <div class="boxNews__info">
+          <span>
+            ${getNewsTime(ordenedNews[0].created_at)}
+          </span>
+          <a href="news.php?title=${ordenedNews[0].slug}">
+            ${ordenedNews[0].title}
+          </a>
+        </div>
+      </div>
+    `
+
+    boxNews.appendChild(await getOtherNews(3, false))
+  }
+
   fetchAllCats().then((cats) => {
     fetchAllItems().then((items) => {
       showSectionsData(cats, items)
     })
-  })  
+  })
+
+  fetchAllNews().then((allNews) => {
+    showNews(allNews)
+  })
 }
 
 
@@ -391,17 +549,17 @@ if(pageName === 'category.php') {
     const showCatData = (cat) => {
       if(!cat) {
         categoriesPage.innerHTML = `
-        <div class="headline">
-        <h1>Error...</h1>
-        </div>
-        <h1>Sorry no such data...</h1>
+          <div class="headline">
+            <h1>Error...</h1>
+          </div>
+          <h1>Sorry no such data...</h1>
         `
         return
       }
 
       categoriesPage.innerHTML = `
         <div class="headline">
-          <h1>${cat.title}></h1>
+          <h1>${cat.title}</h1>
         </div>
         <h1>EST-Fes <i class="fa-solid fa-graduation-cap"></i></h1>
       `
@@ -432,8 +590,6 @@ if(pageName === 'category.php') {
           (it) => it.category_id === cat.id
         )
 
-        console.log('filteredItems',filteredItems)
-
         filteredItems.forEach((fItem) => {
           boxContainer.innerHTML += `
             <div class="box">
@@ -456,5 +612,72 @@ if(pageName === 'category.php') {
       showCatData(cat)
     })
     
+  }
+}
+
+/* News page */ 
+//////////////////////////////////////////////////////////
+if(pageName === 'news.php') {
+  const title = searchUrl.get('title')
+  const newsPage = document.getElementById('newsPage')
+  const wrapperContainer = document.createElement('div')
+  wrapperContainer.classList.add('wrapperContainer')
+
+  if(!title || title === '') {
+    newsPage.innerHTML = `
+      <div class="headline">
+        <h1>News</h1>
+        <h2>Voulez choisir une nouvelle</h2>
+      </div>
+    `
+
+    getOtherNews().then(res => {
+      wrapperContainer.appendChild(res)
+    })
+      
+    boxContainer.appendChild(wrapperContainer)
+    newsPage.appendChild(boxContainer)
+  } else {
+
+    const showNewsData = async (news) => {
+      if(!news) {
+        newsPage.innerHTML = `
+          <div class="headline">
+            <h1>News</h1>
+            <h2>Voulez choisir une nouvelle</h2>
+          </div>
+        `
+
+        getOtherNews().then(res => {
+          wrapperContainer.appendChild(res)
+        })
+          
+        boxContainer.appendChild(wrapperContainer)
+        newsPage.appendChild(boxContainer)
+        return
+      }
+
+      newsPage.innerHTML = `
+        <div class="headline">
+          <h1>News</h1>
+          <h2>${news.title}</h2>
+        </div>
+      `
+      wrapperContainer.innerHTML = `
+        <div class="box">
+          <div class="box-content">
+            ${news.content}
+          </div>
+        </div>
+      `
+      wrapperContainer.appendChild(await getOtherNews())
+      
+      boxContainer.appendChild(wrapperContainer)
+      newsPage.appendChild(boxContainer)
+    }
+
+    fetchOneByNewsSlug(title).then((news) => {
+      showNewsData(news)
+    })
   }
 }
