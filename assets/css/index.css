@@ -697,6 +697,25 @@ html  {
           color: var(--text-color);
           text-align: justify;
         }
+
+        .box-info {
+          margin-top: 2rem;
+
+          h3 {
+            color: var(--text-color)
+          }
+
+          .download {
+            a {
+              color: var(--blue);
+              font-size: .9rem;
+
+              &:hover {
+                opacity: 80%;
+              }
+            } 
+          }
+        }
       }
 
      >.othersNews {

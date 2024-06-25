@@ -424,7 +424,7 @@ if (pageName === '' || pageName === 'index.php') {
     const ordenedNews = allNews.reverse()
     
     seeAllNews.innerHTML = `
-      <a href="news.php">Lire toutes les actualités</a>
+      <a href="news.php">Voir toutes les actualités</a>
     `
     
     boxNews.innerHTML = `
@@ -668,9 +668,26 @@ if(pageName === 'news.php') {
           <div class="box-content">
             ${news.content}
           </div>
+
+          ${
+            news.file ? `
+              <div class="box-info">
+                <h3>Plus info</h3>
+                <div class="download">
+                  <a
+                    href="${news.file}?>" 
+                    download="${news.title}"
+                    
+                  >
+                    Telecharger fichier
+                  </a>
+                </div>
+              </div>
+            ` : ``
+          }
         </div>
       `
-      wrapperContainer.appendChild(await getOtherNews())
+      wrapperContainer.appendChild(await getOtherNews(5))
       
       boxContainer.appendChild(wrapperContainer)
       newsPage.appendChild(boxContainer)
