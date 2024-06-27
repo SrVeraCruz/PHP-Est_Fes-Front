@@ -24,30 +24,30 @@
         <div class="box">
           <h3>Liens rapides</h3>
           <ul>
-            <li><a href="./filiere_DUT.php">Diplôme Universitaire de Technologies</a></li>
-            <li><a href="./filiere_LP.php">Licence Profissionnelle</a></li>
-            <li><a href="./fomation_cont_DU.php">Formations Continues</a></li>
-            <li><a href="./esp_et_ENT.php">Espace Numerique De Travail</a></li>
+            <li><a href="#">Diplôme Universitaire de Technologies</a></li>
+            <li><a href="#">Licence Profissionnelle</a></li>
+            <li><a href="#">Formations Continues</a></li>
+            <li><a href="#">Espace Numerique De Travail</a></li>
           </ul>
         </div>
 
         <div class="box">
           <h3>Autres liens</h3>
           <ul>
-            <li><a href="./404.php">nous facebook</a></li>
-            <li><a href="./404.php">nous instagram</a></li>
-            <li><a href="./404.php">actualité</a></li>
-            <li><a href="./404.php">newsletter</a></li>
+            <li><a href="#">nous facebook</a></li>
+            <li><a href="#">nous instagram</a></li>
+            <li><a href="#">actualité</a></li>
+            <li><a href="#">newsletter</a></li>
           </ul>
         </div>
 
         <div class="box">
           <h3>Suive nous</h3>
           <ul>
-            <li><a href="./404.php">facebook</a></li>
-            <li><a href="./404.php">instagram</a></li>
-            <li><a href="./404.php">twitter</a></li>
-            <li><a href="./404.php">youTube</a></li>
+            <li><a href="#">facebook</a></li>
+            <li><a href="#">instagram</a></li>
+            <li><a href="#">twitter</a></li>
+            <li><a href="#">youTube</a></li>
           </ul>
         </div>
 

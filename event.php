@@ -2,12 +2,16 @@
 include('includes/header.php');
 ?>
 
-<section id="itemsPage" class="section items-mixins">
+<section id="eventPage" class="section newsEvents">
   <div class="headline">
-    <h1>No title...</h1>
+    <h1>Events</h1>
     <h2>Please verify the title...</h2>
   </div>
+  <div class="boxContainer">
+    
+  </div>
 </section>
+
 <?php
 
 include('includes/footer.php')

@@ -96,7 +96,7 @@ require 'includes/header.php';
         <div class="bar"></div>
       </div>
       <div id="seeAllNews">
-        <a href="#">Lire toutes les actualités</a>
+        <a href="news.php">Voir toutes les actualités</a>
       </div>
       <div id="boxNews" class="content">
         
@@ -107,19 +107,19 @@ require 'includes/header.php';
       <div class="content">
         <div>
           <h2>DUT</h2>
-          <a href="./filiere_DUT.php">Diplôme Universitaire de Technologies</a>
+          <a href="#">Diplôme Universitaire de Technologies</a>
         </div>
         <div>
           <h2>LP</h2>
-          <a href="./filiere_LP.php">Licence Profissionnelle</a>
+          <a href="#">Licence Profissionnelle</a>
         </div>
         <div>
           <h2>FC</h2>
-          <a href="./fomation_cont_DU.php">Formations Continues</a>
+          <a href="#">Formations Continues</a>
         </div>
         <div>
           <h2>ENT</h2>
-          <a href="./esp_et_ENT.php">Espace Numerique De Travail</a>
+          <a href="#">Espace Numerique De Travail</a>
         </div>
       </div>
     </div>
@@ -150,66 +150,12 @@ require 'includes/header.php';
         <h1>Evènements à venir</h1>
         <div class="bar"></div>
       </div>
-      <div class="content">
-        <div class="contentBox">
-          <div class="box">
-            <h1>01</h1>
-            <h3>juin</h3>
-          </div>
-          <div class="box">
-            <a href="#">l'Agence ANAPEC Universitaire organisent la première édition des journées étudiantes face au marché de l'emploi</a>
-            <div class="boxCoordene">
-              <div class="clock">
-                <i class="fa-regular fa-clock"></i>
-                <p>4:00 - 16:30</p>
-              </div>
-              <div class="location">
-                <i class="fa fa-location-dot"></i>
-                <p>Salle D11-D12</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="contentBox">
-          <div class="box">
-            <h1>01</h1>
-            <h3>juin</h3>
-          </div>
-          <div class="box">
-            <a href="#">L'étudiant face au marché de l'emploi</a>
-            <div class="boxCoordene">
-              <div class="clock">
-                <i class="fa-regular fa-clock"></i>
-                <p>4:00 - 16:30</p>
-              </div>
-              <div class="location">
-                <i class="fa fa-location-dot"></i>
-                <p>Salle D11-D12</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div class="contentBox">
-          <div class="box">
-            <h1>01</h1>
-            <h3>juin</h3>
-          </div>
-          <div class="box">
-            <a href="#">L'étudiant face au marché de l'emploi</a>
-            <div class="boxCoordene">
-              <div class="clock">
-                <i class="fa-regular fa-clock"></i>
-                <p>4:00 - 16:30</p>
-              </div>
-              <div class="location">
-                <i class="fa fa-location-dot"></i>
-                <p>Salle D11-D12</p>
-              </div>
-            </div>
-          </div>
-        </div>
+      <div id="eventWrapper">
+        
       </div>
-      <a href="#">Afficher tous les événements <i class="fa fa-angle-right"></i></a>
+      <div id="seeAllEvent">
+        <a href="event.php">Voir tous les événements <i class="fa fa-angle-right"></i></a>
+      </div>
     </div>
     <div class="box">
       <div class="inscrireEst">

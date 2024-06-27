@@ -7,6 +7,7 @@ const endpointLogout = `${baseUrl}api/users/logout`;
 const endpointRegister = `${baseUrl}api/users/register`;
 const endpointUsers = `${baseUrl}api/users`;
 const endpointNews = `${baseUrl}api/news`;
+const endpointEvents = `${baseUrl}api/events`;
 const endpointCategories = `${baseUrl}api/categories`;
 const endpointItems = `${baseUrl}api/items`;
 
@@ -52,6 +53,26 @@ const fetchAllNews = async () => {
 
 const fetchOneByNewsSlug = async (slug) => {
   return await axios.get(`${endpointNews}?slug=${slug}`)
+    .then(res => {
+      return res.data
+    })
+    .catch(err => {
+      console.error(err.message)
+    })
+}
+
+const fetchAllEvents = async () => {
+  return await axios.get(endpointEvents)
+    .then(res => {
+      return res.data
+    })
+    .catch(err => {
+      console.error(err.message)
+    })
+}
+
+const fetchOneByEventSlug = async (slug) => {
+  return await axios.get(`${endpointEvents}?slug=${slug}`)
     .then(res => {
       return res.data
     })
@@ -110,7 +131,7 @@ const fetchOneByItemSlug = async (slug) => {
     })
 }
 
-const getNewsTime = (dateStr) => {
+const getTimeData = (dateStr) => {
   const dateObj = new Date(dateStr)
   const monthNames = [
     "JAVIER", "FEVRIER", "MARS", "AVRIL", 
@@ -179,7 +200,7 @@ const getOtherNews = async (limit = null, withFeatured = true) => {
         </div>
         <div class="boxNews__info">
           <span>
-            ${getNewsTime(ordenedNews[i].created_at)}
+            ${getTimeData(ordenedNews[i].created_at)}
           </span>
           <a href="news.php?title=${ordenedNews[i].slug}">
             ${ordenedNews[i].title}
@@ -199,6 +220,85 @@ const getOtherNews = async (limit = null, withFeatured = true) => {
   othersNews.appendChild(contentBox)
 
   return othersNews
+}
+
+const getEvents = async (limit = null, events = null) => {
+  const eventBox = document.createElement('div')
+  eventBox.classList.add('content')
+  
+  const res = await fetchAllEvents()
+  
+  if(!res) {
+    events
+    ? eventBox.innerHTML = ``
+    : eventBox.innerHTML = `
+      <div class="titre">
+        <h1>Evènements à venir</h1>
+      </div>
+      <div id="seeAllEvent">
+        <span>Voullez vous venir plus tard</span>
+      </div>
+    ` 
+
+    return eventBox
+  }
+
+  const ordenedNews = events || res.reverse()
+  
+  if((!limit && limit !== 0) || limit >= ordenedNews.length) {
+    limit = ordenedNews.length
+  }
+
+  if(limit < 0) {
+    limit = 0
+  }
+  
+  if((!limit && limit !== 0) && events) {
+    limit = events.length
+  }
+
+  if(limit >= ordenedNews.length && !events) {
+    limit = ordenedNews.length
+
+    eventBox.innerHTML = `
+      <div class="titre">
+        <h1>Evènements à venir</h1>
+      </div>
+    `
+  }
+
+  
+  for(let i=0; i<limit; i++) {
+    const time = getTimeData(ordenedNews[i].date).split(' ')
+
+    eventBox.innerHTML += `
+      <div class="contentBox">
+        <div class="box">
+          <h1>${time[0].length === 1 ? '0'+time[0] : time[0]}</h1>
+          <h3>${time[1]}</h3>
+        </div>
+        <div class="box">
+          <a 
+            href="event.php?title=${ordenedNews[i].slug}"
+          >
+            ${ordenedNews[i].title}
+          </a>
+          <div class="boxCoordene">
+            <div class="clock">
+              <i class="fa-regular fa-clock"></i>
+              <p>${ordenedNews[i].time}</p>
+            </div>
+            <div class="location">
+              <i class="fa fa-location-dot"></i>
+              <p>${ordenedNews[i].location}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    `
+  }
+
+  return eventBox
 }
 
 
@@ -435,7 +535,7 @@ if (pageName === '' || pageName === 'index.php') {
         </div>
         <div class="boxNews__info">
           <span>
-            ${getNewsTime(ordenedNews[0].created_at)}
+            ${getTimeData(ordenedNews[0].created_at)}
           </span>
           <a href="news.php?title=${ordenedNews[0].slug}">
             ${ordenedNews[0].title}
@@ -447,6 +547,22 @@ if (pageName === '' || pageName === 'index.php') {
     boxNews.appendChild(await getOtherNews(3, false))
   }
 
+  const showEvents = async (allEvents) => {
+    const eventWrapper = document.getElementById('eventWrapper')
+    const seeAllEvent = document.getElementById('seeAllEvent')
+
+    if(!allEvents) {
+      seeAllEvent.innerHTML = `
+        <span>Voulez vous venir plus tard...</span>
+      `
+      return
+    }
+
+    const ordenedEvent = allEvents.reverse()
+
+    eventWrapper.appendChild(await getEvents(2, ordenedEvent))
+  }
+
   fetchAllCats().then((cats) => {
     fetchAllItems().then((items) => {
       showSectionsData(cats, items)
@@ -455,6 +571,10 @@ if (pageName === '' || pageName === 'index.php') {
 
   fetchAllNews().then((allNews) => {
     showNews(allNews)
+  })
+  
+  fetchAllEvents().then((allEvents) => {
+    showEvents(allEvents)
   })
 }
 
@@ -695,6 +815,90 @@ if(pageName === 'news.php') {
 
     fetchOneByNewsSlug(title).then((news) => {
       showNewsData(news)
+    })
+  }
+}
+
+/* Event page */ 
+//////////////////////////////////////////////////////////
+if(pageName === 'event.php') {
+  const title = searchUrl.get('title')
+  const eventPage = document.getElementById('eventPage')
+  const wrapperContainer = document.createElement('div')
+  wrapperContainer.classList.add('wrapperContainer')
+
+  if(!title || title === '') {
+    eventPage.innerHTML = `
+      <div class="headline">
+        <h1>Events</h1>
+        <h2>Voulez choisir une nouvelle</h2>
+      </div>
+    `
+
+    getEvents().then(res => {
+      wrapperContainer.appendChild(res)
+    })
+      
+    boxContainer.appendChild(wrapperContainer)
+    eventPage.appendChild(boxContainer)
+  } else {
+
+    const showEventData = async (event) => {
+      if(!event) {
+        eventPage.innerHTML = `
+          <div class="headline">
+            <h1>Events</h1>
+            <h2>Voulez choisir une nouvelle</h2>
+          </div>
+        `
+
+        getEvents().then(res => {
+          wrapperContainer.appendChild(res)
+        })
+          
+        boxContainer.appendChild(wrapperContainer)
+        eventPage.appendChild(boxContainer)
+        return
+      }
+
+      eventPage.innerHTML = `
+        <div class="headline">
+          <h1>News</h1>
+          <h2>${event.title}</h2>
+        </div>
+      `
+      wrapperContainer.innerHTML = `
+        <div class="box">
+          <div class="box-content">
+            ${event.content}
+          </div>
+
+          ${
+            event.file ? `
+              <div class="box-info">
+                <h3>Plus info</h3>
+                <div class="download">
+                  <a
+                    href="${event.file}?>" 
+                    download="${event.title}"
+                    
+                  >
+                    Telecharger fichier
+                  </a>
+                </div>
+              </div>
+            ` : ``
+          }
+        </div>
+      `
+      wrapperContainer.appendChild(await getEvents(5))
+      
+      boxContainer.appendChild(wrapperContainer)
+      eventPage.appendChild(boxContainer)
+    }
+
+    fetchOneByEventSlug(title).then((event) => {
+      showEventData(event)
     })
   }
 }
