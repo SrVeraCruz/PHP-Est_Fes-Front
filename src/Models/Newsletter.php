@@ -82,7 +82,7 @@ class Newsletter
           ;
 
           $status = '0';
-          if($data['status'] && $data['status'] !== '') {
+          if(isset($data['status']) && $data['status'] !== '') {
             $status = $data['status'];
           }
 

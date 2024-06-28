@@ -23,7 +23,7 @@ include('includes/header.php');
     </div>
     <div class="box">
       <h2>E-mail</h2><span>:</span>
-      <a href="mailto:support.est@usmba.ac.ma">support.est@usmba.ac.ma</a>
+      <a href="mailto:est.usmba.fes@gmail.com">est.usmba.fes@gmail.com</a>
     </div>
     <div class="box">
       <h2>Site Web</h2><span>:</span>

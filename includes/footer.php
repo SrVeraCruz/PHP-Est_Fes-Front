@@ -18,7 +18,7 @@
           <p>Campus Universitaire</p>
           <p>Tel : +212 5 35 60 05 84</p>
           <p>Fax : +212 5 35 60 05 88</p>
-          <a href="mailto:support.est@usmba.ac.ma">E-mail : support.est@usmba.ac.ma</a>
+          <a href="mailto:est.usmba.fes@gmail.com">E-mail : est.usmba.fes@gmail.com</a>
         </div>
 
         <div class="box">

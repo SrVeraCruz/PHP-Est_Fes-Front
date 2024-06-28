@@ -580,6 +580,13 @@ if (pageName === '' || pageName === 'index.php') {
     eventWrapper.appendChild(await getEvents(2, ordenedEvent))
   }
 
+
+  (function(){
+    emailjs.init({
+      publicKey: "LojdCXuT0JhN9Vw53",
+    });
+  })();
+
   formNewsletter.onsubmit = async (ev) => {
     ev.preventDefault()
     
@@ -588,7 +595,14 @@ if (pageName === '' || pageName === 'index.php') {
 
     await axios.post(endpointNewsletter, formData)
     .then(() => {
-      location.href = 'newsletter.php?title=subscribed'
+      emailjs.send('service_b6dpaqs', 'template_dur5tct', {
+        email: ev.target.email.value
+      })
+      .then(() => {
+        location.href = 'newsletter.php?title=subscribed'
+      }, () => {
+        location.href = 'newsletter.php?title=subscribed'
+      });
     })
     .catch((err) => {
       if (err.response && err.response.data) {
@@ -956,25 +970,25 @@ if(pageName === 'newsletter.php') {
         <p>Votre email n'est pas inscrit a l'ecole.</p>
         <p>
           Voulez vous contacter l'administration d'ecole: 
-          <a href="mailto:support.est@usmba.ac.ma">
-            support.est@usmba.ac.ma
+          <a href="mailto:est.usmba.fes@gmail.com">
+            est.usmba.fes@gmail.com
           </a>
         </p>
       `
     } else if(title === 'already_subscribed') {
       boxContainer.innerHTML = `
-      <p>
+        <p>
           Vous êtes déjà inscrit à notre newsletter.
         </p>
         <p>
-          Restez connectés pour recevoir nos actualités.
+          Restez à l'écoute pour recevoir nos actualités.
         </p>
       `
     } else if(title === 'subscribed') {
       boxContainer.innerHTML = `
         <p>Votre incription a été bien efectué.</p>
         <p>
-          Restez connectés, vous recevrez bientôt nos actualités.
+          Restez à l'écoute, vous recevrez bientôt nos actualités.
         </p>
       `
     }

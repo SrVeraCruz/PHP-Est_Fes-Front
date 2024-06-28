@@ -36,6 +36,10 @@ require 'config/db.php';
     <script src="./assets/js/jquery.min.js"></script>
     <script src="./assets/js/toastr.min.js"></script>
   <!-- Toaster Link -->
+  
+  <!-- EmailJs Link -->
+    <script src="./assets/js/email.min.js"></script>
+  <!-- EmailJs Link -->
 
 </head>
 
