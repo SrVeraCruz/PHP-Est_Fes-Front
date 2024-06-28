@@ -31,6 +31,12 @@ require 'config/db.php';
   <script src="./assets/js/axios.min.js"></script>
   <!-- Axios Link -->
 
+  <!-- Toaster Link -->
+    <link href="./assets/css/toastr.min.css" rel="stylesheet" />
+    <script src="./assets/js/jquery.min.js"></script>
+    <script src="./assets/js/toastr.min.js"></script>
+  <!-- Toaster Link -->
+
 </head>
 
 <body class="body">

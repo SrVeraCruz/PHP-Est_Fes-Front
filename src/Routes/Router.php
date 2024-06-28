@@ -2,7 +2,8 @@
 require_once '../../vendor/autoload.php';
 require_once '../Services/UserServices.php';
 require_once '../Services/NewsServices.php';
-require_once '../Services/EventService.php';
+require_once '../Services/EventServices.php';
+require_once '../Services/NewsletterServices.php';
 require_once '../Services/CategoryServices.php';
 require_once '../Services/ItemServices.php';
 
@@ -56,7 +57,7 @@ switch ($uri) {
     }
     break;
   
-    case 'api/events':
+  case 'api/events':
     if ($method === 'GET') {
       if (isset($_GET['id'])) {
         json_encode(EventService::GET($_GET['id']));
@@ -72,6 +73,26 @@ switch ($uri) {
         json_encode(EventService::DELETE($_POST));
       } else {
         json_encode(EventService::POST($_POST));
+      }
+    } else {
+      sendNotAllowed();
+    }
+    break;
+
+  case 'api/newsletter':
+    if ($method === 'GET') {
+      if (isset($_GET['id'])) {
+        json_encode(NewsletterService::GET($_GET['id']));
+      } else {
+        json_encode(NewsletterService::GET());
+      }
+    } elseif ($method === 'POST') {
+      if (isset($_POST['update_id'])) {
+        json_encode(NewsletterService::UPDATE($_POST));
+      } elseif (isset($_POST['delete_id'])) {
+        json_encode(NewsletterService::DELETE($_POST));
+      } else {
+        json_encode(NewsletterService::POST($_POST));
       }
     } else {
       sendNotAllowed();
@@ -156,6 +177,7 @@ switch ($uri) {
 
   default:
     sendNotFound();
+    header('Location: 404.php');
     break;
 }
 

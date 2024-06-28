@@ -8,6 +8,7 @@ const endpointRegister = `${baseUrl}api/users/register`;
 const endpointUsers = `${baseUrl}api/users`;
 const endpointNews = `${baseUrl}api/news`;
 const endpointEvents = `${baseUrl}api/events`;
+const endpointNewsletter = `${baseUrl}api/newsletter`;
 const endpointCategories = `${baseUrl}api/categories`;
 const endpointItems = `${baseUrl}api/items`;
 
@@ -129,6 +130,20 @@ const fetchOneByItemSlug = async (slug) => {
     .catch(err => {
       console.error(err.message)
     })
+}
+
+const toastrAlert = (err) => {
+  if (err.response && err.response.data) {
+    if (err.response.data.message_warning) {
+      toastr.warning(err.response.data.message_warning)
+    } else if (err.response.data.message_error) {
+      toastr.error(err.response.data.message_error)
+    } else {
+      toastr.error('Something went wrong!');
+    }
+  } else {
+    toastr.error('Something went wrong!');
+  }
 }
 
 const getTimeData = (dateStr) => {
@@ -321,6 +336,8 @@ if (pageName === '' || pageName === 'index.php') {
 
   const firstSectionElement = document.getElementById('firstSection')
   const secondSectionElement = document.getElementById('secondSection')
+
+  const formNewsletter = document.getElementById('formNewsletter')
 
   /* SlideImg start */
   window.onresize = () => {
@@ -520,7 +537,7 @@ if (pageName === '' || pageName === 'index.php') {
       `
       return
     }
-    
+
     const ordenedNews = allNews.reverse()
     
     seeAllNews.innerHTML = `
@@ -561,6 +578,29 @@ if (pageName === '' || pageName === 'index.php') {
     const ordenedEvent = allEvents.reverse()
 
     eventWrapper.appendChild(await getEvents(2, ordenedEvent))
+  }
+
+  formNewsletter.onsubmit = async (ev) => {
+    ev.preventDefault()
+    
+    const formData = new FormData()
+    formData.append('email', ev.target.email.value)
+
+    await axios.post(endpointNewsletter, formData)
+    .then(() => {
+      location.href = 'newsletter.php?title=subscribed'
+    })
+    .catch((err) => {
+      if (err.response && err.response.data) {
+        if (err.response.data.message_unauthorized) {
+          location.href = 'newsletter.php?title=unauthorized'
+        } else if (err.response.data.message_already_subscribed) {
+          location.href = 'newsletter.php?title=already_subscribed'
+        }
+      }
+
+      toastrAlert(err)
+    })
   }
 
   fetchAllCats().then((cats) => {
@@ -863,7 +903,7 @@ if(pageName === 'event.php') {
 
       eventPage.innerHTML = `
         <div class="headline">
-          <h1>News</h1>
+          <h1>Events</h1>
           <h2>${event.title}</h2>
         </div>
       `
@@ -901,4 +941,42 @@ if(pageName === 'event.php') {
       showEventData(event)
     })
   }
+}
+
+
+/* Newsletter page */ 
+//////////////////////////////////////////////////////////
+if(pageName === 'newsletter.php') {
+  const title = searchUrl.get('title')
+  const boxContainer = document.getElementById('boxContainer')
+
+  if(title) {
+    if(title === 'unauthorized') {
+      boxContainer.innerHTML = `
+        <p>Votre email n'est pas inscrit a l'ecole.</p>
+        <p>
+          Voulez vous contacter l'administration d'ecole: 
+          <a href="mailto:support.est@usmba.ac.ma">
+            support.est@usmba.ac.ma
+          </a>
+        </p>
+      `
+    } else if(title === 'already_subscribed') {
+      boxContainer.innerHTML = `
+      <p>
+          Vous êtes déjà inscrit à notre newsletter.
+        </p>
+        <p>
+          Restez connectés pour recevoir nos actualités.
+        </p>
+      `
+    } else if(title === 'subscribed') {
+      boxContainer.innerHTML = `
+        <p>Votre incription a été bien efectué.</p>
+        <p>
+          Restez connectés, vous recevrez bientôt nos actualités.
+        </p>
+      `
+    }
+  } 
 }

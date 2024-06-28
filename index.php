@@ -6,20 +6,32 @@ require 'includes/header.php';
   <div class="boxContainer">
     <div class="slideImg">
       <div class="imgBox">
-        <img src="./assets/img/est_centre_conference.jpg" alt="est_centre_conference">
+        <img 
+          src="./assets/img/est_centre_conference.jpg" 
+          alt="est_centre_conference"
+        />
         <h1>Bienvenu EST de Fés</h1>
       </div>
       <div class="imgBox">
-        <img src="./assets/img/est_entre.jpg" alt="est_centre_conference">
+        <img 
+          src="./assets/img/est_entre.jpg" 
+          alt="est_centre_conference"
+        />
         <h1>L'entre de EST Fés</h1>
       </div>
       <div class="imgBox">
-        <img src="./assets/img/est_guardin.jpeg" alt="est_centre_conference">
+        <img 
+          src="./assets/img/est_guardin.jpeg" 
+          alt="est_centre_conference"
+        />
         <h1>L'Administration</h1>
       </div>
       <div class="imgBox">
-        <img src="./assets/img/est_park.jpeg" alt="est_centre_conference">
-        <h1>Notre Gardin</h1>
+        <img 
+          src="./assets/img/est_park.jpeg" 
+          alt="est_centre_conference"
+        />
+        <h1>Notre Jardin</h1>
       </div>
     </div>
   </div>
@@ -37,25 +49,46 @@ require 'includes/header.php';
 
       <div class="slide2">
         <div class="imgBox2">
-          <img src="./assets/img/slide2_est_biblio.png" alt="est_biblio">
+          <img 
+            src="./assets/img/slide2_est_biblio.png" 
+            alt="est_biblio"
+          />
         </div>
         <div class="imgBox2">
-          <img src="./assets/img/slide2_est_diplome.png" alt="est_diplome">
+          <img 
+            src="./assets/img/slide2_est_diplome.png" 
+            alt="est_diplome"
+          />
         </div>
         <div class="imgBox2">
-          <img src="./assets/img/slide2_est_espri.png" alt="est_espri">
+          <img 
+            src="./assets/img/slide2_est_espri.png" 
+            alt="est_espri"
+          />
         </div>
         <div class="imgBox2">
-          <img src="./assets/img/slide2_est_formation.png" alt="est_formation">
+          <img 
+            src="./assets/img/slide2_est_formation.png" 
+            alt="est_formation"
+          />
         </div>
         <div class="imgBox2">
-          <img src="./assets/img/slide2_est_formationpro.png" alt="est_formationpro">
+          <img 
+            src="./assets/img/slide2_est_formationpro.png" 
+            alt="est_formationpro"
+          />
         </div>
         <div class="imgBox2">
-          <img src="./assets/img/slide2_est_reussite.png" alt="est_reussite">
+          <img 
+            src="./assets/img/slide2_est_reussite.png" 
+            alt="est_reussite"
+          />
         </div>
         <div class="imgBox2">
-          <img src="./assets/img/slede2_est_stage.png" alt="est_stage">
+          <img 
+            src="./assets/img/slede2_est_stage.png" 
+            alt="est_stage"
+          />
         </div>
       </div>
 
@@ -73,14 +106,19 @@ require 'includes/header.php';
 
   <div class="boxContainer">
     <div class="box">
-      <img src="./assets/img/est_logo_mobile2.png" alt="est_logo">
+      <img 
+        src="./assets/img/est_logo_mobile2.png" 
+        alt="est_logo"
+      />
       <h1>À propos de notre université</h1>
     </div>
     <div class="box">
       <p>
         L'Ecole Supérieure de Technologie est un établissement UNIVERSITAIRE.Elle fait partie de l'université Sidi Mohamed Ben Abdellah.Le diplôme principal délivré est le <span>DUT : Diplôme Universitaire de Technologie</span>, qui est parfaitement bien reconnu et hautement apprécié.Depuis l'année universitaire 2014-2015 l'EST est habilitée a délivré le diplôme de <span>licence professionnelle</span>.Les formations dispensés sont variées et en parfaite adéquation avec les besoins du monde socio-économique...
       </p>
-      <a href="#">Lire plus <i class="fa fa-angle-right"></i></a>
+      <a href="#">
+        Lire plus <i class="fa fa-angle-right"></i>
+      </a>
     </div>
   </div>
 
@@ -103,7 +141,9 @@ require 'includes/header.php';
       </div>
     </div>
     <div class="box">
-      <h1><i class="fa-solid fa-link fa-rotate-90"></i> Liens rapides</h1>
+      <h1>
+        <i class="fa-solid fa-link fa-rotate-90"></i> Liens rapides
+      </h1>
       <div class="content">
         <div>
           <h2>DUT</h2>
@@ -132,7 +172,15 @@ require 'includes/header.php';
   <img src="./assets/img/est_entre.jpg" alt="est_entre">
   <div class="boxContainer">
     <div class="box">
-      <a href="https://www.youtube.com/watch?v=2qEZBot3IFg" target="_blank"><img src="./assets/img/player_video.png" alt="player_video"></a>
+      <a 
+        href="https://www.youtube.com/watch?v=2qEZBot3IFg" 
+        target="_blank"
+      >
+        <img 
+          src="./assets/img/player_video.png" 
+          alt="player_video"
+        />
+      </a>
       <h1>Visite Vidéo à l'Ecole Superieure de Technologie de Fés</h1>
       <p>
         Faire un tour à l'Ecole Superieure de Technologie et vous trouverez la meilleure Ecole de Technologie du Royaume. La vidéo vous emmènera dans tous les endroits de notre Ecole.
@@ -154,24 +202,50 @@ require 'includes/header.php';
         
       </div>
       <div id="seeAllEvent">
-        <a href="event.php">Voir tous les événements <i class="fa fa-angle-right"></i></a>
+        <a href="event.php">
+          Voir tous les événements <i class="fa fa-angle-right"></i>
+        </a>
       </div>
     </div>
+
     <div class="box">
       <div class="inscrireEst">
-        <img src="./assets/img/est_inscrire_bg.jpg" alt="est_inscrire">
+        <img 
+          src="./assets/img/est_inscrire_bg.jpg" 
+          alt="est_inscrire"
+        />
         <div class="inscrireEstBox">
-          <img src="./assets/img/icon-envelope.png" alt="icon-envelope">
+          <img 
+            src="./assets/img/icon-envelope.png" 
+            alt="icon-envelope"
+          />
           <div class="text">
             <h3>S'inscrire à NewsEST</h3>
-            <p>Recevez des mises à jour sur les actualités et les événements</p>
+            <p>
+              Recevez des mises à jour sur les actualités et les événements
+            </p>
           </div>
-          <form>
+          <form id="formNewsletter">
             <div class="boxInput">
-              <input type="email" name="inputEmail" id="inputEmail" class="inputUser" required autocomplete="off">
-              <label for="inputEmail" id="labelEmail" name="labelEmail" class="labelInput">email</label>
+              <input 
+                type="email" 
+                name="email" 
+                id="inputEmail" 
+                class="inputUser" 
+              />
+              <label 
+                id="labelEmail" 
+                name="labelEmail" 
+                class="labelInput"
+              >
+                email
+              </label>
             </div>
-            <input class="btn" type="submit" value="submit">
+            <input 
+              class="btn" 
+              type="submit" 
+              value="submit"
+            />
           </form>
         </div>
       </div>
@@ -183,37 +257,94 @@ require 'includes/header.php';
 <!-- Section Chercher cours start -->
 <section class="searchCours" id="searchCours">
   <div class="boxContainer">
-    <img src="./assets/img/est_chercherCours.jpg" alt="est_chercherCours">
+    <img 
+      src="./assets/img/est_chercherCours.jpg" 
+      alt="est_chercherCours"
+    />
     <div class="searchBox">
       <div class="searchContent">
         <h3>Chercher un cours</h3>
         <form>
           <div class="globalInputBox">
             <div class="boxInput">
-              <input type="text" name="inputKeyWord" id="inputKeyWord" class="inputUser" required>
-              <label for="inputKeyWord" id="labelKeyWord" name="labelKeyWord" class="labelInput">Keywords</label>
+              <input 
+                type="text" 
+                name="inputKeyWord" 
+                id="inputKeyWord" 
+                class="inputUser" 
+                required
+              />
+              <label 
+                for="inputKeyWord" 
+                id="labelKeyWord" 
+                name="labelKeyWord" 
+                class="labelInput"
+              >
+                Keywords
+              </label>
             </div>
             <div class="boxInput">
-              <input type="text" name="inputCourId" id="inputCourId" class="inputUser" required>
-              <label for="inputCourId" id="labelCourId" name="labelCourId" class="labelInput">Course Id</label>
+              <input 
+                type="text" 
+                name="inputCourId" 
+                id="inputCourId" 
+                class="inputUser" 
+                required
+              />
+              <label 
+                for="inputCourId" 
+                id="labelCourId" 
+                name="labelCourId" 
+                class="labelInput"
+              >
+                Course Id
+              </label>
             </div>
             <div class="boxInput">
-              <select name="inputCourCat" id="inputCourCat" class="inputUser" required>
+              <select 
+                name="inputCourCat" 
+                id="inputCourCat" 
+                class="inputUser" 
+                required
+              >
                 <option value=""></option>
                 <option value="accounting-elective-courses">Accounting Elective Courses</option>
                 <option value="accounting-required-courses">Accounting Required Courses</option>
               </select>
-              <label for="inputCourCat" id="labelCourCat" name="labelCourCat" class="labelInput">Course Category</label>
+              <label 
+                for="inputCourCat" 
+                id="labelCourCat" 
+                name="labelCourCat" 
+                class="labelInput"
+              >
+                Course Category
+              </label>
             </div>
             <div class="boxInput">
-              <select name="inputCourseTag" id="inputCourseTag" class="inputUser" required>
+              <select 
+                name="inputCourseTag" 
+                id="inputCourseTag" 
+                class="inputUser" 
+                required
+              >
                 <option value=""></option>
                 <option value="course-tag">Course Tag</option>
               </select>
-              <label for="inputCourseTag" id="labelCourseTag" name="labelCourseTag" class="labelInput">Course Tag</label>
+              <label 
+                for="inputCourseTag" 
+                id="labelCourseTag" 
+                name="labelCourseTag" 
+                class="labelInput"
+              >
+                Course Tag
+              </label>
             </div>
             <div class="boxInput">
-              <select name="inputFiliereDut" id="inputFiliereDut" class="inputUser">
+              <select 
+                name="inputFiliereDut" 
+                id="inputFiliereDut" 
+                class="inputUser"
+              >
                 <option value=""></option>
                 <option value="genie-mecanique">Génie Mécanique</option>
                 <option value="genie-electrique">Génie Électrique</option>
@@ -230,10 +361,21 @@ require 'includes/header.php';
                 <option value="gestion-logistique">Gestion Logistique</option>
                 <option value="systeme-embarques">Système Embarqués</option>
               </select>
-              <label for="inputFiliereDut" id="labelFiliereDut" name="labelFiliereDut" class="labelInput">Filiere DUT</label>
+              <label 
+                for="inputFiliereDut" 
+                id="labelFiliereDut" 
+                name="labelFiliereDut" 
+                class="labelInput"
+              >
+                Filiere DUT
+              </label>
             </div>
             <div class="boxInput">
-              <select name="inputFiliereLp" id="inputFiliereLp" class="inputUser">
+              <select 
+                name="inputFiliereLp" 
+                id="inputFiliereLp" 
+                class="inputUser"
+              >
                 <option value=""></option>
                 <option value="logistique">Logistique</option>
                 <option value="maintenance-electroniques">Maintenance Electroniques</option>
@@ -244,10 +386,21 @@ require 'includes/header.php';
                 <option value="genie-informatique">Génie Informatique</option>
                 <option value="energies-renouvables">Technologies Des Energies Renouvables</option>
               </select>
-              <label for="inputFiliereLp" id="labelFiliereLp" name="labelFiliereLp" class="labelInput">Filiere LP</label>
+              <label 
+                for="inputFiliereLp" 
+                id="labelFiliereLp" 
+                name="labelFiliereLp" 
+                class="labelInput"
+              >
+                Filiere LP
+              </label>
             </div>
           </div>
-          <input class="btn" type="submit" value="Search Cours">
+          <input 
+            class="btn" 
+            type="submit" 
+            value="Search Cours"
+          />
         </form>
       </div>
     </div>
