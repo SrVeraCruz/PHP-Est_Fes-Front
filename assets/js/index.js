@@ -24,12 +24,12 @@ boxContainer.classList.add('boxContainer')
 //////////////////////////////////////////////////////////
 const fetchAllUsers = async () => {
   return await axios.get(endpointUsers)
-    .then(res => {
-      return res.data
-    })
-    .catch(err => {
-      console.error(err.message)
-    })
+  .then(res => {
+    return res.data
+  })
+  .catch(err => {
+    console.error(err.message)
+  })
 }
 
 const fetchOneUser = async (id) => {
@@ -44,92 +44,102 @@ const fetchOneUser = async (id) => {
 
 const fetchAllNews = async () => {
   return await axios.get(endpointNews)
-    .then(res => {
-      return res.data
-    })
-    .catch(err => {
-      console.error(err.message)
-    })
+  .then(res => {
+    return res.data
+  })
+  .catch(err => {
+    console.error(err.message)
+  })
 }
 
 const fetchOneByNewsSlug = async (slug) => {
   return await axios.get(`${endpointNews}?slug=${slug}`)
-    .then(res => {
-      return res.data
-    })
-    .catch(err => {
-      console.error(err.message)
-    })
+  .then(res => {
+    return res.data
+  })
+  .catch(err => {
+    console.error(err.message)
+  })
 }
 
 const fetchAllEvents = async () => {
   return await axios.get(endpointEvents)
-    .then(res => {
-      return res.data
-    })
-    .catch(err => {
-      console.error(err.message)
-    })
+  .then(res => {
+    return res.data
+  })
+  .catch(err => {
+    console.error(err.message)
+  })
 }
 
 const fetchOneByEventSlug = async (slug) => {
   return await axios.get(`${endpointEvents}?slug=${slug}`)
-    .then(res => {
-      return res.data
-    })
-    .catch(err => {
-      console.error(err.message)
-    })
+  .then(res => {
+    return res.data
+  })
+  .catch(err => {
+    console.error(err.message)
+  })
 }
 
 const fetchAllCats = async () => {
   return await axios.get(endpointCategories)
-    .then(res => {
-      return res.data
-    })
-    .catch(err => {
-      console.error(err.message)
-    })
+  .then(res => {
+    return res.data
+  })
+  .catch(err => {
+    console.error(err.message)
+  })
 }
 
 const fetchOneCat = async (id) => {
   return await axios.get(`${endpointCategories}?id=${id}`)
-    .then(res => {
-      return res.data
-    })
-    .catch(err => {
-      console.error(err.message)
-    })
+  .then(res => {
+    return res.data
+  })
+  .catch(err => {
+    console.error(err.message)
+  })
 }
 
 const fetchOneByCatSlug = async (slug) => {
   return await axios.get(`${endpointCategories}?slug=${slug}`)
-    .then(res => {
-      return res.data
-    })
-    .catch(err => {
-      console.error(err.message)
-    })
+  .then(res => {
+    return res.data
+  })
+  .catch(err => {
+    console.error(err.message)
+  })
 }
 
 const fetchAllItems = async () => {
   return await axios.get(endpointItems)
-    .then(res => {
-      return res.data
-    })
-    .catch(err => {
-      console.error(err.message)
-    })
+  .then(res => {
+    return res.data
+  })
+  .catch(err => {
+    console.error(err.message)
+  })
+}
+
+const fetchOneItem = async (id) => {
+  return await axios.get(`${endpointItems}?id=${id}`)
+  .then(res => {
+    return res.data
+  })
+  .catch(err => {
+    console.error(err.message)
+  })
 }
 
 const fetchOneByItemSlug = async (slug) => {
   return await axios.get(`${endpointItems}?slug=${slug}`)
-    .then(res => {
-      return res.data
-    })
-    .catch(err => {
-      console.error(err.message)
-    })
+  .then(res => {
+    return res.data
+  })
+  .catch(err => {
+    console.error(err.message)
+  })
 }
 
 const toastrAlert = (err) => {
@@ -580,7 +590,7 @@ if (pageName === '' || pageName === 'index.php') {
     eventWrapper.appendChild(await getEvents(2, ordenedEvent))
   }
 
-
+  /* newletter */
   (function(){
     emailjs.init({
       publicKey: "LojdCXuT0JhN9Vw53",
@@ -617,9 +627,76 @@ if (pageName === '' || pageName === 'index.php') {
     })
   }
 
+  /* chercher cours */
+  const searchCoursForm = document.getElementById("searchCoursForm")
+
+  const showFillierSearchCours = (items) => {
+    const selectFiliereDut = document.getElementById("selectFiliereDut")
+    const selectFiliereLp = document.getElementById("selectFiliereLp")
+
+    const filliersDut = items.filter((it) => it.category_name === 'DUT')
+    const filliersLp = items.filter((it) => it.category_name === 'LP')
+    
+    if(filliersDut.length) {
+      filliersDut.forEach((fDut) => {
+        let dutName = fDut.name.substring(0,40)
+        if(fDut.name.length >= 40) {
+          dutName += ' ...'
+        }
+
+        selectFiliereDut.innerHTML += `
+          <option value="${fDut.id}">${dutName}</option>
+        ` 
+      })
+    }
+
+    if(filliersLp.length) {
+      filliersLp.forEach((fLp = []) => {
+        let lpName = fLp.name.substring(0,40)
+        if(fLp.name.length >= 40) {
+          lpName += ' ...'
+        }
+
+        selectFiliereLp.innerHTML += `
+          <option value="${fLp.id}">${lpName}</option>
+        ` 
+      })
+    }
+  }
+
+  searchCoursForm.onsubmit = async (ev) => {
+    ev.preventDefault()
+
+    const dutId = ev.target.selectFiliereDut.value
+    const lpId = ev.target.selectFiliereLp.value
+
+    if(!dutId && !lpId) {
+      toastr.warning("Voulez vous choisir une option de recherche")
+
+    } else if(dutId && lpId) { 
+      toastr.warning("Choisissez une option à la fois")
+
+    } else {
+      let searchParams = ''
+      if(dutId) {
+        const dut = await fetchOneItem(ev.target.selectFiliereDut.value)
+        searchParams = `title=${dut.slug}`
+      }
+
+      if(lpId) {
+        const lp = await fetchOneItem(ev.target.selectFiliereLp.value)
+        searchParams = `title=${lp.slug}`
+      }
+      
+      location.href = `item.php?${searchParams}`
+    }
+  }
+
+  //////////////////////////////////
   fetchAllCats().then((cats) => {
     fetchAllItems().then((items) => {
       showSectionsData(cats, items)
+      showFillierSearchCours(items)
     })
   })
 

@@ -264,105 +264,18 @@ require 'includes/header.php';
     <div class="searchBox">
       <div class="searchContent">
         <h3>Chercher un cours</h3>
-        <form>
+        <form id="searchCoursForm">
           <div class="globalInputBox">
             <div class="boxInput">
-              <input 
-                type="text" 
-                name="inputKeyWord" 
-                id="inputKeyWord" 
-                class="inputUser" 
-                required
-              />
-              <label 
-                for="inputKeyWord" 
-                id="labelKeyWord" 
-                name="labelKeyWord" 
-                class="labelInput"
-              >
-                Keywords
-              </label>
-            </div>
-            <div class="boxInput">
-              <input 
-                type="text" 
-                name="inputCourId" 
-                id="inputCourId" 
-                class="inputUser" 
-                required
-              />
-              <label 
-                for="inputCourId" 
-                id="labelCourId" 
-                name="labelCourId" 
-                class="labelInput"
-              >
-                Course Id
-              </label>
-            </div>
-            <div class="boxInput">
               <select 
-                name="inputCourCat" 
-                id="inputCourCat" 
-                class="inputUser" 
-                required
-              >
-                <option value=""></option>
-                <option value="accounting-elective-courses">Accounting Elective Courses</option>
-                <option value="accounting-required-courses">Accounting Required Courses</option>
-              </select>
-              <label 
-                for="inputCourCat" 
-                id="labelCourCat" 
-                name="labelCourCat" 
-                class="labelInput"
-              >
-                Course Category
-              </label>
-            </div>
-            <div class="boxInput">
-              <select 
-                name="inputCourseTag" 
-                id="inputCourseTag" 
-                class="inputUser" 
-                required
-              >
-                <option value=""></option>
-                <option value="course-tag">Course Tag</option>
-              </select>
-              <label 
-                for="inputCourseTag" 
-                id="labelCourseTag" 
-                name="labelCourseTag" 
-                class="labelInput"
-              >
-                Course Tag
-              </label>
-            </div>
-            <div class="boxInput">
-              <select 
-                name="inputFiliereDut" 
-                id="inputFiliereDut" 
+                name="selectFiliereDut" 
+                id="selectFiliereDut" 
                 class="inputUser"
               >
                 <option value=""></option>
-                <option value="genie-mecanique">Génie Mécanique</option>
-                <option value="genie-electrique">Génie Électrique</option>
-                <option value="reseaux-et-telecommunications">Réseaux et Télècommunications</option>
-                <option value="genie-des-procedes">Génie des Procédés</option>
-                <option value="genie-agroalimentaire">Génie Agroalimentaire</option>
-                <option value="genie-industiel">Génie Industiel</option>
-                <option value="genie-informatique">Génie Informatique</option>
-                <option value="informatique-decisionnelle">informatique decisionnelle</option>
-                <option value="genie-thermique">Génie Thermique</option>
-                <option value="techniques-de-managment">Techniques de Managment</option>
-                <option value="gestion-de-ressources-humaines">Gestion de Ressources Humaines</option>
-                <option value="gestion-commerciale">Gestion Commerciale</option>
-                <option value="gestion-logistique">Gestion Logistique</option>
-                <option value="systeme-embarques">Système Embarqués</option>
               </select>
               <label 
-                for="inputFiliereDut" 
+                for="selectFiliereDut" 
                 id="labelFiliereDut" 
                 name="labelFiliereDut" 
                 class="labelInput"
@@ -372,22 +285,14 @@ require 'includes/header.php';
             </div>
             <div class="boxInput">
               <select 
-                name="inputFiliereLp" 
-                id="inputFiliereLp" 
+                name="selectFiliereLp" 
+                id="selectFiliereLp" 
                 class="inputUser"
               >
                 <option value=""></option>
-                <option value="logistique">Logistique</option>
-                <option value="maintenance-electroniques">Maintenance Electroniques</option>
-                <option value="production-industrielle">Production Industrielle</option>
-                <option value="genie-des-procedes">Génie des Procédés</option>
-                <option value="qualite-en-agroalimentare">Qualité En Agroalimentare</option>
-                <option value="tannerie-et-industrie-du-cuir">Tannerie Et Idustrie Du Cuir</option>
-                <option value="genie-informatique">Génie Informatique</option>
-                <option value="energies-renouvables">Technologies Des Energies Renouvables</option>
               </select>
               <label 
-                for="inputFiliereLp" 
+                for="selectFiliereLp" 
                 id="labelFiliereLp" 
                 name="labelFiliereLp" 
                 class="labelInput"

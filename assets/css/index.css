@@ -1305,91 +1305,108 @@ form {
 /* Section News Events end */
 
 /* Section Chercher cours start */
-.searchCours>.boxContainer {
-  position: relative;
-  display: flex;
-  width: 100%;
-  overflow: hidden;
-}
-.searchCours>.boxContainer>img {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  filter: brightness(.7);
-  transition: .3s ease-in-out;
-}
-.searchCours>.boxContainer:hover>img {
-  scale: 1.06;
-  filter: brightness(.2);
-}
-.searchCours>.boxContainer>.searchBox {
-  width: 100%;
-  height: 100%;
-  padding: 6rem 6rem 4rem 0;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: end;
-  background-image: linear-gradient(to bottom ,#1c3261b5, #1c3261);
-  z-index: 1;
-}
-.searchCours>.boxContainer>.searchBox>.searchContent {
-  width: 45%;
-  min-width: 25rem;
-}
-.searchCours>.boxContainer>.searchBox>.searchContent>h3 {
-  font-size: 1.6rem;
-  color: #fff;
-  margin-bottom: 1.5rem;
-}
-.searchCours>.boxContainer>.searchBox>.searchContent>form>.globalInputBox {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 1rem;
-  margin-bottom: 1.3rem;
-}
-.searchCours>.boxContainer>.searchBox>.searchContent>form>.globalInputBox>.boxInput {
-  position: relative;
-}
-.searchCours>.boxContainer>.searchBox>.searchContent>form>.globalInputBox>.boxInput>.inputUser {
-  width: 100%;
-  padding: 1.1rem 1.5rem;
-  margin-top: .5rem;
-  font-size: 1rem;
-  color: #96aad3;
-  background-color: #3b4b6b;
-  border: none;
-  border-radius: .2rem;
-  outline: none;
-  border-bottom: .15rem solid transparent;
-  transition: .3s ease-in-out;
-}
-.searchCours>.boxContainer>.searchBox>.searchContent>form>.globalInputBox>.boxInput>.inputUser:focus {
-  border-bottom: .15rem solid var(--vert);
-}
-.searchCours>.boxContainer>.searchBox>.searchContent>form>.globalInputBox>.boxInput>select {
-  cursor: pointer;
-}
-.searchCours>.boxContainer>.searchBox>.searchContent>form>.globalInputBox>.boxInput>.inputUser>option {
-  background-color: #4b5c7c;
-}
-.searchCours>.boxContainer>.searchBox>.searchContent>form>.globalInputBox>.boxInput>.labelInput {
-  position: absolute;
-  top: 1.5rem;
-  left: 1rem;
-  color: #96aad3;
-  text-transform: capitalize;
-  background-color: #3b4b6b;
-  border: .1rem solid #3b4b6b;
-  padding: .1rem .6rem;
-  border-top-left-radius: .3rem;
-  border-top-right-radius: .3rem;
-  pointer-events: none;
-  transition: .3s ease-in-out;
-}
-.searchCours>.boxContainer>.searchBox>.searchContent>form>.btn {
-  border-radius: .2rem;
+.searchCours {
+  >.boxContainer {
+    position: relative;
+    display: flex;
+    width: 100%;
+    overflow: hidden;
+
+    >img {
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      filter: brightness(.7);
+      transition: .3s ease-in-out;
+    }
+
+    &:hover>img {
+      scale: 1.06;
+      filter: brightness(.2);
+    }
+
+    >.searchBox {
+      width: 100%;
+      height: 100%;
+      padding: 6rem 6rem 4rem 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: end;
+      background-image: linear-gradient(to bottom ,#1c3261b5, #1c3261);
+      z-index: 1;
+
+      >.searchContent {
+        width: 45%;
+        min-width: 25rem;
+
+        >h3 {
+          font-size: 1.6rem;
+          color: #fff;
+          margin-bottom: 1.5rem;
+        }
+
+        >form {
+          >.globalInputBox {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 1rem;
+            margin-bottom: 1.3rem;
+
+            >.boxInput {
+              position: relative;
+
+              >.inputUser {
+                width: 100%;
+                padding: 1.1rem 1.5rem;
+                margin-top: .5rem;
+                font-size: 1rem;
+                color: #96aad3;
+                background-color: #3b4b6b;
+                border: none;
+                border-radius: .2rem;
+                outline: none;
+                border-bottom: .15rem solid transparent;
+                transition: .3s ease-in-out;
+
+                &:focus {
+                  border-bottom: .15rem solid var(--vert);
+                }
+
+                >option {
+                  background-color: #4b5c7c;
+                }
+              }
+
+              >select {
+                cursor: pointer;
+              }
+
+              >.labelInput {
+                position: absolute;
+                top: 1.5rem;
+                left: 1rem;
+                color: #96aad3;
+                text-transform: capitalize;
+                background-color: #3b4b6b;
+                border: .1rem solid #3b4b6b;
+                padding: .1rem .6rem;
+                border-top-left-radius: .3rem;
+                border-top-right-radius: .3rem;
+                pointer-events: none;
+                transition: .3s ease-in-out;
+              }
+            }
+          }
+
+          >.btn {
+            border-radius: .2rem;
+          }
+        }
+      }
+    }
+  }
 }
 /* Section Chercher cours end */
 
@@ -2914,6 +2931,20 @@ padding: 2rem 1rem;
     }
   }
   /* Section video EST start */
+
+  /* Search cours start */
+  .searchCours {
+    form {
+      .globalInputBox {
+        select {
+          option {
+            font-size: .9rem;
+          }
+        }
+      }
+    }
+  }
+  /* Search cours end */
 
   .headline {
     >h1 {
