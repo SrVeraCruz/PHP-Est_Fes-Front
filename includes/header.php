@@ -1,6 +1,3 @@
-<?php
-require 'config/db.php';
-?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -44,7 +41,7 @@ require 'config/db.php';
 </head>
 
 <body class="body">
-  <?php require 'navbar.php' ?>
+  <?php require_once 'navbar.php' ?>
   <!-- Main start -->
   <main id="main" class="main">
     <!-- Section Accuil start -->

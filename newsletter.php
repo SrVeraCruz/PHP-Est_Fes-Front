@@ -1,5 +1,5 @@
 <?php
-require 'includes/header.php';
+require_once 'includes/header.php';
 ?>
 
   <section class="section newsletter" id="newsletterPage">
@@ -14,5 +14,5 @@ require 'includes/header.php';
   </section>
 
 <?php
-include('includes/footer.php')
+require_once 'includes/footer.php';
 ?>

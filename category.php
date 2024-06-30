@@ -1,5 +1,5 @@
 <?php
-require 'includes/header.php';
+require_once 'includes/header.php';
 ?>
 
 <section id="categoriesPage" class="section category-mixins">
@@ -11,5 +11,5 @@ require 'includes/header.php';
 <!-- Section Espace Etudiant end -->
 
 <?php
-require 'includes/footer.php'
+require_once 'includes/footer.php'
 ?>

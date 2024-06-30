@@ -1,5 +1,5 @@
 <?php
-include('includes/header.php');
+require_once 'includes/header.php';
 ?>
 
 <!-- Section Suivi start -->
@@ -181,5 +181,5 @@ include('includes/header.php');
 <!-- Section Suivi end -->
 
 <?php
-include('includes/footer.php')
+require_once 'includes/footer.php';
 ?>

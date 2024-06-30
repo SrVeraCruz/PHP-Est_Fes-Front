@@ -1,5 +1,5 @@
 <?php
-include('includes/header.php');
+require_once 'includes/header.php';
 ?>
 
 <!-- Section Contact start -->
@@ -39,5 +39,5 @@ include('includes/header.php');
 <!-- Section Contact end -->
 
 <?php
-include('includes/footer.php')
+require_once 'includes/footer.php';
 ?>

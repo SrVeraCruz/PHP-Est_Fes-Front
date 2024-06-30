@@ -1,5 +1,5 @@
 <?php
-require 'includes/header.php';
+require_once 'includes/header.php';
 ?>
 
 <section class="accuil" id="accuil">
@@ -116,9 +116,9 @@ require 'includes/header.php';
       <p>
         L'Ecole Supérieure de Technologie est un établissement UNIVERSITAIRE.Elle fait partie de l'université Sidi Mohamed Ben Abdellah.Le diplôme principal délivré est le <span>DUT : Diplôme Universitaire de Technologie</span>, qui est parfaitement bien reconnu et hautement apprécié.Depuis l'année universitaire 2014-2015 l'EST est habilitée a délivré le diplôme de <span>licence professionnelle</span>.Les formations dispensés sont variées et en parfaite adéquation avec les besoins du monde socio-économique...
       </p>
-      <a href="#">
+      <!-- <a href="#">
         Lire plus <i class="fa fa-angle-right"></i>
-      </a>
+      </a> -->
     </div>
   </div>
 
@@ -314,5 +314,5 @@ require 'includes/header.php';
 <!-- Section Chercher cours end -->
 
 <?php
-include('includes/footer.php')
+require_once 'includes/footer.php';
 ?>

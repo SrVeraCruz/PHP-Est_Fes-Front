@@ -1,5 +1,5 @@
 <?php
-include('includes/header.php');
+require_once 'includes/header.php';
 ?>
 
 <section id="newsPage" class="section news">
@@ -13,6 +13,6 @@ include('includes/header.php');
 </section>
 <?php
 
-include('includes/footer.php')
+require_once 'includes/footer.php';
 
 ?>

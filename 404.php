@@ -1,5 +1,5 @@
 <?php
-require 'includes/header.php';
+require_once 'includes/header.php';
 ?>
 
 <!-- Section 404 start -->
@@ -18,5 +18,5 @@ require 'includes/header.php';
 <!-- Section 404 end -->
 
 <?php
-require 'includes/footer.php';
+require_once 'includes/footer.php';
 ?>
