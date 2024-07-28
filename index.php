@@ -155,11 +155,11 @@ require_once 'includes/header.php';
         </div>
         <div>
           <h2>FC</h2>
-          <a href="category.php?title=fc">Formations Continues</a>
+          <a href="category.php?title=formation-continue-du">Formations Continues</a>
         </div>
         <div>
           <h2>ENT</h2>
-          <a href="category.php?title=espace-etudiant">Espace Numerique De Travail</a>
+          <a href="category.php?title=espace-etudiant">Espace Etudiant</a>
         </div>
       </div>
     </div>

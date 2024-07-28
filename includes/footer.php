@@ -35,13 +35,13 @@
               </a>
             </li>
             <li>
-              <a href="category.php?title=fc">
+              <a href="category.php?title=formation-continue-du">
                 Formations Continues
               </a>
             </li>
             <li>
               <a href="category.php?title=espace-etudiant">
-                Espace Numerique De Travail
+                Espace Etudiant
               </a>
             </li>
           </ul>
