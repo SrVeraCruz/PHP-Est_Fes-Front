@@ -24,7 +24,7 @@ class Category
     $sql = "SELECT ct.*, pct.name AS parent_name 
     FROM " . self::$table . " ct 
     LEFT JOIN " . self::$table . " pct 
-    ON ct.parent_category_id = pct.id WHERE ct.status != '2'";
+    ON ct.parent_category_id = pct.id WHERE ct.status = '0' AND ct.navbar_status = '0'";
 
     $stmt = self::$pdo->prepare($sql);
     $stmt->execute();
@@ -45,7 +45,7 @@ class Category
       FROM ' . self::$table . ' ct 
       LEFT JOIN ' . self::$table . ' pct 
       ON ct.parent_category_id = pct.id 
-      WHERE ct.id = :id LIMIT 1';
+      WHERE ct.id = :id AND ct.status = "0" AND ct.navbar_status = "0" LIMIT 1';
 
       $stmt = self::$pdo->prepare($sql);
       $stmt->bindValue(':id', $id);

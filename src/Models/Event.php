@@ -17,7 +17,7 @@ class Event
   public static function getAll()
   {
     self::initConnection();
-    $sql = "SELECT * FROM " . self::$table;
+    $sql = "SELECT * FROM " . self::$table . " WHERE status = '0'";
 
     $stmt = self::$pdo->prepare($sql);
     $stmt->execute();
@@ -34,15 +34,14 @@ class Event
     self::initConnection();
 
     if ($id) {
-      $sql = "SELECT * FROM " . self::$table . " WHERE id = :id LIMIT 1";
+      $sql = "SELECT * FROM " . self::$table . " WHERE id = :id AND status = '0' LIMIT 1";
       $stmt = self::$pdo->prepare($sql);
       $stmt->bindValue(':id', $id);
 
     } else if($slug) {
-      $sql = "SELECT * FROM " . self::$table . " WHERE slug = :slug LIMIT 1";
+      $sql = "SELECT * FROM " . self::$table . " WHERE slug = :slug AND status = '0' LIMIT 1";
       $stmt = self::$pdo->prepare($sql);
       $stmt->bindValue(':slug', $slug);
-
     }
 
     $stmt->execute();

@@ -27,7 +27,7 @@ class Item
     $sql = "SELECT it.*, cit.name AS category_name 
     FROM " . self::$table . " it 
     LEFT JOIN " . self::$category_table . " cit 
-    ON it.category_id = cit.id";
+    ON it.category_id = cit.id WHERE it.status = '0'";
 
     $stmt = self::$pdo->prepare($sql);
     $stmt->execute();
@@ -46,7 +46,7 @@ class Item
       $sql = "SELECT it.*, cit.name AS category_name 
       FROM " . self::$table . " it 
       LEFT JOIN " . self::$category_table . " cit 
-      ON it.category_id = cit.id WHERE it.id = :id";
+      ON it.category_id = cit.id WHERE it.id = :id AND it.status = '0' LIMIT 1";
 
       $stmt = self::$pdo->prepare($sql);
       $stmt->bindValue(':id', $id);
@@ -55,7 +55,7 @@ class Item
       $sql = "SELECT it.*, cit.name AS category_name 
       FROM " . self::$table . " it 
       LEFT JOIN " . self::$category_table . " cit 
-      ON it.category_id = cit.id WHERE it.slug = :slug";
+      ON it.category_id = cit.id WHERE it.slug = :slug AND it.status = '0' LIMIT 1";
 
       $stmt = self::$pdo->prepare($sql);
       $stmt->bindValue(':slug', $slug);

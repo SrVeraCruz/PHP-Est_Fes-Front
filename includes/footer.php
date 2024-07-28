@@ -24,10 +24,26 @@
         <div class="box">
           <h3>Liens rapides</h3>
           <ul>
-            <li><a href="#">Diplôme Universitaire de Technologies</a></li>
-            <li><a href="#">Licence Profissionnelle</a></li>
-            <li><a href="#">Formations Continues</a></li>
-            <li><a href="#">Espace Numerique De Travail</a></li>
+            <li>
+              <a href="category.php?title=dut">
+                Diplôme Universitaire de Technologies
+              </a>
+            </li>
+            <li>
+              <a href="category.php?title=lp">
+                Licence Profissionnelle
+              </a>
+            </li>
+            <li>
+              <a href="category.php?title=fc">
+                Formations Continues
+              </a>
+            </li>
+            <li>
+              <a href="category.php?title=espace-etudiant">
+                Espace Numerique De Travail
+              </a>
+            </li>
           </ul>
         </div>
 

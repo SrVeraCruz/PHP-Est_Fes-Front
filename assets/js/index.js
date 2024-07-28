@@ -1,6 +1,5 @@
 /* Global Variables */ 
 const baseUrl = 'http://localhost/EST_FES_SITE/est-usmba.ac.ma_2.0/';
-const file_path = 'http://localhost/EST_FES_SITE/admin_est-usmba.ac.ma/uploads/';
 
 const endpointLogin = `${baseUrl}api/users/login`;
 const endpointLogout = `${baseUrl}api/users/logout`;
@@ -449,10 +448,11 @@ if (pageName === '' || pageName === 'index.php') {
         firstSectionElement.innerHTML += `
           <div class="box">
             <a href="category.php?title=${fsCat.slug}">
-              <img 
-                src="${file_path}categories/${fsCat.logo}" 
-                alt="${fsCat.title}"
-              />
+              ${
+                fsCat.logo 
+                ? `<img src="${fsCat.logo}" alt="${fsCat.title}">`
+                : ''
+              }
               <div class="contentBox">
                 <h3>${fsCat.name}</h3>
                 <span>
@@ -468,10 +468,11 @@ if (pageName === '' || pageName === 'index.php') {
         firstSectionElement.innerHTML += `
           <div class="box">
             <a href="category.php?title=${fsItem.slug}">
-              <img 
-                src="${file_path}categories/${fsItem.logo}" 
-                alt="${fsItem.title}"
-              />
+              ${
+                fsItem.logo 
+                ? `<img src="${fsItem.logo}" alt="${fsItem.title}">`
+                : ''
+              }
               <div class="contentBox">
                 <h3>${fsItem.name}</h3>
                 <span>
@@ -496,10 +497,11 @@ if (pageName === '' || pageName === 'index.php') {
           secondSectionElement.innerHTML += `
             <div class="box">
               <a href="category.php?title=${ssCat.slug}">
-                <img 
-                  src="${file_path}categories/${ssCat.logo}" 
-                  alt="${ssCat.title}"
-                />
+                ${
+                  ssCat.logo 
+                  ? `<img src="${ssCat.logo}" alt="${ssCat.title}">`
+                  : ''
+                }
                 <div class="contentBox">
                   <h3>${ssCat.name}</h3>
                   <span>
@@ -515,10 +517,11 @@ if (pageName === '' || pageName === 'index.php') {
           secondSectionElement.innerHTML += `
             <div class="box">
               <a href="category.php?title=${ssItem.slug}">
-                <img 
-                  src="${file_path}categories/${ssItem.logo}" 
-                  alt="${ssItem.title}"
-                />
+                ${
+                  ssItem.logo 
+                  ? `<img src="${ssItem.logo}" alt="${ssItem.title}">`
+                  : ''
+                }
                 <div class="contentBox">
                   <h3>${ssItem.name}</h3>
                   <span>
@@ -766,7 +769,7 @@ if(pageName === 'item.php') {
               <h2>Plus info</h2>
             </div>
             <div class="box-info">
-              <a href="${file_path}files/${item.file}?>" download="${item.file.substring(10)}" class="btn">Telecharger fichier <i class="fa fa-angle-right"></i></>
+              <a href="${item.file}" download="${item.name}" class="btn">Telecharger fichier <i class="fa fa-angle-right"></i></>
             </div>
           </div>
         `
@@ -822,13 +825,23 @@ if(pageName === 'category.php') {
 
         boxContainer.innerHTML = ''
         filteredCat.forEach((fCat) => {
+          let customizedLink = `category.php?title=${fCat.slug}`
+          fCat.name === 'E-L' && (customizedLink = 'elearning.php')
+          fCat.name === 'SL' && (customizedLink = 'suivi.php')
+
           boxContainer.innerHTML += `
             <div class="box">
-              <img src="${file_path}categories/${fCat.logo}" alt="${fCat.title}">
-              <div class="content-Box">
-                <h3>${fCat.name}</h3>
-                <a href="#">${fCat.title} <i class="fa-solid fa-location-arrow"></i></a>
-              </div>
+              <a href="${customizedLink}">
+                ${
+                  fCat.logo 
+                  ? `<img src="${fCat.logo}" alt="${fCat.title}">`
+                  : ''
+                }
+                <div class="content-Box">
+                  <h3>${fCat.name}</h3>
+                  <span>${fCat.title} <i class="fa-solid fa-location-arrow"></i></span>
+                </div>
+              </a>
             </div>
           `
         })
@@ -844,13 +857,19 @@ if(pageName === 'category.php') {
         filteredItems.forEach((fItem) => {
           boxContainer.innerHTML += `
             <div class="box">
-              <img src="${file_path}items/${fItem.logo}" alt="${fItem.title}">
-              <div class="content-Box">
-                <h3>${fItem.name}</h3>
-                <a href="item.php?title=${fItem.slug}">
-                  ${fItem.title} <i class="fa-solid fa-location-arrow"></i>
-                </a>
-              </div>
+              <a href="item.php?title=${fItem.slug}">
+                ${
+                  fItem.logo 
+                  ? `<img src="${fItem.logo}" alt="${fItem.title}">`
+                  : ''
+                }
+                <div class="content-Box">
+                  <h3>${fItem.name}</h3>
+                  <span>
+                    ${fItem.title} <i class="fa-solid fa-location-arrow"></i>
+                  </span>
+                </div>
+              </a>
             </div>
           `
         })

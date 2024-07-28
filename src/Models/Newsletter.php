@@ -17,7 +17,7 @@ class Newsletter
   public static function getAll()
   {
     self::initConnection();
-    $sql = "SELECT * FROM " . self::$table;
+    $sql = "SELECT * FROM " . self::$table . " WHERE status = '0'";
 
     $stmt = self::$pdo->prepare($sql);
     $stmt->execute();
@@ -32,7 +32,7 @@ class Newsletter
   public static function getOne($id)
   {
     self::initConnection();
-    $sql = "SELECT * FROM " . self::$table . " WHERE id = :id LIMIT 1";
+    $sql = "SELECT * FROM " . self::$table . " WHERE id = :id AND status = '0' LIMIT 1";
 
     $stmt = self::$pdo->prepare($sql);
     $stmt->bindValue(':id', $id);

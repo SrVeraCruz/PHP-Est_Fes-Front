@@ -20,7 +20,7 @@ class User
   public static function getAll()
   {
     self::initConnection();
-    $sql = 'SELECT * FROM ' . self::$table;
+    $sql = 'SELECT * FROM ' . self::$table . " WHERE status = '0'";
     $stmt = self::$pdo->prepare($sql);
     $stmt->execute();
 
@@ -34,7 +34,7 @@ class User
   public static function getOne($id)
   {
     self::initConnection();
-    $sql = 'SELECT * FROM ' . self::$table . ' WHERE id = :id';
+    $sql = 'SELECT * FROM ' . self::$table . ' WHERE id = :id AND status = "0" LIMIT 1';
     $stmt = self::$pdo->prepare($sql);
     $stmt->bindValue(':id', $id);
     $stmt->execute();

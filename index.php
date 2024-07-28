@@ -147,19 +147,19 @@ require_once 'includes/header.php';
       <div class="content">
         <div>
           <h2>DUT</h2>
-          <a href="#">Diplôme Universitaire de Technologies</a>
+          <a href="category.php?title=dut">Diplôme Universitaire de Technologies</a>
         </div>
         <div>
           <h2>LP</h2>
-          <a href="#">Licence Profissionnelle</a>
+          <a href="category.php?title=lp">Licence Profissionnelle</a>
         </div>
         <div>
           <h2>FC</h2>
-          <a href="#">Formations Continues</a>
+          <a href="category.php?title=fc">Formations Continues</a>
         </div>
         <div>
           <h2>ENT</h2>
-          <a href="#">Espace Numerique De Travail</a>
+          <a href="category.php?title=espace-etudiant">Espace Numerique De Travail</a>
         </div>
       </div>
     </div>

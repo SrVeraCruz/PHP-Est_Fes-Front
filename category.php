@@ -8,7 +8,6 @@ require_once 'includes/header.php';
   </div>
   <h1>Please verify the title...</h1>
 </section>
-<!-- Section Espace Etudiant end -->
 
 <?php
 require_once 'includes/footer.php'
