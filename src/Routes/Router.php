@@ -144,7 +144,8 @@ switch ($uri) {
     break;
 
   case 'api/users/register':
-    require_once '../../middleware/redirect-user.php';
+    // require_once '../../middleware/redirect-user.php';
+    session_start();
 
     if ($method === 'POST') {
       json_encode(UserService::POST($_POST, $_FILES));
@@ -154,7 +155,8 @@ switch ($uri) {
     break;
 
   case 'api/users/login':
-    require_once '../../middleware/redirect-user.php';
+    // require_once '../../middleware/redirect-user.php';
+    session_start();
 
     if ($method === 'POST') {
       if (isset($_POST['email']) && isset($_POST['password'])) {

@@ -1090,3 +1090,79 @@ if(pageName === 'newsletter.php') {
     }
   } 
 }
+
+
+/* Register Page */ 
+//////////////////////////////////////////////////////////
+// if(pageName === 'register.php') {
+//   const formUserRegister = document.getElementById('formUserRegister')
+
+//   formUserRegister.onsubmit = async (event) => {
+//     event.preventDefault();
+
+//     let avatarUrl = ''
+//     const avatar = event.target.avatar.files[0]
+
+//     if(avatar) {
+//       avatarUrl = await handleUpload(avatar)
+//     }
+
+//     const formData = new FormData();
+//     formData.append('fname', event.target.fname.value)
+//     formData.append('lname', event.target.lname.value)
+//     formData.append('email', event.target.email.value)
+//     formData.append('password', event.target.password.value)
+//     formData.append('cpassword', event.target.cpassword.value)
+//     formData.append('birth', event.target.birth.value)
+//     formData.append('sex', event.target.sex.value)
+//     formData.append('avatar', avatarUrl)
+    
+//     await axios.post(endpointRegister, formData)
+//     .then(() => {
+//       window.location.href = "login.php";
+//     }).catch(err => {
+//       toastrAlert(err)
+//     })
+//   }
+// }
+  
+  /* Login Page */ 
+//////////////////////////////////////////////////////////
+if(pageName === 'elearning-login.php') { 
+  const eLearningLoginForm = document.getElementById('eLearningLoginForm')
+  
+  eLearningLoginForm.onsubmit = async (event) => {
+    event.preventDefault();
+    
+    const formData = new FormData();
+    formData.append('email', event.target.email.value)
+    formData.append('password', event.target.password.value)
+    
+    await axios.post(endpointLogin, formData)
+    .then(() => {
+      location.href = "elearning.php";
+    }).catch(err => {
+      toastrAlert(err)
+    })
+  }
+}
+
+if(pageName === 'elearning.php') {  
+
+  /* Logout event */ 
+  const logoutForm = document.getElementById("logoutForm");
+  
+  if(logoutForm) {
+    logoutForm.onsubmit = (event) => {
+      event.preventDefault()
+      
+      axios.post(endpointLogout)
+      .then(() => {
+        location.href = 'elearning-login.php'
+      })
+      .catch(err => {
+        toastrAlert(err)
+      })
+    }
+  }
+}

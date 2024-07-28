@@ -57,7 +57,7 @@ require_once 'includes/header.php';
             <input type="submit" name="submit" value="submit" id="eLearnBtn" class="btn">
           </div>
 
-          <a href="./elearning.php" class="registerBtn">Avez-vous a compte? <span>Connecter</span></a>
+          <a href="./elearning-login.php" class="registerBtn">Avez-vous a compte? <span>Connecter</span></a>
 
         </form>
       </div>
