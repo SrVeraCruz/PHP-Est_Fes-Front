@@ -4,10 +4,6 @@ require_once '../config/db.php';
 class User
 {
   private static $table = "users";
-  private static $allowed_files = ['png', 'jpg', 'jpeg', 'webp', 'avif', 'svg'];
-  private static $file_max_size = 1000000;
-  private static $destination_path_upload = '../../uploads/users/';
-
   private static $pdo = null;
 
   private static function initConnection()
@@ -16,6 +12,7 @@ class User
       self::$pdo = Database::getConnection();
     }
   }
+
 
   public static function getAll()
   {
@@ -55,24 +52,24 @@ class User
     $interval = $todaysDate->diff($BirthDate);
 
     // Inputs Verification
-    if (!trim($data['fname'])) {
+    if (!trim($data['lname'])) {
       http_response_code(400);
-      return json_encode(['message_warning' => 'Please enter the user first name']);
-    } elseif (!trim($data['lname'])) {
+      return json_encode(['message_warning' => 'Veuillez rentrer votre nom']);
+    } elseif (!trim($data['fname'])) {
       http_response_code(400);
-      return json_encode(['message_warning' => 'Please enter the user last name']);
+      return json_encode(['message_warning' => 'Veuillez rentrer votre prenom']);
     } elseif (!trim($data['email'])) {
       http_response_code(400);
-      return json_encode(['message_warning' => 'Please enter the user email']);
+      return json_encode(['message_warning' => 'Veuillez rentrer votre email']);
     } elseif ((strlen($data['password'])) < 8 || (strlen($data['cpassword'])) < 8) {
       http_response_code(400);
-      return json_encode(['message_warning' => 'Password Should be 8+ characters']);
+      return json_encode(['message_warning' => 'Le mot de passe doit contenir 8+ caractères']);
     } elseif ($interval->y < 18) {
       http_response_code(400);
-      return json_encode(['message_warning' => 'The user must be over 18+']);
+      return json_encode(['message_warning' => 'Vous devez avoir plus de 18+']);
     } elseif (!trim($data['sex'])) {
       http_response_code(400);
-      return json_encode(['message_warning' => 'Please choose the user gender']);
+      return json_encode(['message_warning' => 'Veuillez choisir le sexe']);
     } else {
 
       // Check passwords
@@ -85,46 +82,21 @@ class User
 
         if ($stmt->rowCount() == 0) {
           $hash_password = password_hash($data['password'], PASSWORD_DEFAULT);
-
-          // Work on file
-          $file_to_upload = '';
-          if (isset($file['avatar'])) {
-            if ($file['avatar']['name'] != null || $file['avatar']['name'] != '') {
-              $file_extention = pathinfo($file['avatar']['name'], PATHINFO_EXTENSION);
-
-              if (in_array($file_extention, self::$allowed_files)) {
-                if ($file['avatar']['size'] <= self::$file_max_size) {
-                  $time = time();
-                  $file_to_upload = $time . $file['avatar']['name'];
-                  $file_destination_path = self::$destination_path_upload . $file_to_upload;
-
-                  if ((move_uploaded_file($file['avatar']["tmp_name"], $file_destination_path)) == false) {
-                    http_response_code(400);
-                    return json_encode(['message_warning' => "Sommething went wrong on uploading File"]);
-                  }
-                } else {
-                  http_response_code(400);
-                  return json_encode(['message_warning' => "File size too big. Should be less than 1Mb"]);
-                }
-              } else {
-                http_response_code(400);
-                return json_encode(['message_warning' => "File Should be 'png','jpg','jpeg','webp','avif','svg'"]);
-              }
-            }
-          }
+          
         } else {
           http_response_code(400);
-          return json_encode(['message_warning' => 'Email alread exist']);
+          return json_encode(['message_warning' => "L'e-mail existe déjà"]);
         }
       } else {
         http_response_code(400);
-        return json_encode(['message_error' => 'Password and Confirm Password does no Match']);
+        return json_encode(['message_warning' => 'Le mot de passe et la confirmation du mot de passe ne correspondent pas']);
       }
 
       // Insert user
-      $add_user_query = "INSERT INTO " .
-        self::$table . " (fname, lname, birth, sex, email, password, status, role_as, avatar) 
-        VALUES (:fname, :lname, :birth, :sex, :email, :hash_password, :status, :role_as,:file_to_upload)";
+      $add_user_query = "INSERT INTO " . self::$table . " 
+        (fname, lname, birth, sex, email, password, status, role_as, avatar) VALUES 
+        (:fname, :lname, :birth, :sex, :email, :hash_password, :status, :role_as, :avatar)"
+      ;
 
       $status = '0';
       if (isset($data['status'])) {
@@ -145,24 +117,20 @@ class User
       $stmt->bindValue(':hash_password', $hash_password);
       $stmt->bindValue(':status', $status);
       $stmt->bindValue(':role_as', $role_as);
-      $stmt->bindValue(':file_to_upload', $file_to_upload);
+      $stmt->bindValue(':avatar', $data['avatar']);
       $stmt->execute();
 
       if ($stmt->rowCount() > 0) {
-        if ($role_as === '0') {
-          http_response_code(200);
-          return json_encode(['message_success' => "User added successfully"]);
-        } else {
-          http_response_code(200);
-          return json_encode(['message_success' => "Admin added successfully"]);
-        }
+        http_response_code(200);
+        return json_encode(['message_success' => "enregistré avec succès"]);
+        
       } else {
-        throw new Exception("Sommething went wrong");
+        throw new Exception("Un erreur s'est produit");
       }
     }
   }
 
-  public static function updateOne($data, $file)
+  public static function updateOne($data)
   {
     self::initConnection();
 
@@ -171,32 +139,32 @@ class User
     $interval = $todaysDate->diff($BirthDate);
 
     // Inputs Verification
-    if (!trim($data['fname'])) {
+    if (!trim($data['lname'])) {
       http_response_code(400);
-      return json_encode(['message_warning' => 'Please enter the user first name']);
-    } elseif (!trim($data['lname'])) {
+      return json_encode(['message_warning' => 'Veuillez rentrer votre nom']);
+    } elseif (!trim($data['fname'])) {
       http_response_code(400);
-      return json_encode(['message_warning' => 'Please enter the user last name']);
+      return json_encode(['message_warning' => 'Veuillez rentrer votre prenom']);
     } elseif (!trim($data['email'])) {
       http_response_code(400);
-      return json_encode(['message_warning' => 'Please enter the user email']);
-    } elseif ((strlen($data['password'])) < 8) {
+      return json_encode(['message_warning' => 'Veuillez rentrer votre email']);
+    } elseif ((strlen($data['password'])) < 8 || (strlen($data['cpassword'])) < 8) {
       http_response_code(400);
-      return json_encode(['message_warning' => 'Password Should be 8+ characters']);
+      return json_encode(['message_warning' => 'Le mot de passe doit contenir 8+ caractères']);
     } elseif ($interval->y < 18) {
       http_response_code(400);
-      return json_encode(['message_warning' => 'The user must be over 18+']);
+      return json_encode(['message_warning' => 'Vous devez avoir plus de 18+']);
     } elseif (!trim($data['sex'])) {
       http_response_code(400);
-      return json_encode(['message_warning' => 'Please choose the user gender']);
-    } elseif ($data['role_as'] == '') {
-      http_response_code(400);
-      return json_encode(['message_warning' => 'Please choose the user role']);
+      return json_encode(['message_warning' => 'Veuillez choisir le sexe']);
     } else {
+
       // Check the password status
-      $user_query = "SELECT password,avatar FROM " . self::$table . " WHERE id = :id LIMIT 1";
+      $user_query = "SELECT password,avatar 
+        FROM " . self::$table . " WHERE id = :id LIMIT 1"
+      ;
       $stmt = self::$pdo->prepare($user_query);
-      $stmt->bindValue(':id', $data['update_user_id']);
+      $stmt->bindValue(':id', $data['update_id']);
       $stmt->execute();
 
       if ($stmt->rowCount()) {
@@ -210,7 +178,7 @@ class User
         }
       } else {
         http_response_code(400);
-        return json_encode(['message_error' => 'Invalid User']);
+        return json_encode(['message_error' => "Le mot de passe ne correspondent pas"]);
       }
 
       // Email verification
@@ -222,38 +190,18 @@ class User
       if ($stmt->rowCount()) {
         $email_data = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        if ($email_data['id'] !== $data['update_user_id']) {
+        if ($email_data['id'] !== $data['update_id']) {
           http_response_code(400);
-          return json_encode(['message_warning' => 'Email alread exist']);
-        }
-      }
-
-      // Check avatar status
-      $avatar_to_upload = $data['avatar_old_name'];
-      if (isset($file['avatar'])) {
-        if ($file['avatar']['name'] != null || $file['avatar']['name'] != '') {
-          $avatar_extention = pathinfo($file['avatar']['name'], PATHINFO_EXTENSION);
-
-          if (in_array($avatar_extention, self::$allowed_files)) {
-            if ($file['avatar']['size'] <= self::$file_max_size) {
-              $time = time();
-              $avatar_to_upload = $time . $file['avatar']['name'];
-              $avatar_destination_path = self::$destination_path_upload . $avatar_to_upload;
-            } else {
-              http_response_code(400);
-              return json_encode(['message_warning' => "File size too big. Should be less than 1Mb"]);
-            }
-          } else {
-            http_response_code(400);
-            return json_encode(['message_warning' => "File Should be 'png','jpg','jpeg','webp','avif','svg'"]);
-          }
+          return json_encode(['message_warning' => "L'e-mail existe déjà"]);
         }
       }
 
       // Updating user
-      $update_user_query = "UPDATE " . self::$table . " SET fname = :fname, lname = :lname, birth = :birth, sex = :sex, email = :email, password = :hash_password, role_as = :role_as, status = :status, avatar = :avatar_to_upload WHERE id = :id";
+      $update_query = "UPDATE " . self::$table . " 
+        SET fname = :fname, lname = :lname, birth = :birth, sex = :sex, email = :email, password = :hash_password, role_as = :role_as, status = :status, avatar = :avatar WHERE id = :id"
+      ;
 
-      $stmt = self::$pdo->prepare($update_user_query);
+      $stmt = self::$pdo->prepare($update_query);
       $stmt->bindValue(':fname', $data['fname']);
       $stmt->bindValue(':lname', $data['lname']);
       $stmt->bindValue(':birth', $data['birth']);
@@ -262,63 +210,33 @@ class User
       $stmt->bindValue(':hash_password', $hash_password);
       $stmt->bindValue(':role_as', $data['role_as']);
       $stmt->bindValue(':status', $data['status']);
-      $stmt->bindValue(':avatar_to_upload', $avatar_to_upload);
-      $stmt->bindValue(':id', $data['update_user_id']);
+      $stmt->bindValue(':avatar', $data['avatar']);
+      $stmt->bindValue(':id', $data['update_id']);
       $success = $stmt->execute();
 
       if ($success) {
-        if (isset($file['avatar'])) {
-          if ($file['avatar']['name'] != null || $file['avatar']['name'] != '') {
-            $avatar_old_destination_path = self::$destination_path_upload . $data['avatar_old_name'];
-
-            if (file_exists($avatar_old_destination_path)) {
-              unlink($avatar_old_destination_path);
-            }
-
-            if ((move_uploaded_file($file['avatar']["tmp_name"], $avatar_destination_path)) == false) {
-              http_response_code(400);
-              return json_encode(['message_warning' => "Sommething went wrong on uploading Avatar"]);
-            }
-          }
-        }
-
-        if ($data['role_as'] === '0') {
-          http_response_code(200);
-          return json_encode(['message_success' => "User Updated successfully"]);
-        } else {
-          http_response_code(200);
-          return json_encode(['message_success' => "Admin Updated successfully"]);
-        }
+        http_response_code(200);
+        return json_encode(['message_success' => "enregistré avec succès"]);
       } else {
-        throw new Exception("Sommething went wrong");
+        throw new Exception("Un erreur s'est produit");
       }
     }
   }
 
   public static function deleteOne($data)
   {
-    // Delete user
     self::initConnection();
-    $delete_user_query = "DELETE FROM " . self::$table . " WHERE id = :id LIMIT 1";
-    $stmt = self::$pdo->prepare($delete_user_query);
-    $stmt->bindValue(':id', $data['delete_user_id']);
+
+    $delete_query = "DELETE FROM " . self::$table . " WHERE id = :id LIMIT 1";
+    $stmt = self::$pdo->prepare($delete_query);
+    $stmt->bindValue(':id', $data['delete_id']);
     $success = $stmt->execute();
 
     if ($success) {
-      $avatar_old_destination_path = '../../uploads/users' . $data['avatar'];
-      if (file_exists($avatar_old_destination_path)) {
-        unlink($avatar_old_destination_path);
-      }
-
-      if ($data['role_as'] === '0') {
-        http_response_code(200);
-        return json_encode(['message_success' => 'User deleted successfully']);
-      } else {
-        http_response_code(200);
-        return json_encode(['message_success' => 'Admin deleted successfully']);
-      }
+      http_response_code(200);
+      return json_encode(['message_success' => 'Votre conte a ete bien supprimé']);
     } else {
-      throw new Exception('Sommething went wrong');
+      throw new Exception("Un erreur s'est produit");
     }
   }
 
@@ -330,13 +248,13 @@ class User
 
     if (!$email) {
       http_response_code(400);
-      return json_encode(['message_warning' => 'Email is required']);
+      return json_encode(['message_warning' => "L'email est obligatoire"]);
     } elseif (!$password) {
       http_response_code(400);
-      return json_encode(['message_warning' => 'Password is required']);
+      return json_encode(['message_warning' => "Le Mot de passe est obligatoire"]);
     } elseif (strlen($password) < 8) {
       http_response_code(400);
-      return json_encode(['message_warning' => 'Password should be 8+ characters']);
+      return json_encode(['message_warning' => 'Le mot de passe doit contenir 8+ caractères']);
     } else {
 
       $user_query = "SELECT * FROM " . self::$table . " 
@@ -367,12 +285,12 @@ class User
         } else {
           // Credentials does not match
           http_response_code(400);
-          return json_encode(['message_error' => 'Invalid Email or Password']);
+          return json_encode(['message_error' => 'Email ou mot de passe invalide']);
         }
       } else {
         // Credentials does not match
         http_response_code(400);
-        return json_encode(['message_error' => 'Invalid Email or Password']);
+        return json_encode(['message_error' => 'Email ou mot de passe invalide']);
       }
     }
   }
@@ -383,6 +301,6 @@ class User
     session_unset();
     session_destroy();
 
-    return json_encode(['message_success' => 'Logged Out Succesfully']);
+    return json_encode(['message_success' => 'Déconnexion réussie']);
   }
 }

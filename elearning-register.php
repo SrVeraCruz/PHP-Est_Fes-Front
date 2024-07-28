@@ -17,44 +17,53 @@ require_once 'includes/header.php';
             <p>Identification</p>
           </div>
         </div>
-        <form>
+        <form id="eLearningRegisterForm">
           <div class="form-box">
             <div class="box-inputs">
-              <label for="inputName" name="labelName" id="labelName" class="labelInput">Nom:</label>
-              <input type="text" name="inputName" id="inputName" class="inputUser" placeholder="Entrer votre nom d'utilisateur"
-              autocomplete="username" required>
+              <label id="labelLname" class="labelInput">Nom:</label>
+              <input type="text" name="lname" id="inputLname" class="inputUser" placeholder="Entrer votre nom d'utilisateur"
+              autocomplete="username">
             </div>
             <div class="box-inputs">
-              <label for="inputTel" name="labelTel" id="labelTel" class="labelInput">Contact:</label>
-              <input type="text" name="inputTel" id="inputTel" class="inputUser" placeholder="Entrer votre numero de telephone"
-              required>
+              <label id="labelFname" class="labelInput">Prenom:</label>
+              <input type="text" name="fname" id="inputFname" class="inputUser" placeholder="Entrer votre nom d'utilisateur"
+              autocomplete="username">
             </div>
             <div class="box-inputs">
-              <label for="inputEmail" name="labelEmail" id="labelEmail" class="labelInput">Email:</label>
-              <input type="text" name="inputEmail" id="inputEmail" class="inputUser" placeholder="Entrer votre email"
-              required>
+              <label id="labelEmail" class="labelInput">Email:</label>
+              <input type="text" name="email" id="inputEmail" class="inputUser" autocomplete="username" placeholder="Entrer votre email"
+            >
             </div>
             <div class="box-inputs">
-              <label for="inputPassword" name="labelPassword" id="labelPassword" class="labelInput">Password:</label>
-              <input type="password" name="inputPassword" id="inputPassword" class="inputUser" placeholder="Entrer votre mot de passe"  autocomplete="current-password" required>
+              <label id="labelPassword" class="labelInput">Mot de passe:</label>
+              <input type="password" name="password" id="inputPassword" class="inputUser" placeholder="Entrer votre mot de passe"  autocomplete="current-password">
+            </div>
+            <div class="box-inputs">
+              <label id="labelCpassword" class="labelInput">Confirmer mot de passe:</label>
+              <input type="password" name="cpassword" id="inputCpassword" class="inputUser" placeholder="Confirmer votre mot de passe"  autocomplete="current-password">
             </div>
             <div class="box-inputs naissance">
-              <label for="inputDateNas" name="labelDateNas" id="labelDateNas" class="labelInput">Naissance:</label>
-              <input type="date" name="inputDateNas" id="inputDateNas" class="inputUser" required>
+              <label id="labelDateNas" class="labelInput">Naissance:</label>
+              <input type="date" name="birth" id="inputDateNas" class="inputUser">
             </div>
             <p>Sex:</p>
             <div class="radio sex">
-              <input type="radio" name="inputSex" id="inputSexM" class="inputUser" value="masculin" required>
-              <label for="inputSexM" id="labelSex" class="labelInput">Masculin</label>
+              <input type="radio" name="sex" id="inputSexM" class="inputUser" value="masculin">
+              <label id="labelSex" for="inputSexM" class="labelInput">Masculin</label>
             </div>
             <div class="radio sex">
-              <input type="radio" name="inputSex" id="inputSexF" class="inputUser" value="feminin" required>
-              <label for="inputSexF" id="labelSex" class="labelInput">Feminin</label>
+              <input type="radio" name="sex" id="inputSexF" class="inputUser" value="feminin">
+              <label id="labelSex" for="inputSexF" class="labelInput">Feminin</label>
+            </div>
+
+            <div class="box-inputs avatar">
+              <label id="labelAvatar" class="labelInput">Avatar:</label>
+              <input type="file" name="avatar" id="inputAvatar" class="inputUser" placeholder="Confirmer votre mot de passe" autocomplete="current-password">
             </div>
           </div>
           
           <div class="box-buttons">
-            <input type="submit" name="submit" value="submit" id="eLearnBtn" class="btn">
+            <input type="submit" name="submit" value="Enregistrer" id="eLearnBtn" class="btn">
           </div>
 
           <a href="./elearning-login.php" class="registerBtn">Avez-vous a compte? <span>Connecter</span></a>

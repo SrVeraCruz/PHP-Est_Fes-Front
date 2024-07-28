@@ -11,6 +11,11 @@ const endpointNewsletter = `${baseUrl}api/newsletter`;
 const endpointCategories = `${baseUrl}api/categories`;
 const endpointItems = `${baseUrl}api/items`;
 
+const endpointImageCld = 'https://api.cloudinary.com/v1_1/dbfaih2du/image/upload';
+const endpointRawCld = 'https://api.cloudinary.com/v1_1/dbfaih2du/raw/upload';
+
+const rawPathCld = "https://res-console.cloudinary.com/dbfaih2du/media_explorer_thumbnails/"
+
 const searchUrl = new URLSearchParams(window.location.search)
 const pageUrl = location.pathname
 const pageName = pageUrl.substring(pageUrl.lastIndexOf("/") + 1)
@@ -139,6 +144,21 @@ const fetchOneByItemSlug = async (slug) => {
   .catch(err => {
     console.error(err.message)
   })
+}
+
+const handleUpload = async (file) => {
+  const data = new FormData()
+  data.append('file', file)
+  data.append('upload_preset', 'est_uploads_file')
+
+  if(file.type === 'application/pdf') {
+    const res = await axios.post(endpointRawCld ,data)
+    const fileUrl = `${rawPathCld + res.data.asset_id}/download`
+    return fileUrl
+  }
+
+  const res = await axios.post(endpointImageCld ,data)
+  return res.data.secure_url
 }
 
 const toastrAlert = (err) => {
@@ -1092,41 +1112,42 @@ if(pageName === 'newsletter.php') {
 }
 
 
-/* Register Page */ 
+/* Elearning register Page */ 
 //////////////////////////////////////////////////////////
-// if(pageName === 'register.php') {
-//   const formUserRegister = document.getElementById('formUserRegister')
+if(pageName === 'elearning-register.php') {
+  const eLearningRegisterForm = document.getElementById('eLearningRegisterForm')
 
-//   formUserRegister.onsubmit = async (event) => {
-//     event.preventDefault();
+  eLearningRegisterForm.onsubmit = async (event) => {
+    event.preventDefault();
 
-//     let avatarUrl = ''
-//     const avatar = event.target.avatar.files[0]
+    let avatarUrl = ''
+    const avatar = event.target.avatar.files[0]
 
-//     if(avatar) {
-//       avatarUrl = await handleUpload(avatar)
-//     }
+    if(avatar) {
+      avatarUrl = await handleUpload(avatar)
+    }
 
-//     const formData = new FormData();
-//     formData.append('fname', event.target.fname.value)
-//     formData.append('lname', event.target.lname.value)
-//     formData.append('email', event.target.email.value)
-//     formData.append('password', event.target.password.value)
-//     formData.append('cpassword', event.target.cpassword.value)
-//     formData.append('birth', event.target.birth.value)
-//     formData.append('sex', event.target.sex.value)
-//     formData.append('avatar', avatarUrl)
+    const formData = new FormData();
+    formData.append('fname', event.target.fname.value)
+    formData.append('lname', event.target.lname.value)
+    formData.append('email', event.target.email.value)
+    formData.append('password', event.target.password.value)
+    formData.append('cpassword', event.target.cpassword.value)
+    formData.append('birth', event.target.birth.value)
+    formData.append('sex', event.target.sex.value)
+    formData.append('avatar', avatarUrl)
     
-//     await axios.post(endpointRegister, formData)
-//     .then(() => {
-//       window.location.href = "login.php";
-//     }).catch(err => {
-//       toastrAlert(err)
-//     })
-//   }
-// }
+    await axios.post(endpointRegister, formData)
+    .then((res) => {
+      window.location.href = "elearning-login.php";
+      console.log(res.data)
+    }).catch(err => {
+      toastrAlert(err)
+    })
+  }
+}
   
-  /* Login Page */ 
+/* Elearning login Page */ 
 //////////////////////////////////////////////////////////
 if(pageName === 'elearning-login.php') { 
   const eLearningLoginForm = document.getElementById('eLearningLoginForm')
@@ -1147,6 +1168,9 @@ if(pageName === 'elearning-login.php') {
   }
 }
 
+
+/* Elearning page */ 
+//////////////////////////////////////////////////////////
 if(pageName === 'elearning.php') {  
 
   /* Logout event */ 

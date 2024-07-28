@@ -30,7 +30,8 @@ require_once 'includes/header.php';
                 type="email" 
                 name="email" 
                 id="inputEmail" 
-                class="inputUser" 
+                class="inputUser"
+                autocomplete="username" 
                 placeholder="Entrer votre email"
                 >
             </div>
@@ -50,7 +51,8 @@ require_once 'includes/header.php';
                 autocomplete="current-password"
               />
             </div>
-            <a href="#" class="forgotPass">Mot de passe oublié?</a>
+            <!-- <a href="#" class="forgotPass">Mot de passe oublié?</a> -->
+            </br>
           </div>
           
           <div class="box-buttons">
