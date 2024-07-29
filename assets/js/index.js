@@ -846,7 +846,7 @@ if(pageName === 'category.php') {
         boxContainer.innerHTML = ''
         filteredCat.forEach((fCat) => {
           let customizedLink = `category.php?title=${fCat.slug}`
-          fCat.name === 'E-L' && (customizedLink = 'elearning.php')
+          fCat.name === 'E-L' && (customizedLink = 'elearning-login.php')
           fCat.name === 'SL' && (customizedLink = 'suivi.php')
 
           boxContainer.innerHTML += `

@@ -216,7 +216,7 @@ class User
 
       if ($success) {
         http_response_code(200);
-        return json_encode(['message_success' => "enregistré avec succès"]);
+        return json_encode(['message_success' => "Enregistré avec succès"]);
       } else {
         throw new Exception("Un erreur s'est produit");
       }
@@ -242,8 +242,6 @@ class User
 
   public static function authenticate($email, $password)
   {
-    // return json_encode(['email' => $email, 'password' => $password]);
-
     self::initConnection();
 
     if (!$email) {
@@ -269,18 +267,23 @@ class User
         $hash_password = $user_data['password'];
 
         if (password_verify($password, $hash_password)) {
-          // Authenticate
-          $_SESSION['auth'] = true;
-          $_SESSION['auth_role'] = $user_data['role_as']; // 0=user, 1=admin, 2=super_admin
-          $_SESSION['auth_user'] = [
-            'user_id' => $user_data['id'],
-            'user_name' => $user_data['fname'] . ' ' . $user_data['lname'],
-            'user_email' => $user_data['email'],
-            'user_img' => $user_data['avatar'],
-          ];
+          if($user_data['status'] === '0') {
+            // Authenticate
+            $_SESSION['auth'] = true;
+            $_SESSION['auth_role'] = $user_data['role_as']; // 0=user, 1=admin, 2=super_admin
+            $_SESSION['auth_user'] = [
+              'user_id' => $user_data['id'],
+              'user_name' => $user_data['fname'] . ' ' . $user_data['lname'],
+              'user_email' => $user_data['email'],
+              'user_img' => $user_data['avatar'],
+            ];
+  
+            http_response_code(200);
+            return json_encode(['message_success' => 'Welcomme']);
+          }
 
-          http_response_code(200);
-          return json_encode(['message_success' => 'Welcomme']);
+          http_response_code(401);
+          return json_encode(['message_warning' => "Vous n'êtes pas autorisé! Veuillez contacter le support."]);
           
         } else {
           // Credentials does not match
