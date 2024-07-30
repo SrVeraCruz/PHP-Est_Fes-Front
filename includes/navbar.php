@@ -4,7 +4,7 @@
     <div>
       <div>
         <a href="index.php">
-          <img src="./assets/img/est_logo.jpg" alt="est_logo">
+          <img src="./assets/img/est_logo.png" alt="est_logo">
         </a>
       </div>
     </div>
