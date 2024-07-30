@@ -1,19 +1,18 @@
-<?php 
+<?php
   session_start();
 
   if(!isset($_SESSION['auth'])) {
     session_unset();
     session_destroy();
-    header('Location: elearning-login.php');
-    
+    header('Location: note-consultation-login.php');
   } 
-  
+
   $etudiant = $_SESSION['auth_user']['user_email'];
+
   require_once 'includes/headerMixed.php';
-  
 ?>
 
-  <section class="section  construction" id="eLearn">
+  <section class="consultation construction" id="consultationNote">
     <div class="boxContainer">
       <div class="box">
         </br>

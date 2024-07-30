@@ -10,7 +10,7 @@
   --dark-secundary-gray: #666;
   --dark-secundary-soft-gray: #8b8b8b;
   --bg-construction-color: #021a64;
-  --text-construction-color: #c2392c;
+  --text-construction-color: #d93125;
   --bg-ancar: #e2dcdc;
 }
 
@@ -73,11 +73,13 @@ html  {
   width: 100%;
   transition: .3s ease-in-out;
 }
-.wrapper>.wrapper-box1>div>div {
-  width: 80%;
-  padding: .5rem;
-  border: .1rem solid rgba(0, 0, 0, 0.1);
-  background-color: var(--gris);
+.wrapper>.wrapper-box1>div {
+  >div {
+    width: 80%;
+    padding: .5rem;
+    border: .1rem solid rgba(0, 0, 0, 0.1);
+    background-color: var(--gris);
+  }
 }
 .wrapper>.wrapper-box1>div img {
   width: 100%;
@@ -1942,6 +1944,7 @@ footer>.boxContainer>.content:nth-child(2)  {
             color: var(--darkBlue);
             display: -webkit-box;
             -webkit-line-clamp: 1;
+            /* line-clamp: 1; */
             -webkit-box-orient: vertical;
             overflow: hidden !important;
             text-overflow: ellipsis;
@@ -2043,47 +2046,51 @@ padding: 2rem 1rem;
 /* Filiere DUT / LP end */
 
 /* E-learning start */
-#wrapperElearn {
+#wrapperMixed {
   position: fixed;
   top: 0;
   left: 0;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #f7f7f7;
-  padding: 1rem 2rem;
-  padding-left: 0;
+  background: #fff;
+  padding: .9rem 1.5rem;
 
   >.logo {
-    height: 3.5rem;
+    height: 3.3rem;
 
     >img {
       height: 100%;
-      width: 20rem;
+      width: 18rem;
     }
   }
 
   .exit {
     button {
       display: flex;
+      gap: .3rem;
       justify-content: space-between;
       align-items: center;
       border: none;
-
-      >img {
-        height: 3rem;
+      background-color: transparent;
+      color: var(--blue);
+      cursor: pointer;
+      transition: .1s ease-in-out;
+      
+      >i {
+        font-size: 1.1rem;
         transition: .2s ease-in-out;
-
-        &:hover {
-          cursor: pointer;
-          opacity: 80%;
-        }
+        
+      }
+      
+      &:hover {
+        opacity: 80%;
       }
     }
   }
 }
 
-#mainElearn {
+#mainMixed {
   margin-top: 5.5rem;
   transition: none;
 }
@@ -2212,10 +2219,121 @@ padding: 2rem 1rem;
   }
 }
 
-#footerElearn>.boxContainer>.content:first-child {
-  padding: 0;
+#footerMixed>.boxContainer {
+  >.content {
+    &:first-child {
+      padding: 0;
+    }
+    
+    &:nth-child(2) {
+      padding: 2rem 2.5rem;
+      background-color: #e9ecf0;
+      font-size: .9rem;
+      color: var(--dark-primary-gray);
+    }
+  }
 }
 /* E-learning end */
+
+.globalWrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 2rem;
+}
+
+/* Espace Etudiant end */
+.consultation.login {
+  padding: 2rem;
+
+  .boxContainer {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+
+    .box {
+      flex: 1 1 20rem;
+      height: max-content;
+      border: .05rem solid var(--bg-ancar);
+      border-radius: .2rem;
+      padding: 1.5rem;
+      overflow: hidden;
+
+      &:nth-child(1) {
+        .head {
+          background-color: #28c1d9;
+          padding: .8rem 1.2rem;
+          margin: -1.5rem -1.5rem 1.2rem -1.5rem;
+          font-size: .9rem;
+          font-weight: 700;
+          color: var(--dark-primary-gray);
+        }
+  
+        .body {
+          h3 {
+            color: var(--text-construction-color);
+            font-size: .9rem;
+          }
+  
+          form {
+            margin-top: 1.5rem;
+  
+            .box-inputs {
+              display: flex;
+              flex-direction: column;
+              margin-bottom: .5rem;
+  
+              label {
+                font-size: .9rem;
+                font-weight: 600;
+                color: var(--dark-primary-gray);
+              }
+  
+              input {
+                padding: .3rem;
+              }
+            }
+  
+            .btn {
+              margin-top: 1.2rem;
+              padding: .5rem;
+              font-weight: 600;
+              font-size: .9rem;
+              border-radius: .2rem;
+            }
+          }
+        }
+      }
+
+      &:nth-child(2) {
+        h2 {
+          color: var(--dark-primary-gray);
+          font-size: 1.4rem;
+
+          span {
+            font-weight: 500;
+            margin-left: .2rem;
+          }
+        }
+
+        p {
+          font-size: .9rem;
+          color: var(--dark-primary-gray);
+          font-weight: 300;
+          margin: 1rem 0;
+          margin-top: .5rem;
+        }
+
+        a {
+          color: var(--blue);
+          font-size: .9rem;
+        }
+      }
+    }
+  }
+}
+/* Espace Etudiant end */
 
 /* Media Query start */
 @media (max-width: 1090px) {
@@ -2237,7 +2355,7 @@ padding: 2rem 1rem;
     left: 0;
   }
   .wrapper>.wrapper-box1 {
-    background: var(--gris);
+    background: #fff !important;
     height: 100%;
   }
   .wrapper .fa-play {
@@ -2474,6 +2592,10 @@ padding: 2rem 1rem;
     border-bottom: .05rem solid rgba(0, 0, 0, 0.195);
   }
   /* Wrapper end */
+
+  .globalWrapper {
+    min-height: calc(100vh - 5.6rem);
+  }
 }
 
 @media (max-width: 991px) {
@@ -2860,10 +2982,10 @@ padding: 2rem 1rem;
   /* Contact start */
 
   /* E-learning start */
-  #wrapperElearn {
+  #wrapperMixed {
     position: static;
   }
-  #mainElearn {
+  #mainMixed {
     margin-top: 0;
   }
   /* E-learning end */

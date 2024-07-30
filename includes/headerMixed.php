@@ -38,25 +38,29 @@
 </head>
 <body class="body">
   <!-- Header start -->
-  <header class="wrapper" id="wrapperElearn">
-    <div class="logo">
-      <img src="./assets/img/est_logo.jpeg" alt="est_logo">
-    </div>
-    <div class="exit">
-      <form id="logoutForm">
-        <button 
-          type="submit" 
-          name="logout_btn" 
-          class="flex gap-1 p-1 pr-16 rounded-md group"
-        >
-          <img src="./assets/img/logout.png" alt="logout">
-        </button>
-      </form> 
-    </div>
+  <header class="wrapper" id="wrapperMixed">
+    <a href="index.php" id="logo" class="logo">
+      <img src="./assets/img/est_logo.jpg" alt="est_logo">
+    </a>
+    <?php if(isset($_SESSION)): ?>
+      <div class="exit">
+        <form id="logoutForm">
+          <button 
+            type="submit" 
+            name="logout_btn" 
+            class="flex gap-1 p-1 pr-16 rounded-md group"
+          >
+            <i class="fa-solid fa-right-from-bracket"></i>
+            Déconnexion
+          </button>
+        </form> 
+      </div>
+    <?php endif ?>
   </header>
   <!-- Header end -->
 
+  <div class="globalWrapper">
   <!-- Main start -->
-  <main class="main" id="mainElearn">
+  <main class="main" id="mainMixed">
     <!-- Section start -->
-    <a href="#eLearn" class="ancar"><i class="fa-solid fa-angle-down fa-rotate-180"></i></a>
+    <a href=".main" class="ancar"><i class="fa-solid fa-angle-down fa-rotate-180"></i></a>

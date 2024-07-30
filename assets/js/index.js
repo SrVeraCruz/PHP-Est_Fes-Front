@@ -20,9 +20,6 @@ const searchUrl = new URLSearchParams(window.location.search)
 const pageUrl = location.pathname
 const pageName = pageUrl.substring(pageUrl.lastIndexOf("/") + 1)
 
-const boxContainer = document.createElement('div')
-boxContainer.classList.add('boxContainer')
-
 
 /* Global Functions */ 
 //////////////////////////////////////////////////////////
@@ -514,9 +511,11 @@ if (pageName === '' || pageName === 'index.php') {
         )
 
         listCatsSecondSection.forEach((ssCat) => {
+          let customizedLink = `category.php?title=${ssCat.slug}`
+          ssCat.name === 'CNR' && (customizedLink = 'note-consultation-login.php')
           secondSectionElement.innerHTML += `
             <div class="box">
-              <a href="category.php?title=${ssCat.slug}">
+              <a href="${customizedLink}">
                 ${
                   ssCat.logo 
                   ? `<img src="${ssCat.logo}" alt="${ssCat.title}">`
@@ -747,6 +746,8 @@ if(pageName === 'item.php') {
       </div>
     `
   } else {
+    const boxContainer = document.createElement('div')
+    boxContainer.classList.add('boxContainer')
 
     const showItemData = (item) => {
       if(!item) {
@@ -820,6 +821,9 @@ if(pageName === 'category.php') {
       <h1>Sorry invalid title...</h1>
     `
   } else { 
+    const boxContainer = document.createElement('div')
+    boxContainer.classList.add('boxContainer')
+
     const showCatData = (cat) => {
       if(!cat) {
         categoriesPage.innerHTML = `
@@ -928,6 +932,8 @@ if(pageName === 'news.php') {
     boxContainer.appendChild(wrapperContainer)
     newsPage.appendChild(boxContainer)
   } else {
+    const boxContainer = document.createElement('div')
+    boxContainer.classList.add('boxContainer')
 
     const showNewsData = async (news) => {
       if(!news) {
@@ -1012,6 +1018,8 @@ if(pageName === 'event.php') {
     boxContainer.appendChild(wrapperContainer)
     eventPage.appendChild(boxContainer)
   } else {
+    const boxContainer = document.createElement('div')
+    boxContainer.classList.add('boxContainer')
 
     const showEventData = async (event) => {
       if(!event) {
@@ -1169,11 +1177,8 @@ if(pageName === 'elearning-login.php') {
 }
 
 
-/* Elearning page */ 
-//////////////////////////////////////////////////////////
-if(pageName === 'elearning.php') {  
-
-  /* Logout event */ 
+/* Logout event */ 
+if(pageName === 'elearning.php' || pageName === 'note-consultation.php') {
   const logoutForm = document.getElementById("logoutForm");
   
   if(logoutForm) {
@@ -1182,11 +1187,50 @@ if(pageName === 'elearning.php') {
       
       axios.post(endpointLogout)
       .then(() => {
-        location.href = 'elearning-login.php'
+        location.href = pageName === 'elearning.php' ? 'elearning-login.php' : 'note-consultation-login.php'
       })
       .catch(err => {
         toastrAlert(err)
       })
     }
+  }
+}  
+
+/* Elearning page */ 
+//////////////////////////////////////////////////////////
+// if(pageName === 'elearning.php') {  
+
+  
+// }
+
+/* Note consultation mixed */ 
+//////////////////////////////////////////////////////////
+if(pageName === 'note-consultation.php' || pageName === 'note-consultation-login.php') {  
+  const logo = document.getElementById("logo");
+
+  logo.innerHTML = `
+    <img src="./assets/img/esp_etudiant.png" alt="Espace etudiant">
+  `
+  
+}
+
+/* Note consultation login */ 
+//////////////////////////////////////////////////////////
+if(pageName === 'note-consultation-login.php') { 
+  const noteConsultationLoginForm = document.getElementById('noteConsultationLoginForm')
+  
+  noteConsultationLoginForm.onsubmit = async (event) => {
+    event.preventDefault();
+    
+    const formData = new FormData();
+    formData.append('email', event.target.email.value)
+    formData.append('password', event.target.password.value)
+    
+    await axios.post(endpointLogin, formData)
+    .then(() => {
+      location.href = "note-consultation.php";
+    }).catch(err => {
+      toastrAlert(err)
+    })
   }
 }
