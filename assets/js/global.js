@@ -1,5 +1,5 @@
 /* Global Variables */ 
-const globalUrl = 'http://localhost/EST_FES_SITE/est-usmba.ac.ma_2.0/';
+const globalUrl = 'http://localhost:8082/';
 
 const endPointCategories = `${globalUrl}api/categories`;
 const endPointItems = `${globalUrl}api/items`;
@@ -132,7 +132,7 @@ const showNavData = async (cats) => {
 
   const motDir = items.filter((it) => it.name === "Mot du Directeur")[0]
   const catNoParent = cats.filter(
-    (cat) => cat.parent_category_id === '0' && cat.navbar_status === '0'
+    (cat) => cat.parent_category_id === 0 && cat.navbar_status === 0
   )
 
   navBarList.innerHTML = `
@@ -158,18 +158,18 @@ const showNavData = async (cats) => {
   if(catNoParent.length) {
     catNoParent.forEach((cat) => {
       const subCats = cats.filter(
-        (ct) => ct.parent_category_id === cat.id && ct.navbar_status === '0'
+        (ct) => ct.parent_category_id === cat.id && ct.navbar_status === 0
       )
 
       const itemCatNoParent = items.filter(
-        (it) => it.category_id === cat.id && it.status === '0'
+        (it) => it.category_id === cat.id && it.status === 0
       )
 
       mainList.innerHTML = ''
       if(subCats.length) {
         subCats.forEach((ct) => {
           const subItems = items.filter(
-            (it) => it.category_id === ct.id && it.status === '0'
+            (it) => it.category_id === ct.id && it.status === 0
           )
 
           subList.innerHTML = ''

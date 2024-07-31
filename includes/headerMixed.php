@@ -40,7 +40,7 @@
   <!-- Header start -->
   <header class="wrapper" id="wrapperMixed">
     <a href="index.php" id="logo" class="logo">
-      <img src="./assets/img/est_logo.jpg" alt="est_logo">
+      <img src="./assets/img/est_logo.png" alt="est_logo">
     </a>
     <?php if(isset($_SESSION)): ?>
       <div class="exit">

@@ -267,7 +267,7 @@ class User
         $hash_password = $user_data['password'];
 
         if (password_verify($password, $hash_password)) {
-          if($user_data['status'] === '0') {
+          if($user_data['status'] === 0) {
             // Authenticate
             $_SESSION['auth'] = true;
             $_SESSION['auth_role'] = $user_data['role_as']; // 0=user, 1=admin, 2=super_admin

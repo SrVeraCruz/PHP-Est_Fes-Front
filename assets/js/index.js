@@ -1,5 +1,5 @@
 /* Global Variables */ 
-const baseUrl = 'http://localhost/EST_FES_SITE/est-usmba.ac.ma_2.0/';
+const baseUrl = 'http://localhost:8082/';
 
 const endpointLogin = `${baseUrl}api/users/login`;
 const endpointLogout = `${baseUrl}api/users/logout`;

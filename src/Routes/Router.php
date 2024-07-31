@@ -1,14 +1,10 @@
 <?php
-require_once '../../vendor/autoload.php';
 require_once '../Services/UserServices.php';
 require_once '../Services/NewsServices.php';
 require_once '../Services/EventServices.php';
 require_once '../Services/NewsletterServices.php';
 require_once '../Services/CategoryServices.php';
 require_once '../Services/ItemServices.php';
-
-$dotenv = Dotenv\Dotenv::createImmutable('../../');
-$dotenv->load();
 
 header("Content-Type: application/json");
 $uri = $_GET['url'];
