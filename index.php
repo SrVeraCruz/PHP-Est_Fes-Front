@@ -4,8 +4,8 @@ require_once 'includes/header.php';
 
 <section class="accuil" id="accuil">
   <div class="boxContainer">
-    <div class="slideImg">
-      <div class="imgBox">
+    <div id="mainSlideWrapper" class="slideImg">
+      <!-- <div class="imgBox">
         <img 
           src="./assets/img/est_centre_conference.jpg" 
           alt="est_centre_conference"
@@ -32,7 +32,7 @@ require_once 'includes/header.php';
           alt="est_centre_conference"
         />
         <h1>Notre Jardin</h1>
-      </div>
+      </div> -->
     </div>
   </div>
 </section>
@@ -47,8 +47,8 @@ require_once 'includes/header.php';
 
       </div>
 
-      <div class="slide2">
-        <div class="imgBox2">
+      <div id="secondarySlide" class="slide2">
+        <!-- <div class="imgBox2">
           <img 
             src="./assets/img/slide2_est_biblio.png" 
             alt="est_biblio"
@@ -89,7 +89,7 @@ require_once 'includes/header.php';
             src="./assets/img/slede2_est_stage.png" 
             alt="est_stage"
           />
-        </div>
+        </div> -->
       </div>
 
       <div id="secondSection" class="content">

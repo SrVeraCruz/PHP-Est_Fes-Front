@@ -1,5 +1,6 @@
 /* Global Variables */ 
 const baseUrl = 'http://localhost:8082/';
+// const baseUrl = 'http://localhost/EST_FES_SITE/est-usmba.ac.ma_2.0/';
 
 const endpointLogin = `${baseUrl}api/users/login`;
 const endpointLogout = `${baseUrl}api/users/logout`;
@@ -10,6 +11,7 @@ const endpointEvents = `${baseUrl}api/events`;
 const endpointNewsletter = `${baseUrl}api/newsletter`;
 const endpointCategories = `${baseUrl}api/categories`;
 const endpointItems = `${baseUrl}api/items`;
+const endpointSlides = `${baseUrl}api/slides`;
 
 const endpointImageCld = 'https://api.cloudinary.com/v1_1/dbfaih2du/image/upload';
 const endpointRawCld = 'https://api.cloudinary.com/v1_1/dbfaih2du/raw/upload';
@@ -135,6 +137,16 @@ const fetchOneItem = async (id) => {
 
 const fetchOneByItemSlug = async (slug) => {
   return await axios.get(`${endpointItems}?slug=${slug}`)
+  .then(res => {
+    return res.data
+  })
+  .catch(err => {
+    console.error(err.message)
+  })
+}
+
+const fetchAllItemsSlides = async () => {
+  return await axios.get(endpointSlides)
   .then(res => {
     return res.data
   })
@@ -346,19 +358,9 @@ const getEvents = async (limit = null, events = null) => {
 /* Index page */ 
 //////////////////////////////////////////////////////////
 if (pageName === '' || pageName === 'index.php') {
-  const slideImg = document.querySelector('.slideImg');
-  const imgBox = document.querySelectorAll('.imgBox');
-  const slide2 = document.querySelector('.slide2');
-  const imgBox2 = document.querySelectorAll('.imgBox2');
   const inputUsers = document.querySelectorAll('.inputUser');
   const labelInputs = document.querySelectorAll('.labelInput');
   // const selectOptions = document.querySelectorAll('.boxInput>.inputUser>option');
-  let widthSlide1 = imgBox[0].clientWidth;
-  let widthSlide2 = imgBox2[0].clientWidth;
-  
-  const interval = 3500;
-  let counter = 1;
-  let counterSlide2 = 1;
 
   const firstSectionElement = document.getElementById('firstSection')
   const secondSectionElement = document.getElementById('secondSection')
@@ -367,10 +369,6 @@ if (pageName === '' || pageName === 'index.php') {
 
   /* SlideImg start */
   window.onresize = () => {
-    widthWindow = window.innerWidth;
-    widthSlide1 = imgBox[0].clientWidth;
-    widthSlide2 = imgBox2[0].clientWidth;
-  
     /* Scroll-header */
     if(widthWindow < 991){
       wrapper.style.position = "fixed";
@@ -380,30 +378,88 @@ if (pageName === '' || pageName === 'index.php') {
       wrapper.style.background = "url('./assets/img/background.png')";
     }
   }
-  /* SlideImg end */
-  const slide = () => {
-    slideImg.style.transform = "translate("+(-widthSlide1*counter)+"px)";
-    counter++;
   
-    slide2.style.transform = "translate("+(-widthSlide2*counterSlide2)+"px)";
-    counterSlide2++;
-  
-    if(counter == imgBox.length +1){
-      slideImg.style.transform = "translate(0px)";
-      counter = 1;
+  /* Slide start */
+  const showSlides = (slides) => {
+    const mainSlideWrapper = document.getElementById('mainSlideWrapper')
+    const secondarySlideWrapper = document.getElementById('secondarySlide')
+
+    const mainSlideData = slides.filter((item) => item.type === 'main')
+    const secondarySlideData = slides.filter((item) => item.type === 'secondary')
+
+    if (mainSlideData.length > 0) {
+      mainSlideWrapper.innerHTML = ''
+      mainSlideData.forEach(item => {
+        mainSlideWrapper.innerHTML += `
+          <div class="imgBox">
+            <img 
+              src="${item.image}" 
+              alt="Main Slide"
+            />
+            <h1>${item.title}</h1>
+          </div>
+        ` 
+      })
     }
-  
-    if(counterSlide2 == imgBox2.length +1){
-      slide2.style.transform = "translate(0px)";
-      counterSlide2 = 1;
+
+    if (secondarySlideData.length > 0) {
+      secondarySlideWrapper.innerHTML = ''
+      secondarySlideData.forEach(item => {
+        secondarySlideWrapper.innerHTML += `
+          <div class="imgBox2">
+            <img 
+              src="${item.image}" 
+              alt="Secondary Slide"
+            />
+          </div>
+        ` 
+      })
     }
+
+    const slideImg = document.querySelector('.slideImg');
+    const imgBox = document.querySelectorAll('.imgBox');
+    const slide2 = document.querySelector('.slide2');
+    const imgBox2 = document.querySelectorAll('.imgBox2');
+    let widthSlide1 = imgBox[0].clientWidth;
+    let widthSlide2 = imgBox2[0].clientWidth;
+  
+    const interval = 3500;
+    let counter = 1;
+    let counterSlide2 = 1;
+
+    const slide = () => {
+      slideImg.style.transform = "translate("+(-widthSlide1*counter)+"px)";
+      counter++;
+    
+      slide2.style.transform = "translate("+(-widthSlide2*counterSlide2)+"px)";
+      counterSlide2++;
+    
+      if(counter == imgBox.length +1){
+        slideImg.style.transform = "translate(0px)";
+        counter = 1;
+      }
+    
+      if(counterSlide2 == imgBox2.length +1){
+        slide2.style.transform = "translate(0px)";
+        counterSlide2 = 1;
+      }
+    }
+
+    window.onresize = () => {
+      widthWindow = window.innerWidth;
+      widthSlide1 = imgBox[0].clientWidth;
+      widthSlide2 = imgBox2[0].clientWidth;
+    }
+
+    setInterval(() => {
+      slide();
+    }, interval);
   }
-  
-  setInterval(() => {
-    slide();
-  }, interval);
-  
-  /* SlideImg end */
+
+  fetchAllItemsSlides().then((slides) => {
+    showSlides(slides)
+  })
+  /* Slide end */
   
   /* Input:focus ~ label start */
   for(i=0; i < inputUsers.length; i++){
@@ -1117,6 +1173,66 @@ if(pageName === 'newsletter.php') {
       `
     }
   } 
+}
+
+/* Suivi page */ 
+//////////////////////////////////////////////////////////
+if(pageName === 'suivi.php') {
+  let NextBtn = document.querySelector('#NextBtn');
+  let PrevBtn = document.querySelector('#PrevBtn');
+  let SubmitBtn = document.querySelector('#SubmitBtn');
+  let formBoxs = document.querySelectorAll('.form-box');
+  let steps = document.querySelectorAll('.step');
+  let index = 0;
+
+  /* Btn Suivant event */
+  NextBtn.onclick = (e) => {
+    if(index == formBoxs.length -1) return;
+
+    PrevBtn.style.display = "block"
+    formBoxs[index].classList.remove('active');
+    index ++;
+
+    formBoxs[index].classList.add('active');
+    steps[index].classList.add('active');
+
+    if(index == formBoxs.length -1){
+      SubmitBtn.style.display = "block"
+      NextBtn.style.display = "none"
+    }
+  }
+
+  /* Btn Suivant event */
+  window.onload =()=> {
+    if(index == 0) PrevBtn.style.display = "none";
+  }
+
+  PrevBtn.onclick =()=> {
+    if(index <= 0) {
+      return
+    } else if(index == 1) {
+      PrevBtn.style.display = "none"
+      SubmitBtn.style.display = "none"
+      NextBtn.style.display = "block"
+    
+      formBoxs[index].classList.remove('active');
+      steps[index].classList.remove('active');
+      
+      index --;
+    
+      formBoxs[index].classList.add('active');
+    } else {
+      SubmitBtn.style.display = "none"
+      NextBtn.style.display = "block"
+    
+      formBoxs[index].classList.remove('active');
+      steps[index].classList.remove('active');
+
+      index --;
+    
+      formBoxs[index].classList.add('active');
+    };
+  }
 }
 
 

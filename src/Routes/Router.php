@@ -5,6 +5,7 @@ require_once '../Services/EventServices.php';
 require_once '../Services/NewsletterServices.php';
 require_once '../Services/CategoryServices.php';
 require_once '../Services/ItemServices.php';
+require_once '../Services/SlideService.php';
 
 header("Content-Type: application/json");
 $uri = $_GET['url'];
@@ -133,6 +134,28 @@ switch ($uri) {
         json_encode(ItemService::DELETE($_POST));
       } else {
         json_encode(ItemService::POST($_POST, $_FILES));
+      }
+    } else {
+      sendNotAllowed();
+    }
+    break;
+
+  case 'api/slides':
+    if ($method === 'GET') {
+      if (isset($_GET['id'])) {
+        json_encode(SlideService::GET($_GET['id']));
+      } else if (isset($_GET['slug'])) {
+        json_encode(SlideService::GET(null, $_GET['slug']));
+      } else {
+        json_encode(SlideService::GET());
+      }
+    } elseif ($method === 'POST') {
+      if (isset($_POST['update_cat_id'])) {
+        json_encode(SlideService::UPDATE($_POST, $_FILES));
+      } elseif (isset($_POST['delete_cat_id'])) {
+        json_encode(SlideService::DELETE($_POST));
+      } else {
+        json_encode(SlideService::POST($_POST, $_FILES));
       }
     } else {
       sendNotAllowed();

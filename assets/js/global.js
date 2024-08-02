@@ -1,5 +1,6 @@
 /* Global Variables */ 
 const globalUrl = 'http://localhost:8082/';
+// const globalUrl = 'http://localhost/EST_FES_SITE/est-usmba.ac.ma_2.0/';
 
 const endPointCategories = `${globalUrl}api/categories`;
 const endPointItems = `${globalUrl}api/items`;

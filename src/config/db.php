@@ -7,6 +7,11 @@ class Database
   public static function getConnection()
   {
     if (self::$pdo === null) {
+      // $host = 'localhost';
+      // $db = 'est_fes';
+      // $user = 'root';
+      // $pass = '';
+      // $dsn = "mysql:host=$host;dbname=$db;charset=utf8";
       $host = getenv('DB_HOST');
       $port = getenv('DB_PORT');
       $db = getenv('DB_DATABASE');
