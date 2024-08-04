@@ -1,5 +1,5 @@
 /* Global Variables */ 
-const globalUrl = 'https://php-estfes-front-production.up.railway.app/';
+const globalUrl = 'https://est-usmba-ac-ma.up.railway.app/';
 // const globalUrl = 'http://localhost/EST_FES_SITE/est-usmba.ac.ma_2.0/';
 
 const endPointCategories = `${globalUrl}api/categories`;
