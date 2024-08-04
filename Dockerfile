@@ -17,6 +17,9 @@ WORKDIR /var/www/html
 # Copiar arquivos do projeto
 COPY . .
 
+# Configurar ServerName para evitar o aviso
+RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+
 # Expor a porta 80
 EXPOSE 80
 
