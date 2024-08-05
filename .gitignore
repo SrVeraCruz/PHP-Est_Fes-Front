@@ -1,0 +1,9 @@
+# dependencies
+node_modules
+
+# files
+uploads
+
+# environement
+.env
+docker-compose.yml
