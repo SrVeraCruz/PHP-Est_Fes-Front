@@ -1421,5 +1421,5 @@ if(pageName === 'note-consultation-login.php') {
 //////////////////////////////////////////////////////////
 const loader = document.getElementById("loader")
 if(pageName === '404.php') { 
-  loader.remove()
+  removePreloader()
 }
