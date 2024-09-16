@@ -1,7 +1,7 @@
 /* Global Variables */ 
 // const baseUrl = 'https://est-usmba-ac-ma.up.railway.app/';
 // const baseUrl = 'http://localhost:8082/';
-const baseUrl = 'http://18.205.98.102/';
+const baseUrl = '/';
 
 const endpointLogin = `${baseUrl}api/users/login`;
 const endpointLogout = `${baseUrl}api/users/logout`;
